@@ -1,0 +1,1 @@
+include ':lenddosdk', ':mobiledata_demo', ':onboarding_demo'

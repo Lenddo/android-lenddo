@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="partner_script_id">56b424e5aa9612216a72e8c7</string>  <!--QA & PROD!-->
+    <!--<string name="partner_script_id">562e1689aa9612778a2b8d2c</string>-->
+    <string name="api_secret">se7q075RagJBn9y5aPHGJ0mTVQpJkpfK1G85jumokHrvMJxV/necLaI+zmQ08E4vhzR9WyV7HgyYjuxEbEAktA==</string>
+</resources>

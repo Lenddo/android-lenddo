@@ -1,0 +1,461 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="lenddo.com.lenddoonboarding.SampleActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/lenddo_image" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please review your Loan Application Details and then connect your Facebook account by clicking on the button below." />
+
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    android:text="@string/hostname"
+                    style="@style/formLabel"/>
+                <Spinner
+                    android:id="@+id/spn_hostname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/array_hostname"/>
+
+
+                <TextView
+                    android:text="@string/loan_amount"
+                    style="@style/formLabel"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/editTextLoanAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="PHP"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/last_name"/>
+
+                <EditText
+                    android:id="@+id/editTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/middle_name"/>
+                <EditText
+                    android:tag="middle_name"
+                    android:id="@+id/editTextMiddleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/first_name"/>
+
+                <EditText
+                    android:id="@+id/editTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/email"/>
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer"
+                >
+                <TextView style="@style/formLabel"
+                    android:text="@string/date_of_birth"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editTextDateOfBirth"
+                        android:ems="10"/>
+                    <Button
+                        android:id="@+id/dobButton"
+                        android:layout_weight="0"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ellipses"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/gender"/>
+
+                <Spinner
+                    android:tag="gender"
+                    android:id="@+id/spinnerGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/university"/>
+                <EditText
+                    android:id="@+id/editTextUniversity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/mobile_number"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_weight="0"
+                        android:text="+63"/>
+                    <EditText
+                        android:tag="mobile_number"
+                        android:id="@+id/editTextMobileNumber"
+                        android:hint="9212345678"
+                        android:inputType="phone"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/primary_number"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_weight="0"
+                        android:text="+63"/>
+                    <EditText
+                        android:tag="primary_number"
+                        android:id="@+id/editTextPrimaryNumber"
+                        android:layout_weight="1"
+                        android:hint="21234567"
+                        android:inputType="phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/house_number"/>
+                <EditText
+                    android:tag="house_number"
+                    android:id="@+id/editTextHouseNumber"
+                    android:hint="ex. 123"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/street_name"/>
+
+                <EditText
+                    android:tag="street_name"
+                    android:id="@+id/editTextStreetName"
+                    android:layout_width="match_parent"
+                    android:hint="ex. makati ave"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/barangay"/>
+                <EditText
+                    android:tag="barangay"
+                    android:id="@+id/editTextBarangay"
+                    android:layout_width="match_parent"
+                    android:hint="ex. Bel-Air"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/municipality"/>
+
+                <EditText
+                    android:tag="municipality"
+                    android:id="@+id/editTextMunicipality"
+                    android:hint="ex. San Fernando"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/province"
+                    />
+
+                <EditText
+                    android:tag="province"
+                    android:id="@+id/editTextProvince"
+                    android:layout_width="match_parent"
+                    android:hint="ex. La Union"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/postal_code"
+                    />
+
+                <EditText
+                    android:tag="postal_code"
+                    android:id="@+id/editTextPostalCode"
+                    android:layout_width="match_parent"
+                    android:hint="ex. 1200"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/country"/>
+                <EditText
+                    android:tag="country"
+                    android:id="@+id/spinnerCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:text="Philippines" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/mother_last_name"/>
+
+                <EditText
+                    android:tag="mother_last_name"
+                    android:id="@+id/editTextMotherLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/mother_middle_name"/>
+                <EditText
+                    android:tag="mother_middle_name"
+                    android:id="@+id/editTextMotherMiddleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/mother_first_name"/>
+
+                <EditText
+                    android:tag="mother_first_name"
+                    android:id="@+id/editTextMotherFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/source_of_funds"/>
+                <Spinner
+                    android:tag="source_of_funds"
+                    android:id="@+id/spinnerSourceOfFunds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/monthly_income"/>
+                <EditText
+                    android:tag="monthly_income"
+                    android:id="@+id/editTextMonthlyIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="8000 PHP" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/name_of_employer"/>
+                <EditText
+                    android:tag="name_of_employer"
+                    android:id="@+id/editTextNameOfEmployer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/job_occupation"/>
+
+                <EditText
+                    android:tag="nature_of_work"
+                    android:id="@+id/editTextJobOccupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer"
+                >
+                <TextView style="@style/formLabel"
+                    android:text="@string/employment_start_date"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editTextEmploymentStartDate"
+                        android:ems="10"/>
+                    <Button
+                        android:id="@+id/employmentStartButton"
+                        android:layout_weight="0"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ellipses"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer"
+                >
+                <TextView style="@style/formLabel"
+                    android:text="@string/employment_end_date"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editTextEmploymentEndDate"
+                        android:ems="10"/>
+                    <Button
+                        android:id="@+id/employmentEndButton"
+                        android:layout_weight="0"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ellipses"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/fieldContainer">
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/customer_id"/>
+
+                <EditText
+                    android:id="@+id/editTextCustomerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
+            </LinearLayout>
+            <com.lenddo.mobile.onboardingsdk.widget.LenddoButton
+                android:id="@+id/verifyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@null"></FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

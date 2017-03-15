@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lenddo_blue">#173F90</color>
+    <color name="lenddo_white">#FFFFFF</color>
+    <color name="lenddo_light_blue">#1E55C4</color>
+    <color name="verifime_blue">#093d60</color>
+    <color name="verifime_lt_blue">#0c5688</color>
+    <color name="white">#55FFFFFF</color>
+    <color name="blue_header_divider">#3e56a5</color>
+    <color name="black">#000000</color>
+</resources>

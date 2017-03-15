@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="lenddo.com.lenddoonboarding" >
+
+    <application
+        android:name=".SimpleLoan"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SampleActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CompleteActivity"
+            android:label="@string/title_activity_complete"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+        </activity>
+        <meta-data
+            android:name="partnerScriptId"
+            android:value="@string/partner_script_id" />
+        <!--<meta-data-->
+            <!--android:name="partnerApiSecret"-->
+            <!--android:value="@string/api_secret" />-->
+        <activity
+            android:name=".CanceledActivity"
+            android:label="@string/title_activity_canceled"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+        </activity>
+    </application>
+
+</manifest>

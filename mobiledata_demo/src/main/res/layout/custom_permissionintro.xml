@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d61f64">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+
+        <TextView
+            android:text="Conozcámonos Mejor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:text="Queremos darte cosas geniales y para eso necesitamos conocerte mejor. Por eso te pedimos permiso para ver tu info de teléfono, calendario, contactos, localización y SMS.\n\nTus datos están súper seguros y obviamente no vamos a contactar a tus amigos ni a guardar sus datos. "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="18dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_perm_intro_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_selector"
+            android:textColor="#FFFFFF"
+            android:text="Listo"/>
+
+        <Button
+            android:id="@+id/btn_perm_intro_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_selector"
+            android:textColor="#FFFFFF"
+            android:text="Más tarde"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
