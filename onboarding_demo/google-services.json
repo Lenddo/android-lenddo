@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "25541455225",
+    "firebase_url": "https://lenddo-android-onboarding-sdk.firebaseio.com",
+    "project_id": "lenddo-android-onboarding-sdk",
+    "storage_bucket": "lenddo-android-onboarding-sdk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25541455225:android:40d8670c251d977b",
+        "android_client_info": {
+          "package_name": "lenddo.com.lenddoconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "25541455225-lhaji5pmgo5pb84ve5g80vum3nrnklkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lenddo.com.lenddoconnect",
+            "certificate_hash": "9328ee8f9cb429d47a967acca3bedfb9f6d4e12f"
+          }
+        },
+        {
+          "client_id": "25541455225-bi1p9nqker7ii7nlttekssaqqul2529j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lenddo.com.lenddoconnect",
+            "certificate_hash": "1b37edbdf06fe6334e353a96821b914ea8374d6e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDooCaL_uJbYJ0OIK5wtzzc7OnuzvDUWMU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -45,6 +45,26 @@
                     android:layout_height="wrap_content"
                     android:entries="@array/array_hostname"/>
 
+                <TextView
+                    android:text="@string/api_region"
+                    style="@style/formLabel"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/editTextApiRegion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:maxLength="2"
+                        android:digits="abcdefghijklmnopqrstuvwxyz"
+                        android:inputType="text" />
+                </LinearLayout>
+
 
                 <TextView
                     android:text="@string/loan_amount"
@@ -165,7 +185,7 @@
                 <TextView
                     style="@style/formLabel"
                     android:text="@string/university"/>
-                <EditText
+                <com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView
                     android:id="@+id/editTextUniversity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -367,7 +387,7 @@
                 <TextView
                     style="@style/formLabel"
                     android:text="@string/name_of_employer"/>
-                <EditText
+                <com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView
                     android:tag="name_of_employer"
                     android:id="@+id/editTextNameOfEmployer"
                     android:layout_width="match_parent"
