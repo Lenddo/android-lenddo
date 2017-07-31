@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bg_rounded_corner_primarydark" android:state_selected="true"></item>
+    <item android:drawable="@drawable/bg_rounded_corner_primarydark" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/bg_rounded_corner_primary" android:state_enabled="true"></item>
+    <item android:drawable="@drawable/bg_rounded_corner_disabled" android:state_enabled="false"></item>
+    <item android:drawable="@drawable/bg_rounded_corner_primary"></item>
+
+</selector>

@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="finder_frame_margin">20dp</dimen>
+    <dimen name="finder_frame_thickness">2dp</dimen>
+    <dimen name="finder_vertical_guide_length">60dp</dimen>
+    <dimen name="circle_border_thickness">5dp</dimen>
+    <dimen name="capture_circle_border_thickness">8dp</dimen>
+    <dimen name="step_indicator_width">45dp</dimen>
+    <dimen name="add_circle_margins">2dp</dimen>
+    <dimen name="standard_grid_size">8dp</dimen>
+    <dimen name="standard_2xgrid_size">16dp</dimen>
+    <dimen name="grid_margin">8dp</dimen>
+</resources>

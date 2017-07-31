@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coord_review_documents"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/verify_me_plain_grey_background"
+    android:fitsSystemWindows="true"
+    tools:context="verifime.lenddo.com.verifimelib.kyc.activities.DocumentUploaderActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            android:theme="@style/ToolBarStyle"
+            android:title="@string/review_and_submit"
+            android:titleTextColor="@color/white"
+            app:popupTheme="@style/ToolBarStyle" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/main_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="?attr/actionBarSize">
+
+        <GridView
+            android:id="@+id/review_documents_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:numColumns="2"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_rounded_button"
+            android:text="@string/submit"
+            android:textColor="@drawable/textcolor_button" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kyc_light_background">
+
+    <RelativeLayout
+        android:id="@+id/topPanel"
+        android:background="@color/kyc_top_panel_background"
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="@string/official_id"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/ic_badge_scan_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/topPanel"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:text="@string/choose_document_type"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/take_passport_photo_container"
+            style="@style/UploadContainerStyle">
+
+            <TextView
+                android:id="@+id/item_text"
+                android:text="@string/umid"
+                style="@style/UploadItemTextStyle" />
+
+            <ImageView
+                android:id="@+id/check_indicator_icon"
+                android:src="@drawable/ic_icon_plus_white_18dp"
+                style="@style/IndicatorImageStyle" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/take_license_photo_container"
+            style="@style/UploadContainerStyle">
+
+            <TextView
+                android:id="@id/item_text"
+                android:text="@string/drivers_license"
+                style="@style/UploadItemTextStyle" />
+
+            <ImageView
+                android:id="@id/check_indicator_icon"
+                android:src="@drawable/ic_icon_plus_white_18dp"
+                style="@style/IndicatorImageStyle" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/take_company_id__photo_container"
+            style="@style/UploadContainerStyle">
+
+            <TextView
+                android:id="@id/item_text"
+                android:text="ID"
+                style="@style/UploadItemTextStyle" />
+
+            <ImageView
+                android:id="@id/check_indicator_icon"
+                android:src="@drawable/ic_icon_plus_white_18dp"
+                style="@style/IndicatorImageStyle" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/continue_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        style="@style/IndicatorImageStyle">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/text_secondary_panel"
+            android:text="@string/continue_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_icon_arrow_right_blue" />
+    </LinearLayout>
+</RelativeLayout>

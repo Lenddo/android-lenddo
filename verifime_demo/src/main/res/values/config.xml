@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Lenddo App partner id -->
+    <string name="partner_script_id">5750fbfef7a57905ad4729db</string>
+    <string name="api_secret">EnzZJNDVikDoNmUnKP04X7oM4f/rjsziGEw6ZCVjzF+ybxPNIwi9b7ubecVV32sKIkBprOdoGPsdhZi0ebL6Iw==</string>
+    <!--<string name="partner_script_id">5671d773aa961243c55ee6ad</string>-->
+    <!--<string name="api_secret">se7q075RagJBn9y5aPHGJ0mTVQpJkpfK1G85jumokHrvMJxV/necLaI+zmQ08E4vhzR9WyV7HgyYjuxEbEAktA==</string>-->
+    <!--<string name="partner_script_id">5750fbfef7a57905ad4729db</string>-->
+    <!--<string name="api_secret"></string>-->
+</resources>

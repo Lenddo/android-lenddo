@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".kyc.activities.DocumentUploaderActivity">
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/sending_screen_container"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <include layout="@layout/transmit_layout" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/error_container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#FBFBFB"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/primary"
+                android:theme="@style/ToolBarStyle"
+                android:title="@string/review_and_submit"
+                android:titleTextColor="@color/white"
+                app:popupTheme="@style/ToolBarStyle" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/img_error_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_document_upload_error"/>
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/error_message"
+            android:gravity="center"
+            android:layout_below="@id/img_error_upload"
+            android:text="@string/problem_while_sending_to_server"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/selector_rounded_button"
+            android:textColor="@drawable/textcolor_button"
+            android:textAllCaps="true"
+            android:id="@+id/retry_button"
+            android:text="@string/retry"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"/>
+    </RelativeLayout>
+</LinearLayout>

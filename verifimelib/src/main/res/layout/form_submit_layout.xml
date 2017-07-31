@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_weight="0"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="54dp"
+    tools:showIn="@layout/activity_banko_form">
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/ic_close_white_36dp"
+        android:text="@string/cancel"
+        style="@style/FormButtonStyle" />
+
+    <View
+        android:background="@color/white"
+        android:layout_weight="0"
+        android:layout_width="1dp"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/submit_button"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/ic_check_white_36dp"
+        android:text="@string/done"
+        style="@style/FormButtonStyle" />
+</LinearLayout>
