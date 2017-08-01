@@ -42,6 +42,7 @@ By incorporating the Verifi.Me SDK library into your app, you will need to grant
 
 1. Import the Verifi.Me Demo application (verifime_demo module)
 2. Run the verifime_demo module
+
 ![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/run_demo_app.png)
 
 ## Configuring the Verifi.Me SDK library
