@@ -33,10 +33,10 @@ There may be also other partner specific values that you are required to set.
 2. Import Modules
 
  + **lenddosdk** - Lenddo SDK
- + **verifimelib** - Verifi.Me SDK library
- + **mobiledata_demo** - demo application that showcases the data collection and submission
- + **onboarding_demo** - demo application for the Lenddo onboarding process
- + **verifime_demo** - demo application for Verifi.Me SDK
+ + **verifimelib** - Verifi.Me SDK library (optional)
+ + **mobiledata_demo** - demo application that showcases the data collection and submission (optional)
+ + **onboarding_demo** - demo application for the Lenddo onboarding process (optional)
+ + **verifime_demo** - demo application for Verifi.Me SDK (optional)
        
        File > New > Import Module
 ![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/file_new_import-module.png)
@@ -45,6 +45,32 @@ There may be also other partner specific values that you are required to set.
 ![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/import_selected_modules.png)
 
 3. Sync Gradle
+
+#### Adding the Lenddo Credentials
+
+In your applications AndroidManifest.xml file, inside the application key, add the following metadata:
+
+```gradle
+<!-- partner script id is mandatory -->
+<meta-data android:name="partnerScriptId" android:value="@string/partner_script_id" />
+<!-- api secret can be optional -->
+<meta-data android:name="partnerApiSecret" android:value="@string/api_secret" />
+```
+
+In your strings.xml put your partner script id and api secret resource string.
+
+```xml
+<string name="partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+<string name="api_secret">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+```
+
+#### Adding verifimelib Dependency
+
+In your applications build.gradle file, under dependencies, add the following line
+
+```gradle
+compile project(':verifimelib')
+```
 
 
 ## Running the Demo Applications

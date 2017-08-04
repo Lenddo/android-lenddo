@@ -38,6 +38,28 @@ By incorporating the Verifi.Me SDK library into your app, you will need to grant
 
 
 
+#### Adding the Lenddo Partner Script Id
+
+In your applications AndroidManifest.xml file, inside the application key, add the following metadata:
+
+```gradle
+<meta-data android:name="partnerScriptId" android:value="@string/partner_script_id" />
+```
+
+In your strings.xml put your partner script id resource string.
+
+```xml
+<string name="partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+```
+
+#### Adding verifimelib Dependency
+
+In your applications build.gradle file, under dependencies, add the following line
+
+```gradle
+compile project(':verifimelib')
+```
+
 ## Running the Verifi.Me Demo Application
 
 1. Import the Verifi.Me Demo application (verifime_demo module)
@@ -51,10 +73,11 @@ Setting up the library
 1. Add the imports (this can be done automatically in the Android Studio IDE)
 2. Calling Activity should implement OnDocumentUploadCompleteListener
 3. Declare and initialise a VerifiMeManager member variable
-4. Initialise the document config object and configure an upload page and a summary page
-5. Add the applicants form data
-6. Create a callback handler using onActivityResult()
-7. Call showDocumentUploader() to begin document capture using Verifi.Me
+4. Initialise Lenddo credentials using the `LenddoCoreInfo.initCoreInfo()` method
+5. Initialise the document config object and configure an upload page and a summary page
+6. Add the applicants form data
+7. Create a callback handler using `onActivityResult()`
+8. Call `showDocumentUploader()` to begin document capture using Verifi.Me
 
 
 ```java
@@ -71,7 +94,10 @@ import verifime.lenddo.com.verifimelib.listeners.OnDocumentUploadCompleteListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Initialize the VerifiMeManager member variable
+        // Initialise Lenddo credentials using the LenddoCoreInfo
+        LenddoCoreInfo.initCoreInfo(getApplicationContext());
+
+        // Initialise the VerifiMeManager member variable
         verifiMeManager = VerifiMeManager.getInstance();
 
         // Configure the color theme (this is an optional step)
@@ -87,7 +113,7 @@ import verifime.lenddo.com.verifimelib.listeners.OnDocumentUploadCompleteListene
 #### Document Upload Page
 The Document Upload Page contains the configured list of documents to be capture.
 ```java
-private void configureVerifiMe() {
+private DocumentConfig configureVerifiMe() {
     // Setup a Document Config Object
     DocumentConfig documentConfig = new DocumentConfig();
 
@@ -110,10 +136,12 @@ private void configureVerifiMe() {
     formData.setLastName("LASTNAME");
     formData.setEmployerName("EMPLOYER NAME");
     formData.setEmail("EMAIL ADDRESS");
-    formData.setDateOfBirth("DD-MM-YYYY"); // Please follow this date format
+    formData.setDateOfBirth("DD/MM/YYYY"); // Please follow this date format
 
     // Add Applicant information for reference
     documentConfig.addForm(formData);
+
+    return documentConfig;
 }
 ```
 
@@ -131,7 +159,7 @@ This page will show a thumbnail of captured documents to be uploaded to Lenddo s
     formData.setLastName("LASTNAME");
     formData.setEmployerName("EMPLOYER NAME");
     formData.setEmail("EMAIL ADDRESS");
-    formData.setDateOfBirth("DD-MM-YYYY"); // Please follow this date format
+    formData.setDateOfBirth("DD/MM/YYYY"); // Please follow this date format
 
     // Add Applicant information for reference
     documentConfig.addForm(formData);
@@ -168,6 +196,9 @@ This page will show a thumbnail of captured documents to be uploaded to Lenddo s
 ```
 
 #### Starting the Document Capture
+
+To trigger the document capture, call the `showDocumentUploader()` method. 
+
 ```java
     // Start Document Capture
     verifiMeManager.showDocumentUploader(this, applicationId, documentConfig, this);
