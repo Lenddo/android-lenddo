@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lenddo.com.lenddoonboarding" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".SimpleLoan"
         android:allowBackup="true"
@@ -32,7 +34,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="fb1539357622765440" />
+                <data android:scheme="fb480560325445682" />
             </intent-filter>
         </activity>
         <meta-data

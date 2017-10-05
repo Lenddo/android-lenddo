@@ -1,9 +1,9 @@
 package lenddo.com.lenddoonboarding;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lenddo.mobile.core.models.GovernmentId;
 import com.lenddo.mobile.onboardingsdk.client.LenddoConstants;
 import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
 import com.lenddo.mobile.onboardingsdk.models.Address;
@@ -32,10 +33,12 @@ import com.lenddo.nativeonboarding.GoogleSignInHelper;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
-public class SampleActivity extends Activity implements LenddoEventListener {
+public class SampleActivity extends AppCompatActivity implements LenddoEventListener {
 
     private static final String TAG = SampleActivity.class.getName();
     private LenddoButton button;
@@ -173,6 +176,7 @@ public class SampleActivity extends Activity implements LenddoEventListener {
         });
 
         helper = new UIHelper(this, this);
+        helper.setAssistedPsychometrics(true);
         helper.addGoogleSignIn(new GoogleSignInHelper());
         helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
@@ -259,12 +263,23 @@ public class SampleActivity extends Activity implements LenddoEventListener {
         formData.setMotherMiddleName(motherMiddleName.getText().toString());
         formData.setUniversityName(university.getText().toString());
         formData.setAddress(primaryAddress);
+        List<GovernmentId> governmentIds = new ArrayList<>();
+        governmentIds.add(new GovernmentId("DEMO-TYPE", "DEMO-VALUE"));
+        governmentIds.add(new GovernmentId("passport", "PAS018218ASVR"));
+        governmentIds.add(new GovernmentId("sss", "0-390128411-1274"));
+        governmentIds.add(new GovernmentId("tin", "3023749103"));
+        formData.setGovernmentIds(governmentIds);
 
         //send custom fields
         formData.putField("Loan_Amount", loanAmount.getText().toString());
         formData.validate();
         helper.setApiRegion(apiRegion.getText().toString());
         return true;
+    }
+
+    @Override
+    public void onAuthorizeStarted(FormDataCollector collector) {
+
     }
 
     @Override

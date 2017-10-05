@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="partner_script_id">56b424e5aa9612216a72e8c7</string>  <!--QA & PROD!-->
+    <!--<string name="partner_script_id">554959c49eb9ab1507e3d3b2</string>  &lt;!&ndash;ASSISTED PSYCHOMETRICS DURANT&ndash;&gt;-->
+    <string name="partner_script_id">57f5da40a747d1910b6a3aeb</string>  <!--ASSISTED PSYCHOMETRICS QA-->
+    <!--<string name="partner_script_id">56b424e5aa9612216a72e8c7</string>  &lt;!&ndash;QA & PROD!&ndash;&gt;-->
     <!--<string name="partner_script_id">562e1689aa9612778a2b8d2c</string>-->
     <string name="api_secret">se7q075RagJBn9y5aPHGJ0mTVQpJkpfK1G85jumokHrvMJxV/necLaI+zmQ08E4vhzR9WyV7HgyYjuxEbEAktA==</string>
     <string name="google_client_id">25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com</string>

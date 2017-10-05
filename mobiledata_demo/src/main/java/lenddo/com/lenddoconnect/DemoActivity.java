@@ -127,7 +127,7 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public static class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         int mNumOfTabs;
 

@@ -12,13 +12,13 @@ import android.widget.Toast;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.Log;
+import com.lenddo.mobile.core.models.Theme;
 
 import verifime.lenddo.com.verifimelib.Identification;
 import verifime.lenddo.com.verifimelib.VerifiMeManager;
 import verifime.lenddo.com.verifimelib.kyc.callbacks.VerifiMeCallback;
 import verifime.lenddo.com.verifimelib.listeners.OnDocumentUploadCompleteListener;
 import verifime.lenddo.com.verifimelib.models.DocumentConfig;
-import verifime.lenddo.com.verifimelib.models.Theme;
 import verifime.lenddo.com.verifimelib.sdk.models.FormData;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnDocumentUploadCompleteListener {
@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             firstNameEdt.setText("Juan");
             lastNameEdt.setText("Dela Cruz");
             emailEdt.setText("juandelacruz@email.com");
-            birthdayEdt.setText("22-03-1981");
+            birthdayEdt.setText("22/03/1981");
             employerEdt.setText("Lenddo Pte Ltd");
 
             return true;
@@ -114,7 +114,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     .addProfilePhoto("Profile Photo")
                     .addPhotoDocument(Identification.DRIVERS_LICENSE, "Driver's License")
                     .addSignature("Signature")
-                    .addPhotoDocument(Identification.PASSPORT, "Passport");
+                    .addPhotoDocument(Identification.PASSPORT, "Passport")
+                    .setButtonText("NEXT");
 
             //Add a summary page
             documentConfig.addSummaryPage("Sample Corp.");

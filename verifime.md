@@ -125,7 +125,8 @@ private DocumentConfig configureVerifiMe() {
         .addProfilePhoto("Selfie") // This will capture a selfie image using the front camera
         .addPhotoDocument(Identification.DRIVERS_LICENSE, "Driver's License") // Capture an identification card
         .addPhotoDocument(Identification.PASSPORT, "Passport") // Capture a paper document
-        .addSignature("Signature"); // Capture a signature
+        .addSignature("Signature") // Capture a signature
+        .setButtonText("NEXT");  // Set the caption for the button below the page
 
     // Add a Document Summary Page
     documentConfig.addSummaryPage("Sample Corp."); // Add a summary page with the given title

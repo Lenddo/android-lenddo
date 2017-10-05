@@ -35,15 +35,12 @@
         <Button
             android:enabled="false"
             android:id="@+id/button_done"
-            android:layout_marginTop="@dimen/standard_grid_size"
-            android:layout_marginBottom="@dimen/standard_grid_size"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_margin="@dimen/standard_grid_size"
             android:background="@drawable/selector_rounded_button"
             android:text="@string/done"
             android:textAllCaps="true"
             android:textColor="@drawable/textcolor_button"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_gravity="center" />
     </LinearLayout>
