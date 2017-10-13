@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <android.support.v7.widget.CardView
-        android:layout_centerInParent="true"
         android:id="@+id/document_card"
-        app:contentPadding="@dimen/standard_grid_size"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/standard_grid_size">
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/standard_grid_size"
+        app:contentPadding="@dimen/standard_grid_size">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <ImageView
-                android:layout_weight="1"
                 android:id="@+id/document_image"
-                android:scaleType="fitCenter"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter" />
+
             <TextView
-                android:layout_marginTop="@dimen/standard_grid_size"
                 android:id="@+id/document_label"
-                android:layout_weight="0"
-                android:textStyle="bold"
-                android:text="Voter's ID"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:maxLines="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_grid_size"
+                android:layout_weight="0"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Voter's ID"
+                android:textStyle="bold" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

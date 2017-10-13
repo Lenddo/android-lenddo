@@ -56,5 +56,6 @@
         <item>https://qa-authorize.partner-service.link</item>
         <item>https://authorize-api.partner-service.link</item>
     </string-array>
+    <string name="work_email">Work Email Address*</string>
 
 </resources>

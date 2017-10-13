@@ -16,7 +16,7 @@ Table of Contents
 The Lenddo SDK (lenddosdk module) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
 
 ## Pre-requisites
-Make sure you have the latest version of Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions](https://developer.android.com/studio/index.html).
+Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) Currently the supported IDE is up to version 2.3.3. The SDK is not compatible with the Beta release of Android Studio. Also, use API 25 Build tools. API 26 build tools are not yet compatible as of this moment.
 
 Before incorporating the Data SDK into your app, you should be provided with the following information:
 
@@ -79,12 +79,12 @@ To see how to use the demo applications, click this link.
 
 ## Lenddo Data Collection
 
-For mobile data collection guide, click this link.
+For mobile data collection guide, click this [link](wiki/datasdk.md).
 
 ## Lenddo Onboarding
 
-For Lenddo Onboarding guide, click this link.
+For Lenddo Onboarding guide, click this [link](wiki/onboardingsdk.md).
 
 ## Document capture using Verifi Me
 
-To use Verifi.Me library to capture documents, click this [link](verifime.md).
+To use Verifi.Me library to capture documents, click this [link](wiki/verifime.md).

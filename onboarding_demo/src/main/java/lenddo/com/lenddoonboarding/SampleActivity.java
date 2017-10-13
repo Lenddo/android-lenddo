@@ -45,6 +45,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
     private EditText lastName;
     private EditText firstName;
     private EditText email;
+    private EditText work_email;
     private TextView dateOfBirth;
     private EditText loanAmount;
     private Spinner gender;
@@ -98,6 +99,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         motherMiddleName = (EditText) findViewById(R.id.editTextMotherMiddleName);
 
         email = (EditText) findViewById(R.id.editTextEmail);
+        work_email = (EditText) findViewById(R.id.editTextWorkEmail);
         dateOfBirth = (TextView) findViewById(R.id.editTextDateOfBirth);
         dobButton = (Button) findViewById(R.id.dobButton);
 
@@ -253,6 +255,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         formData.setHomePhone(homePhone.getText().toString());
         formData.setFirstName(firstName.getText().toString());
         formData.setEmail(email.getText().toString());
+        formData.setWorkEmail(work_email.getText().toString());
         formData.setEmployerName(nameOfEmployer.getText().toString());
         formData.setMobilePhone(mobilePhone.getText().toString());
         formData.setDateOfBirth(dateOfBirth.getText().toString());

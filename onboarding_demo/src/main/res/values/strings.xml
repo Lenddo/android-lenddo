@@ -9,6 +9,7 @@
     <string name="first_name">First Name*</string>
     <string name="date_of_birth">Date of Birth*</string>
     <string name="email">Email Address*</string>
+    <string name="work_email">Work Email Address*</string>
     <string name="title_activity_loan_application">LoanApplicationActivity</string>
     <string name="api_region">API Region</string>
     <string name="loan_amount">Loan Amount</string>
