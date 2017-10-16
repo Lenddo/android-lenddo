@@ -12,13 +12,13 @@ import android.widget.Toast;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.Log;
+import com.lenddo.mobile.core.models.Theme;
 
 import verifime.lenddo.com.verifimelib.Identification;
 import verifime.lenddo.com.verifimelib.VerifiMeManager;
 import verifime.lenddo.com.verifimelib.kyc.callbacks.VerifiMeCallback;
 import verifime.lenddo.com.verifimelib.listeners.OnDocumentUploadCompleteListener;
 import verifime.lenddo.com.verifimelib.models.DocumentConfig;
-import verifime.lenddo.com.verifimelib.models.Theme;
 import verifime.lenddo.com.verifimelib.sdk.models.FormData;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnDocumentUploadCompleteListener {
@@ -70,13 +70,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            int timestamp = (int) System.currentTimeMillis()/1000;
+            long timestamp = System.currentTimeMillis()/1000;
             String appID = "DEMO_" + timestamp;
             applicationIdEdt.setText(appID);
             firstNameEdt.setText("Juan");
             lastNameEdt.setText("Dela Cruz");
             emailEdt.setText("juandelacruz@email.com");
-            birthdayEdt.setText("22-03-1981");
+            birthdayEdt.setText("22/03/1981");
             employerEdt.setText("Lenddo Pte Ltd");
 
             return true;
@@ -107,14 +107,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             DocumentConfig documentConfig = new DocumentConfig();
 
             //Add the IDs that are to be captured
-            documentConfig.addDocumentUploadPage()
+            documentConfig.addDocumentUploadPage("required_ids")
                     .setHeaderText("Required IDs")
                     .setMinimumIDs(2)
                     .setMaximumIDs(3)
+                    .setSubtitle("Add your document", R.color.green)
                     .addProfilePhoto("Profile Photo")
                     .addPhotoDocument(Identification.DRIVERS_LICENSE, "Driver's License")
                     .addSignature("Signature")
-                    .addPhotoDocument(Identification.PASSPORT, "Passport");
+                    .addPhotoDocument(Identification.PASSPORT, "Passport")
+                    .setButtonText("NEXT");
 
             //Add a summary page
             documentConfig.addSummaryPage("Sample Corp.");
@@ -133,9 +135,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 //            verifiMeManager.clearDocuments(this);
 
             //Start the process
-            verifiMeManager.setTheme(new Theme(R.color.OTO_green_primarydark, R.color.OTO_green_primary, R.color.OTO_green_accent,
-                    R.color.gmail_red, R.color.white));
-            verifiMeManager.showDocumentUploader(this, applicationId, documentConfig, this);
+//            verifiMeManager.setTheme(new Theme(R.color.OTO_green_primarydark, R.color.OTO_green_primary, R.color.OTO_green_accent,
+//                    R.color.gmail_red, R.color.white));
+            verifiMeManager.showDocumentUploader(this, applicationId, configureVerifiMe(), this);
         }
     }
 
@@ -163,6 +165,72 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onError(int statusCode, String rawResponse) {
         Log.e(HomeActivity.class.getSimpleName(), "onError() code:"+statusCode+" response:"+rawResponse);
+    }
+
+    private DocumentConfig configureVerifiMe() {
+        // Setup a Document Config Object
+        DocumentConfig documentConfig = new DocumentConfig();
+
+        //Add the Proof of ID
+        documentConfig.addDocumentUploadPage("proof_of_id")
+                .setHeaderText("Proof of ID") // Set's the upload page title
+                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setSubtitle("Choose one")
+                .addPhotoDocument("passport", "Passport")
+                .addPhotoDocument("drivers_license", "Driver\'s License")
+                .addPhotoDocument("prc_id", "PRC ID")
+                .addPhotoDocument("postal_id", "Postal ID")
+                .addPhotoDocument("voter_id", "Voter ID")
+                .addPhotoDocument("gsis_ecard", "GSIS ECard")
+                .addPhotoDocument("sss_umid", "SSS/UMID")
+                .addPhotoDocument("senior_citizen_card", "Senior Citizen Card")
+                .addPhotoDocument("government_office_id", "Government Office ID")
+                .addPhotoDocument("company_id", "Company ID")
+                .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
+
+        //Add the Proof of Income
+        documentConfig.addDocumentUploadPage("proof_of_income")
+                .setHeaderText("Proof of Income") // Set's the upload page title
+                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setSubtitle("Choose one")
+                .addPhotoDocument("payslip", "Payslip")
+                .addPhotoDocument("payslip1", "Payslip1 (Bi-Monthly)")
+                .addPhotoDocument("payslip2", "Payslip2 (Bi-Monthly)")
+                .addPhotoDocument("income_tax_return", "Income Tax Return")
+                .addPhotoDocument("coe_with_income_declaration", "COE with Income Declaration")
+                .addPhotoDocument("audited_financial_statement", "Audited Financial Statement")
+                .addPhotoDocument("branch_referral_form", "Branch Referral Form for Depositor")
+                .addPhotoDocument("sec_certificate", "SEC Certificate")
+                .addPhotoDocument("business_registration_certificate", "Business Rgistration Certificate")
+                .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
+
+        //Add the Additional Requirements
+        documentConfig.addDocumentUploadPage("additional_requirements")
+                .setHeaderText("Additional Requirements") // Set's the upload page title
+                .setMinimumIDs(2) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumIDs(2) // Set the maximum required documents in order to proceed (optional)
+                .addProfilePhoto("Selfie") // This will capture a selfie image using the front camera
+                .addSignature("Signature") // Capture a signature
+                .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
+
+        //Add the Proof of Address
+        documentConfig.addDocumentUploadPage("proof_of_address")
+                .setHeaderText("Proof of Address") // Set's the upload page title
+                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setSubtitle("Choose one")
+                .addPhotoDocument("cable_bill", "Cable Bill")
+                .addPhotoDocument("electricity_bill", "Electricity Bill")
+                .addPhotoDocument("telephone_bill", "Telephone Bill")
+                .addPhotoDocument("water_bill", "Water Bill")
+                .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
+
+        // Add a Document Summary Page
+        documentConfig.addSummaryPage("Review and Upload"); // Add a summary page with the given title
+
+        return documentConfig;
     }
 
 }

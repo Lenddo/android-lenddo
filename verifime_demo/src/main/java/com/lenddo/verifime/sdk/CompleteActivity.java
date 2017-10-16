@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.lenddo.mobile.core.LenddoCoreInfo;
+import com.lenddo.mobile.core.LenddoCoreUtils;
+
 import verifime.lenddo.com.verifimelib.VerifiMeManager;
 import verifime.lenddo.com.verifimelib.sdk.utils.Utils;
 
@@ -25,7 +28,7 @@ public class CompleteActivity extends AppCompatActivity {
         toolbar.setTitle("Document Upload");
         toolbar.setTitleTextColor(ContextCompat.getColor(this, verifime.lenddo.com.verifimelib.R.color.white));
         toolbar.setBackgroundColor(ContextCompat.getColor(this,
-                VerifiMeManager.getInstance().getTheme().getColorPrimary()));
+                LenddoCoreInfo.getTheme().getColorPrimary()));
 
         Intent intent = getIntent();
         String applicationId = intent.getStringExtra("application_id");
@@ -33,8 +36,8 @@ public class CompleteActivity extends AppCompatActivity {
         successMessage.setText("Success! Application ID is " + applicationId);
 
         Button btn_success_continue = (Button) findViewById(R.id.btn_success_continue);
-        btn_success_continue.setBackground(Utils.makeButtonSelector(getApplicationContext(),
-                VerifiMeManager.getInstance().getTheme()));
+        btn_success_continue.setBackground(LenddoCoreUtils.makeButtonSelector(getApplicationContext(),
+                LenddoCoreInfo.getTheme()));
         btn_success_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

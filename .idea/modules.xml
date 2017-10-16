@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android-lenddo.iml" filepath="$PROJECT_DIR$/android-lenddo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lenddosdk/lenddosdk.iml" filepath="$PROJECT_DIR$/lenddosdk/lenddosdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobiledata_demo/mobiledata_demo.iml" filepath="$PROJECT_DIR$/mobiledata_demo/mobiledata_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onboarding_demo/onboarding_demo.iml" filepath="$PROJECT_DIR$/onboarding_demo/onboarding_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/verifime_demo/verifime_demo.iml" filepath="$PROJECT_DIR$/verifime_demo/verifime_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/verifimelib/verifimelib.iml" filepath="$PROJECT_DIR$/verifimelib/verifimelib.iml" />
+    </modules>
+  </component>
+</project>

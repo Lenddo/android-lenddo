@@ -143,6 +143,20 @@
                     android:inputType="textEmailAddress" />
             </LinearLayout>
 
+            <LinearLayout style="@style/fieldContainer">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:text="@string/work_email"/>
+
+                <EditText
+                    android:id="@+id/editTextWorkEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
             <LinearLayout style="@style/fieldContainer"
                 >
                 <TextView style="@style/formLabel"

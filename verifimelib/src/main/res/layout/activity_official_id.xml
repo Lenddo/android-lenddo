@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     tools:context="verifime.lenddo.com.verifimelib.kyc.activities.DocumentUploaderActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,17 +16,30 @@
         android:paddingTop="?attr/actionBarSize"
         android:orientation="vertical"
         android:paddingBottom="10dp"
+        android:clipToPadding="false"
         tools:context="kyc.verifyme.core.com.app.OfficialIDActivity">
+
+        <TextView
+            android:id="@+id/tv_subtitle_officialid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:text="Add your document"
+            android:visibility="gone"/>
 
         <ScrollView
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
             <LinearLayout
-                android:paddingTop="20dp"
-                android:clipToPadding="true"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
+                android:paddingTop="4dp"
+                android:clipToPadding="false"
                 android:orientation="vertical"
                 android:id="@+id/id_types_container"
                 android:layout_width="match_parent"
@@ -35,16 +49,16 @@
         <Button
             android:enabled="false"
             android:id="@+id/button_done"
-            android:layout_marginTop="@dimen/standard_grid_size"
-            android:layout_marginBottom="@dimen/standard_grid_size"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/selector_rounded_button"
             android:text="@string/done"
             android:textAllCaps="true"
             android:textColor="@drawable/textcolor_button"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="42dp"
             android:layout_gravity="center" />
     </LinearLayout>
 

@@ -31,7 +31,6 @@ public class FacebookSignInHelper implements SignInHelper {
     private NetworkProfileSigninBody profileSigninBody = new NetworkProfileSigninBody();
     private WebAuthorizeFragment mFragment;
     private CallbackManager callbackManager;
-    private String originalFBAppId;
 
     public FacebookSignInHelper() {}
 
@@ -46,7 +45,6 @@ public class FacebookSignInHelper implements SignInHelper {
 
     // Do Native Login
     public void signIn(WebAuthorizeFragment fragment, int RC_SIGN_IN, String clientId, ArrayList<String> scopes) {
-        originalFBAppId = FacebookSdk.getApplicationId();
 
         mFragment = fragment;
         callbackManager = CallbackManager.Factory.create();
@@ -57,7 +55,7 @@ public class FacebookSignInHelper implements SignInHelper {
                 profileSigninBody.oauth_version = "2.0";
                 profileSigninBody.refresh_token = "refresh_token";
                 profileSigninBody.access_token = loginResult.getAccessToken().getToken();
-                profileSigninBody.client_id = loginResult.getAccessToken().getApplicationId();
+                profileSigninBody.client_id = FacebookSdk.getApplicationId();
                 profileSigninBody.id_token = loginResult.getAccessToken().getUserId();
 
                 onboardFacebookSignin(mFragment.getActivity().getApplicationContext(),
@@ -81,21 +79,18 @@ public class FacebookSignInHelper implements SignInHelper {
                                 mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
                             }
                         });
-                FacebookSdk.setApplicationId(originalFBAppId);
             }
 
             @Override
             public void onCancel() {
                 Log.e(TAG, "FB Login Cancel!");
                 mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/cancel");
-                FacebookSdk.setApplicationId(originalFBAppId);
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.e(TAG, "FB Login Error! :"+error.toString());
                 mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
-                FacebookSdk.setApplicationId(originalFBAppId);
             }
         });
 
