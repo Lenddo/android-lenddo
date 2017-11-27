@@ -9,7 +9,7 @@ Table of Contents
   * [Installing the Lenddo SDK](#installing-the-lenddo-sdk)
   * [Running the Demo Applications](#running-the-demo-applications)
   * [Lenddo Data Collection](#lenddo-data-collection)
-  * [Lenddo Onboarding](#lenddo-onboarding)
+  * [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
   * [Document capture using Verifi.Me](#document-capture-using-verifi_me)
 
 ## Introduction
@@ -81,7 +81,7 @@ To see how to use the demo applications, click this link.
 
 For mobile data collection guide, click this [link](wiki/datasdk.md).
 
-## Lenddo Onboarding
+## Connecting Social Networks to Lenddo
 
 For Lenddo Onboarding guide, click this [link](wiki/onboardingsdk.md).
 
