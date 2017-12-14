@@ -8,6 +8,7 @@
     <color name="required_ids_button_grey">#D8D8D8</color>
     <color name="button_disable">#E7E7E7</color>
 
+    <color name="overlay_dark">#59000000</color>
 
     <color name="banko_plain_background">#fafafa</color>
     <color name="banko_header_text_color">#ffffff</color>

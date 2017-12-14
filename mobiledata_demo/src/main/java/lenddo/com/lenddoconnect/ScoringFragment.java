@@ -165,16 +165,19 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
                         ((App) getActivity().getApplication()).setupDataSDK(PS_ID,SECRET,generateClientOptions());
                         AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
+                        btn_start.setEnabled(false);
                     } else {
                         enableWidgets(true);
                         edt_applicationId.requestFocus();
                         edt_applicationId.setError("This field is mandatory!");
+                        btn_start.setEnabled(true);
                     }
                 } else if (btn_start.getText().toString().equalsIgnoreCase("STOP&CLEAR DATA SDK")) {
                     Log.i("DataSDK Demo", "STOP button pressed. Clearing data.");
                     AndroidData.clear(getContext());
                     updateDisplay(getContext());
                     btn_start.setText("START DATA SDK");
+                    btn_start.setEnabled(true);
                 }
                 break;
             default:
@@ -280,6 +283,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+ AndroidDataUtils.getServiceToken(getContext())));
                         tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+ LenddoCoreUtils.getInstallationId(getContext())));
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Success</b>"));
+                        btn_start.setEnabled(true);
                     }
                 });
             }
@@ -294,6 +298,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                             tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(getContext())));
                             tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(getContext())));
                             tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Error:</b>"+errorMessage));
+                            btn_start.setEnabled(true);
                         }
                     });
                 }
@@ -309,6 +314,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                             tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(getContext())));
                             tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(getContext())));
                             tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Failed</b>"));
+                            btn_start.setEnabled(true);
 
                         }
                     });

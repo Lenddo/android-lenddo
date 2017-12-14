@@ -18,9 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lenddo.mobile.core.models.GovernmentId;
+import com.lenddo.mobile.core.models.VerificationData;
 import com.lenddo.mobile.onboardingsdk.client.LenddoConstants;
 import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
-import com.lenddo.mobile.onboardingsdk.models.Address;
 import com.lenddo.mobile.onboardingsdk.models.AuthorizationStatus;
 import com.lenddo.mobile.onboardingsdk.models.AutoCompleteQuery;
 import com.lenddo.mobile.onboardingsdk.models.FormDataCollector;
@@ -178,7 +178,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         });
 
         helper = new UIHelper(this, this);
-        helper.setAssistedPsychometrics(true);
+        helper.setAssistedPsychometrics(false);
         helper.addGoogleSignIn(new GoogleSignInHelper());
         helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
@@ -233,20 +233,12 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         //auto-collect (optional)
         formData.collect(SampleActivity.this, R.id.formContainer);
 
-        //If facebook is available
-
-        //AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        //formData.setFacebookToken(accessToken.getToken().toString(), accessToken.getExpires().getTime());
-
-        Address primaryAddress = new Address();
-
-        primaryAddress.setHouseNumber(houseNumber.getText().toString());
-        primaryAddress.setStreet(street.getText().toString());
-        primaryAddress.setBarangay(barangay.getText().toString());
-        primaryAddress.setProvince(province.getText().toString());
-        primaryAddress.setCity(city.getText().toString());
-        primaryAddress.setPostalCode(postalCode.getText().toString());
-        primaryAddress.setCountryCode("PH");
+        VerificationData.Address primaryAddress = new VerificationData.Address();
+        primaryAddress.line_1 = houseNumber.getText().toString() + " " + street.getText().toString();
+        primaryAddress.line_2 = barangay.getText().toString() + " " + province.getText().toString();
+        primaryAddress.city = city.getText().toString();
+        primaryAddress.postal_code = postalCode.getText().toString();
+        primaryAddress.country_code = "PH";
 
         //place partner defined user identifier
         formData.setApplicationId(customerId.getText().toString());
@@ -261,9 +253,6 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         formData.setDateOfBirth(dateOfBirth.getText().toString());
         formData.setStartEmploymentDate(editTextEmploymentStart.getText().toString());
         formData.setEndEmploymentDate(editTextEmploymentEnd.getText().toString());
-        formData.setMotherFirstName(motherFirstName.getText().toString());
-        formData.setMotherLastName(motherLastName.getText().toString());
-        formData.setMotherMiddleName(motherMiddleName.getText().toString());
         formData.setUniversityName(university.getText().toString());
         formData.setAddress(primaryAddress);
         List<GovernmentId> governmentIds = new ArrayList<>();

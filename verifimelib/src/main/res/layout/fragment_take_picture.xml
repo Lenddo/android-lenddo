@@ -1,185 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_takephoto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/black"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
 
-    <RelativeLayout
-        android:orientation="vertical"
-        android:id="@+id/captureContainer"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
+        <RelativeLayout
+            android:id="@+id/captureContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
             <FrameLayout
-                android:id="@+id/camera_preview"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center">
 
-                <verifime.lenddo.com.verifimelib.kyc.widgets.ViewFinderView
-                    android:id='@+id/view_finder'
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="@null"
+                <FrameLayout
+                    android:id="@+id/camera_preview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                </FrameLayout>
-
-        </FrameLayout>
-
-        <RelativeLayout
-            android:id="@+id/cam_control_relativelayout"
-            android:layout_weight="0"
-            android:background="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <LinearLayout
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:layout_width="400dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textColor="@color/white"
-                    android:id="@+id/picture_type_text"
-                    android:textSize="18sp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:text="@string/drivers_license"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/cancel_button"
-                android:layout_marginLeft="20dp"
-                android:drawableLeft="@drawable/ic_arrow_left_white_36dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                style="@style/PhotoCaptureTextStyle" />
+                    android:gravity="center" />
+            </FrameLayout>
 
             <RelativeLayout
-                android:id='@+id/takePictureButton'
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp"
-                android:layout_width="60dp"
-                android:layout_height="60dp">
+                android:id="@+id/camera_preview_overlay_control_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/cam_control_relative_layout">
+
+                <TextView
+                    android:id="@+id/document_type_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/overlay_dark"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="@string/fit_document_inside_frame_place_on_contrasting_background"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
                 <ImageView
-                    android:background="@null"
-                    android:layout_centerInParent="true"
-                    android:id="@+id/button_capture"
-                    android:src="@drawable/ic_circle_camera_white"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp" />
+                    android:id="@+id/camera_preview_overlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.35"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/document_mask" />
+
             </RelativeLayout>
-
-            <ImageButton
-                android:id="@+id/flashlight_button"
-                android:background="@null"
-                android:scaleType="center"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="16dp"
-                android:layout_toLeftOf="@id/takePictureButton"
-                android:src="@drawable/ic_flashlight_off_white_24dp"
-                android:layout_width="54dp"
-                android:layout_height="54dp" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/previewContainer"
-        android:visibility="gone"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/progressBar"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_centerInParent="true"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/image_preview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
-
-        <RelativeLayout
-            android:layout_weight="0"
-            android:background="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="134dp">
-
-            <LinearLayout
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:layout_width="400dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textColor="@color/white"
-                    android:id="@+id/picture_type_text_preview"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/drivers_license"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
 
             <TextView
-                android:id="@+id/retake_button"
-                android:layout_marginLeft="20dp"
-                android:drawableLeft="@drawable/ic_arrow_left_white_36dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                style="@style/PhotoCaptureTextStyle" />
+                android:id="@+id/selfie_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/center_your_face_within_the_frame_and_look_directly_into_the_camera"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
             <RelativeLayout
-                android:id='@+id/useTakePictureButton'
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/ic_circle_check_white"
-                android:layout_width="60dp"
-                android:layout_height="60dp">
+                android:id="@+id/cam_control_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/overlay_dark">
+
+                <LinearLayout
+                    android:id="@+id/cam_control_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true">
+
+                    <ImageButton
+                        android:id="@+id/cancel_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_arrow_left_white_36dp" />
+
+                    <ImageButton
+                        android:id='@+id/takePictureButton'
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_circle_camera_white" />
+
+                    <ImageButton
+                        android:id="@+id/flashlight_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_flashlight_off_white_24dp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/previewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/image_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"/>
+            </FrameLayout>
+
+            <RelativeLayout
+                android:id="@+id/progressBar"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:visibility="gone">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:indeterminate="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/image_preview_control"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@android:color/transparent">
+
+                <ImageButton
+                    android:id="@+id/retake_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_toLeftOf="@+id/useTakePictureFrameLayout"
+                    android:layout_toStartOf="@+id/useTakePictureFrameLayout"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_left_white_36dp" />
+
+                <FrameLayout
+                    android:id="@+id/useTakePictureFrameLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.3"
+                        android:background="@android:color/transparent"
+                        android:clickable="false"
+                        android:src="@drawable/ic_circle_black" />
+
+                    <ImageButton
+                        android:id='@+id/useTakePictureButton'
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_circle_check_white" />
+                </FrameLayout>
 
             </RelativeLayout>
         </RelativeLayout>
-    </LinearLayout>
-
-</LinearLayout>
+    </FrameLayout>
 </android.support.design.widget.CoordinatorLayout>
