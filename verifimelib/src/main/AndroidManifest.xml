@@ -39,7 +39,7 @@
         <activity
             android:name=".kyc.activities.TakePhotoActivity"
             android:label="@string/title_activity_take_photo"
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".kyc.activities.ViewDocumentActivity"

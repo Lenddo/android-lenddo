@@ -148,41 +148,51 @@ public class GoogleSignInHelper implements SignInHelper, GoogleApiClient.Connect
             @Override
             protected String doInBackground(Void... params) {
                 String token = null;
-                try {
-                    token = GoogleAuthUtil.getToken(
-                            mFragment.getActivity().getApplicationContext(),
-                            email,
-                            "oauth2:" +mScopes);
-                } catch (IOException | GoogleAuthException e) {
-                    e.printStackTrace();
+                Context context = mFragment.getActivity().getApplicationContext();
+                if (context != null) {
+                    try {
+                        token = GoogleAuthUtil.getToken(
+                                context,
+                                email,
+                                "oauth2:" +mScopes);
+                    } catch (IOException | GoogleAuthException e) {
+                        e.printStackTrace();
+                    }
+                    return token;
+                } else {
+                    Log.e(TAG, "Encountered context == null while doInBackground()");
+                    return null;
                 }
-                return token;
             }
 
             @Override
             protected void onPostExecute(String token) {
-                googleSigninBody.access_token = token;
-                onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
-                        generateProfileClientTokenGoogleRequestBody(),
-                        AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
-                            @Override
-                            public void onComplete(String rawResponse) {
-                                Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
-                            }
+                if (token != null) {
+                    googleSigninBody.access_token = token;
+                    onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
+                            generateProfileClientTokenGoogleRequestBody(),
+                            AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
+                                @Override
+                                public void onComplete(String rawResponse) {
+                                    Log.d(TAG, "onPostExecute(): "+rawResponse);
+                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
+                                }
 
-                            @Override
-                            public void onError(int statusCode, String rawResponse) {
-                                Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
-                            }
+                                @Override
+                                public void onError(int statusCode, String rawResponse) {
+                                    Log.e(TAG, "onPostExecute() Error: "+rawResponse);
+                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                }
 
-                            @Override
-                            public void onFailure(Throwable throwable) {
-                                Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
-                            }
-                        });
+                                @Override
+                                public void onFailure(Throwable throwable) {
+                                    Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
+                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                }
+                            });
+                } else {
+                    Log.e(TAG, "Encountered context == null while onPostExecute()");
+                }
             }
         };
         task.execute();

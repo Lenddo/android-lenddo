@@ -14,7 +14,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 6
-        versionName "2.0.7"
+        versionName "2.0.8"
     }
 
     sourceSets {

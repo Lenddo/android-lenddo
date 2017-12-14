@@ -167,6 +167,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Log.e(HomeActivity.class.getSimpleName(), "onError() code:"+statusCode+" response:"+rawResponse);
     }
 
+    @Override
+    public void onFailure(Throwable throwable) {
+        Log.e(HomeActivity.class.getSimpleName(), "onFailure(): "+throwable.getMessage());
+    }
+
     private DocumentConfig configureVerifiMe() {
         // Setup a Document Config Object
         DocumentConfig documentConfig = new DocumentConfig();

@@ -326,8 +326,7 @@ public class VerificationFragment extends Fragment implements View.OnClickListen
                 } else {
                     expiration = Long.parseLong(tedt_provider_expiration.getText().toString());
                 }
-                String extradata = tedt_prov_extra_data.getText().toString();
-                extradata.trim();
+                String extradata = tedt_prov_extra_data.getText().toString().trim();
                 AndroidData.setProviderAccessToken(getContext(),
                         Utils.getProviderString(spn_providers.getSelectedItemPosition()),
                         tedt_provider_id.getText().toString(),
