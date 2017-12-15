@@ -72,6 +72,9 @@ In your applications build.gradle file, under dependencies, add the following li
 compile project(':verifimelib')
 ```
 
+## Migrating from the old SDK
+
+To see how to use the demo applications, click this [link](wiki/migration.md).
 
 ## Running the Demo Applications
 
