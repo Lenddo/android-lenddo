@@ -19,12 +19,21 @@ The new Lenddo SDK has now combined the Data collection module and Social Onboar
    ```
  
 2. Import the new Lenddo SDK as a module
-   - lenddosdk
+
+
+   ![File > New > Import Module](file_new_import-module.png)
+ 
+   Import the selected modules:
+      - lenddosdk
+
+   ![File > New > Import Module](import_from_source.png)
  
    Add the new dependency to your app's build.gradle
+ 
    ```java
    compile project(':lenddosdk')
    ```
+
 3. Fix the imports in java file
    Change from the old package names to the new package names
 
