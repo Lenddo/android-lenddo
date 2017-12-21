@@ -41,12 +41,12 @@
         <receiver
             android:name=".datasdk.receiver.WeeklyUpdateAlarmReceiver"
             android:process=":remote" />
-        <receiver android:name=".datasdk.receiver.AlarmAutoStart">
+        <receiver android:name=".datasdk.receiver.AlarmAutoStart" android:exported="false" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".datasdk.receiver.ConnectivityChanged">
+        <receiver android:name=".datasdk.receiver.ConnectivityChanged"  android:exported="false" android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
