@@ -109,13 +109,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             //Add the IDs that are to be captured
             documentConfig.addDocumentUploadPage("required_ids")
                     .setHeaderText("Required IDs")
-                    .setMinimumIDs(2)
-                    .setMaximumIDs(3)
+                    .setMinimumWeight(2)
+                    .setMaximumWeight(3)
                     .setSubtitle("Add your document", R.color.green)
-                    .addProfilePhoto("Profile Photo")
-                    .addPhotoDocument(Identification.DRIVERS_LICENSE, "Driver's License")
-                    .addSignature("Signature")
-                    .addPhotoDocument(Identification.PASSPORT, "Passport")
+                    .addProfilePhoto("Profile Photo", 1)
+                    .addPhotoDocument(Identification.DRIVERS_LICENSE, "Driver's License", 1)
+                    .addSignature("Signature", 1)
+                    .addPhotoDocument(Identification.PASSPORT, "Passport", 1)
                     .setButtonText("NEXT");
 
             //Add a summary page
@@ -179,57 +179,57 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         //Add the Proof of ID
         documentConfig.addDocumentUploadPage("proof_of_id")
                 .setHeaderText("Proof of ID") // Set's the upload page title
-                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
-                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setMinimumWeight(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumWeight(1) // Set the maximum required documents in order to proceed (optional)
                 .setSubtitle("Choose one")
-                .addPhotoDocument("passport", "Passport")
-                .addPhotoDocument("drivers_license", "Driver\'s License")
-                .addPhotoDocument("prc_id", "PRC ID")
-                .addPhotoDocument("postal_id", "Postal ID")
-                .addPhotoDocument("voter_id", "Voter ID")
-                .addPhotoDocument("gsis_ecard", "GSIS ECard")
-                .addPhotoDocument("sss_umid", "SSS/UMID")
-                .addPhotoDocument("senior_citizen_card", "Senior Citizen Card")
-                .addPhotoDocument("government_office_id", "Government Office ID")
-                .addPhotoDocument("company_id", "Company ID")
+                .addPhotoDocument("passport", "Passport", 1)
+                .addPhotoDocument("drivers_license", "Driver\'s License", 1)
+                .addPhotoDocument("prc_id", "PRC ID", 1)
+                .addPhotoDocument("postal_id", "Postal ID", 1)
+                .addPhotoDocument("voter_id", "Voter ID", 1)
+                .addPhotoDocument("gsis_ecard", "GSIS ECard", 1)
+                .addPhotoDocument("sss_umid", "SSS/UMID", 1)
+                .addPhotoDocument("senior_citizen_card", "Senior Citizen Card", 1)
+                .addPhotoDocument("government_office_id", "Government Office ID", 1)
+                .addPhotoDocument("company_id", "Company ID", 1)
                 .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
 
         //Add the Proof of Income
         documentConfig.addDocumentUploadPage("proof_of_income")
                 .setHeaderText("Proof of Income") // Set's the upload page title
-                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
-                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setMinimumWeight(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumWeight(1) // Set the maximum required documents in order to proceed (optional)
                 .setSubtitle("Choose one")
-                .addPhotoDocument("payslip", "Payslip")
-                .addPhotoDocument("payslip1", "Payslip1 (Bi-Monthly)")
-                .addPhotoDocument("payslip2", "Payslip2 (Bi-Monthly)")
-                .addPhotoDocument("income_tax_return", "Income Tax Return")
-                .addPhotoDocument("coe_with_income_declaration", "COE with Income Declaration")
-                .addPhotoDocument("audited_financial_statement", "Audited Financial Statement")
-                .addPhotoDocument("branch_referral_form", "Branch Referral Form for Depositor")
-                .addPhotoDocument("sec_certificate", "SEC Certificate")
-                .addPhotoDocument("business_registration_certificate", "Business Rgistration Certificate")
+                .addPhotoDocument("payslip", "Payslip", 1)
+                .addPhotoDocument("payslip1", "Payslip1 (Bi-Monthly)", 0.5d)
+                .addPhotoDocument("payslip2", "Payslip2 (Bi-Monthly)", 0.5d)
+                .addPhotoDocument("income_tax_return", "Income Tax Return", 1)
+                .addPhotoDocument("coe_with_income_declaration", "COE with Income Declaration", 1)
+                .addPhotoDocument("audited_financial_statement", "Audited Financial Statement", 1)
+                .addPhotoDocument("branch_referral_form", "Branch Referral Form for Depositor", 1)
+                .addPhotoDocument("sec_certificate", "SEC Certificate", 1)
+                .addPhotoDocument("business_registration_certificate", "Business Rgistration Certificate", 1)
                 .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
 
         //Add the Additional Requirements
         documentConfig.addDocumentUploadPage("additional_requirements")
                 .setHeaderText("Additional Requirements") // Set's the upload page title
-                .setMinimumIDs(2) // Set the minimum required documents in order to proceed (optional)
-                .setMaximumIDs(2) // Set the maximum required documents in order to proceed (optional)
-                .addProfilePhoto("Selfie") // This will capture a selfie image using the front camera
-                .addSignature("Signature") // Capture a signature
+                .setMinimumWeight(2) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumWeight(2) // Set the maximum required documents in order to proceed (optional)
+                .addProfilePhoto("Selfie", 1) // This will capture a selfie image using the front camera
+                .addSignature("Signature", 1) // Capture a signature
                 .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
 
         //Add the Proof of Address
         documentConfig.addDocumentUploadPage("proof_of_address")
                 .setHeaderText("Proof of Address") // Set's the upload page title
-                .setMinimumIDs(1) // Set the minimum required documents in order to proceed (optional)
-                .setMaximumIDs(1) // Set the maximum required documents in order to proceed (optional)
+                .setMinimumWeight(1) // Set the minimum required documents in order to proceed (optional)
+                .setMaximumWeight(1) // Set the maximum required documents in order to proceed (optional)
                 .setSubtitle("Choose one")
-                .addPhotoDocument("cable_bill", "Cable Bill")
-                .addPhotoDocument("electricity_bill", "Electricity Bill")
-                .addPhotoDocument("telephone_bill", "Telephone Bill")
-                .addPhotoDocument("water_bill", "Water Bill")
+                .addPhotoDocument("cable_bill", "Cable Bill", 1)
+                .addPhotoDocument("electricity_bill", "Electricity Bill", 1)
+                .addPhotoDocument("telephone_bill", "Telephone Bill", 1)
+                .addPhotoDocument("water_bill", "Water Bill", 1)
                 .setButtonText(getString(R.string.continue_allcaps));  // Set the caption for the button below the page
 
         // Add a Document Summary Page

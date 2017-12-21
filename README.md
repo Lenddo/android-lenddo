@@ -7,6 +7,7 @@ Table of Contents
   * [Introduction](#introduction)
   * [Pre-requisites](#pre-requisites)
   * [Installing the Lenddo SDK](#installing-the-lenddo-sdk)
+  * [Migrating from the old SDK](#migrating-from-the-old-sdk)
   * [Running the Demo Applications](#running-the-demo-applications)
   * [Lenddo Data Collection](#lenddo-data-collection)
   * [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
@@ -72,6 +73,9 @@ In your applications build.gradle file, under dependencies, add the following li
 compile project(':verifimelib')
 ```
 
+## Migrating from the old SDK
+
+To see how to use the demo applications, click this [link](wiki/migration.md).
 
 ## Running the Demo Applications
 
