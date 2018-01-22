@@ -132,7 +132,7 @@ dependencies {
 > dependencies {
 >    compile fileTree(dir: 'libs', include: ['*.jar'])
 >    compile project(':LenddoSDK')
->    compile 'com.google.android.gms:play-services-auth:9.8.0'
+>    compile 'com.google.android.gms:play-services-auth:11.0.4'
 > }
 >
 > apply plugin: 'com.google.gms.google-services'
