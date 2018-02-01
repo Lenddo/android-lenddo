@@ -30,6 +30,18 @@ Lenddo Data Collection
 
 The Lenddo SDK (lenddosdk) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK collects information in the background and can be activated as soon as the user has downloaded the app, given permissions are granted to the app.
 
+## Pre-requisites
+Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) The SDK is not compatible with the Beta release of Android Studio.
+
+Before incorporating the Lenddo SDK into your app, you should be provided with the following information:
+
+ * Partner Script ID
+ * Lenddo Score Service API Secret
+
+Please ask for the information above from your Lenddo representative. If you have a dashboard account, these values can also be found there.
+
+There may be also other partner specific values that you are required to set.
+
 ## Data Collection Mechanism and Required Permissions
 
 The LenddoDataSDK captures the following data stored on the phone consistent with the permissions defined (see section on adding permissions):

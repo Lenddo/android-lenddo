@@ -17,12 +17,12 @@ Table of Contents
 The Lenddo SDK (lenddosdk module) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
 
 ## Pre-requisites
-Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) Currently the supported IDE is up to version 2.3.3. The SDK is not compatible with the Beta release of Android Studio. Also, use API 25 Build tools. API 26 build tools are not yet compatible as of this moment.
+Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) The SDK is not compatible with the Beta release of Android Studio. Also, use API 25 Build tools.
 
 Before incorporating the Data SDK into your app, you should be provided with the following information:
 
  * Partner Script ID
- * Lenddo Score Service API Secret
+ * Lenddo Score Service API Secret (optional)
 
 Please ask for the information above from your Lenddo representative. If you have a dashboard account, these values can also be found there.
 
