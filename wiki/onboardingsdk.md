@@ -151,7 +151,7 @@ dependencies {
 Android Studio should tell you to resync, the SDK classes should now be available after that.
 
 ### 3. Native Google Email Sign In Helper Class
-_For applications that have an Email Onboarding process_, a native Google Email signin helper class is provided. Simply create a new package in your application: **com.lenddo.nativeonboarding** and copy the signin helper class. [GoogleSignInHelper](/simple_loan/src/main/java/com/lenddo/nativeonboarding/GoogleSignInHelper.java)
+_For applications that have an Email Onboarding process_, a native Google Email signin helper class is provided. Simply create a new package in your application: **com.lenddo.nativeonboarding** and copy the signin helper class. [GoogleSignInHelper](https://github.com/Lenddo/android-lenddo/blob/master/onboarding_demo/src/main/java/com/lenddo/nativeonboarding/GoogleSignInHelper.java	)
 
 ### 4. Permissions
 In addition to the required permissions defined from within the SDK, _which are automatically incorporated into your app_, you must ensure the following permissions are also required:

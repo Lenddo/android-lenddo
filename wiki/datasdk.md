@@ -7,19 +7,18 @@ Lenddo Data Collection
 2.  [Prerequisites](#user-content-prerequisites)
 3.  [Data Collection Mechanism and Required Permissions](#user-content-data-collection-mechanism-and-required-permissions)
 4.  [Data SDK Package](#user-content-data-sdk-package)
-5.  [Running the sample app](#user-content-running-the-sample-app)
-6.  [Installation Instructions](#user-content-installation-instructions)
+5.  [Installation Instructions](#user-content-installation-instructions)
     1.  [Initialize Data Collection](#user-content-initialize-data-collection)
     2.  [Starting Data Collection](#user-content-starting-data-collection)
     3.  [Passing the Provider Access Token](#user-content-passing-the-provider-access-token)
     4.  [Passing the Application ID](#user-content-passing-the-application-id)
     5.  [Sending Application Data](#user-content-sending-application-data)
-7.  [Using Form Filling Analytics](#user-content-using-form-filling-analytics)
+6.  [Using Form Filling Analytics](#user-content-using-form-filling-analytics)
     1.  [Using the TimedWidget Views](#user-content-using-the-timedwidget-views)
     2.  [Collecting Form Analytics from your TimedWidget](#user-content-collecting-form-analytics-from-your-timedwidget) 
     3.  [Submitting the Data Collected](#user-content-submitting-the-data-collected)
     4.  [Clearing the Data Collected](#user-content-clearing-the-data-collected)
-8.  [Configuring the Data SDK](#user-content-configuring-the-data-sdk)
+7.  [Configuring the Data SDK](#user-content-configuring-the-data-sdk)
     1.  [Using WIFI internet connectivity instead of data plan ](#user-content-using-wifi-internet-connectivity-instead-of-data-plan)
     2.  [Set Accent color for Material Theme dialog](#user-content-set-accent-color-for-material-theme-dialog) 
     3.  [Registering a Data Sending Completion Callback](#user-content-registering-a-data-sending-completion-callback)
@@ -30,7 +29,7 @@ Lenddo Data Collection
 
 The Lenddo SDK (lenddosdk) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK collects information in the background and can be activated as soon as the user has downloaded the app, given permissions are granted to the app.
 
-## Pre-requisites
+## Prerequisites
 Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) The SDK is not compatible with the Beta release of Android Studio.
 
 Before incorporating the Lenddo SDK into your app, you should be provided with the following information:
