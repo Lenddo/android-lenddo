@@ -45,6 +45,13 @@ There may be also other partner specific values that you are required to set.
  Import the modules to use:
 ![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/import_selected_modules.png)
 
+
+In your applications build.gradle file, under dependencies, add the following line
+
+```gradle
+compile project(':lenddosdk')
+```
+
 3. Sync Gradle
 
 #### Adding the Lenddo Credentials
@@ -67,7 +74,7 @@ In your strings.xml put your partner script id and api secret resource string.
 
 #### Adding verifimelib Dependency
 
-In your applications build.gradle file, under dependencies, add the following line
+If you are going to use the Document Verification module (Verifi.Me), in your applications build.gradle file, under dependencies, add the following line
 
 ```gradle
 compile project(':verifimelib')
