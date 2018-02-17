@@ -1,9 +1,5 @@
 # Created by https://www.gitignore.io/api/gradle,android,intellij,androidstudio
 
-### Android ###
-# Built application files
-*.ap_
-
 # Files for the ART/Dalvik VM
 *.dex
 
