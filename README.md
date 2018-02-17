@@ -86,7 +86,7 @@ To see how to use the demo applications, click this [link](wiki/migration.md).
 
 ## Running the Demo Applications
 
-To see how to use the demo applications, click this link.
+To see how to use the demo applications, click this [link](wiki/demo.md).
 
 ## Lenddo Data Collection
 
