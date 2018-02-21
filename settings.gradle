@@ -1,1 +1,1 @@
-include ':lenddosdk', ':mobiledata_demo', ':onboarding_demo', ':verifimelib', ':verifime_demo'
+include ':lenddosdk', ':mobiledata_demo', ':onboarding_demo', ':verifimelib', ':verifime_demo', ':mobiledatacollectiondemo'

@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.Log;
-import com.lenddo.mobile.core.models.Theme;
 
 import verifime.lenddo.com.verifimelib.Identification;
 import verifime.lenddo.com.verifimelib.VerifiMeManager;

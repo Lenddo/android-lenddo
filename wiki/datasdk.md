@@ -94,23 +94,23 @@ package com.sample.app;
 
 import android.app.Application;
 
-import com.lenddo.data.AndroidData;
-import com.lenddo.data.models.ClientOptions;
+import com.lenddo.mobile.core.LenddoCoreInfo;
+import com.lenddo.mobile.datasdk.AndroidData;
+import com.lenddo.mobile.datasdk.models.ClientOptions;
 
 public class  SampleApp extends Application {
    @Override
    public void onCreate() {
        super.onCreate();
+       LenddoCoreInfo.initCoreInfo(getApplicationContext());
 
        ClientOptions clientOptions = new ClientOptions();
        clientOptions.enableLogDisplay(BuildConfig.DEBUG);
 
-       //Uncomment the next line when you want data to be uploaded only when wifi is available
-       //clientOptions.setWifiOnly(true);
+       // Uncomment the next line when you want data to be uploaded only when wifi is available
+       // clientOptions.setWifiOnly(true);
 
-       AndroidData.setup(getApplicationContext(), getString(R.string.partner_script_id),
-               getString(R.string.api_secret),
-               clientOptions);
+       AndroidData.setup(getApplicationContext(), clientOptions);
    }
 }
 ```
@@ -312,7 +312,7 @@ The Lenddo Data SDK has a configuration that can be set programmatically. By set
 ```Java
         ClientOptions clientOptions = new ClientOptions();
         clientOptions.setWifiOnly(true);
-        AndroidData.setup(getApplicationContext(), PSID, SECRET, clientOptions);
+        AndroidData.setup(getApplicationContext(), clientOptions);
 ```
 
 ### Set Accent color for Material Theme dialog  
@@ -320,7 +320,7 @@ The Lenddo Data SDK has a configuration that can be set programmatically. By set
 ```Java
         ClientOptions clientOptions = new ClientOptions();
         clientOptions.setThemeColor("#aa2255");  // PINK Accent color
-        AndroidData.setup(getApplicationContext(), PSID, SECRET, clientOptions);
+        AndroidData.setup(getApplicationContext(), clientOptions);
 ```
 
 
@@ -350,11 +350,8 @@ The Lenddo Data SDK can be configured to have a callback that will let the calli
             }
 
         });
-I
-        String PSID = "YOUR PARTNER SCRIPT ID";
-        String SECRET = "YOUR API SECRET";
 
-        AndroidData.setup(getApplicationContext(), PSID, SECRET, clientOptions);
+        AndroidData.setup(getApplicationContext(), clientOptions);
 ```
 
 If a data sending have failed, the Lenddo Data SDK will try to resend the gathered data the next time the call to *AndroidData.startAndroidData(activity, applicationId)* is encountered. Eventually, the *onDataSendingSuccess()* method will be called. 
@@ -371,5 +368,4 @@ The Lenddo Data SDK log messages are disabled by default and can be enabled manu
 ```Java
         clientOptions.enableLogDisplay(true);
 ```
-
 

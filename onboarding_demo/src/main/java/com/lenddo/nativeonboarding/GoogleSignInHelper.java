@@ -2,7 +2,6 @@ package com.lenddo.nativeonboarding;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -11,16 +10,19 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.google.android.gms.auth.GoogleAuthException;
-import com.google.android.gms.auth.GoogleAuthUtil;
-import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.ErrorDialogFragment;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.api.client.auth.oauth2.TokenResponseException;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.gson.JsonObject;
 import com.lenddo.mobile.core.http.AuthV3ApiClient;
 import com.lenddo.mobile.core.http.OnLenddoQueryCompleteListener;
@@ -28,7 +30,11 @@ import com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment;
 import com.lenddo.mobile.onboardingsdk.models.NetworkProfileSigninBody;
 import com.lenddo.mobile.onboardingsdk.utils.SignInHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -36,35 +42,26 @@ import java.util.Collections;
  * Created by Joey Mar Antonio on 3/21/17.
  */
 
-public class GoogleSignInHelper implements SignInHelper, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class GoogleSignInHelper implements SignInHelper {
 
     public static final String TAG = GoogleSignInHelper.class.getName();
     public String client_id = null;
     private NetworkProfileSigninBody googleSigninBody = new NetworkProfileSigninBody();
-    private String email;
-    private GoogleApiClient mGoogleApiClient;
-    // Request code to use when launching the resolution activity
-    private static final int REQUEST_RESOLVE_ERROR = 1001;
-    // Unique tag for the error dialog fragment
-    private static final String DIALOG_ERROR = "dialog_error";
-    // Bool to track whether the app is already resolving an error
-    private boolean mResolvingError = false;
     private WebAuthorizeFragment mFragment;
-    private String mScopes;
+    private GoogleSignInClient mGoogleSignInClient;
 
     public GoogleSignInHelper() {}
 
     public ArrayList<String> getScopes(String scopeFromWebUrl) {
-        mScopes = scopeFromWebUrl;
         ArrayList<String> scopes = new ArrayList<>();
         String[] words = scopeFromWebUrl.split("\\s+");
         Collections.addAll(scopes, words);
         return scopes;
     }
 
-    public void signIn(WebAuthorizeFragment fragment, int RC_SIGN_IN, String clientId, ArrayList<String> scopes) {
+    public void signIn(WebAuthorizeFragment fragment, final int RC_SIGN_IN, String clientId, ArrayList<String> scopes) {
         mFragment = fragment;
-        Context context = fragment.getActivity().getApplicationContext();
+        Context context = mFragment.getActivity().getApplicationContext();
         if (clientId==null || client_id==null) {
             try {
                 ApplicationInfo ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
@@ -95,15 +92,29 @@ public class GoogleSignInHelper implements SignInHelper, GoogleApiClient.Connect
         }
 
         GoogleSignInOptions gso = gsob.build();
-        // Build a GoogleApiClient with access to the Google Sign-In API and the
-        // options specified by gso.
-        mGoogleApiClient = new GoogleApiClient.Builder(fragment.getActivity())
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        fragment.startActivityForResult(signInIntent, RC_SIGN_IN);
+
+        mGoogleSignInClient = GoogleSignIn.getClient(context, gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(context);
+        if (account != null) {
+            Log.d(TAG, "account.getServerAuthCode: " + account.getServerAuthCode());
+            Log.d(TAG, "account.getIdToken: " + account.getIdToken());
+
+            // AuthCode is only used once if you try and use it again you will get an error message.
+            // So for simplicity, sign out existing signed in account
+            mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(mFragment.getActivity(), new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                                mFragment.startActivityForResult(signInIntent, RC_SIGN_IN);
+                            }
+                        });
+        }
+        else {
+            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+            mFragment.startActivityForResult(signInIntent, RC_SIGN_IN);
+        }
     }
 
     private String generateProfileClientTokenGoogleRequestBody() {
@@ -112,8 +123,9 @@ public class GoogleSignInHelper implements SignInHelper, GoogleApiClient.Connect
         object.addProperty("client_id", googleSigninBody.client_id);
         object.addProperty("access_token", googleSigninBody.access_token);
         object.addProperty("id_token", googleSigninBody.id_token);
-        object.addProperty("refresh_token", "refresh_token");
-        object.addProperty("state", "{}");
+        if (googleSigninBody.refresh_token != null && !googleSigninBody.refresh_token.isEmpty()) {
+            object.addProperty("refresh_token", googleSigninBody.refresh_token);
+        }
         return object.toString();
     }
 
@@ -139,126 +151,152 @@ public class GoogleSignInHelper implements SignInHelper, GoogleApiClient.Connect
         });
     }
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        // Reaching onConnected means we consider the user signed in.
-        Log.i(TAG, "Google Sign-in Connected.");
+    private void handleSignInAccount(@Nullable final GoogleSignInAccount account) {
+        if (account != null) {
+            googleSigninBody.id_token = account.getIdToken();
+            googleSigninBody.client_id = client_id;
 
-        AsyncTask<Void, Void, String > task = new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... params) {
-                String token = null;
-                Context context = mFragment.getActivity().getApplicationContext();
-                if (context != null) {
+            AsyncTask<Void, Void, GoogleTokenResponse > task = new AsyncTask<Void, Void, GoogleTokenResponse>() {
+                @Override
+                protected GoogleTokenResponse doInBackground(Void... params) {
+                    String authCode = account.getServerAuthCode();
+
+                    String fileName = "credentials.json";
+                    String contents = "";
                     try {
-                        token = GoogleAuthUtil.getToken(
-                                context,
-                                email,
-                                "oauth2:" +mScopes);
-                    } catch (IOException | GoogleAuthException e) {
-                        e.printStackTrace();
+                        InputStream stream = mFragment.getActivity().getAssets().open(fileName);
+
+                        int size = stream.available();
+                        byte[] buffer = new byte[size];
+                        stream.read(buffer);
+                        stream.close();
+                        contents = new String(buffer);
+                    } catch (IOException e) {
+                        Log.e(TAG, "An error occurred on reading comtents from " + fileName + "\n" + e.toString());
+                        return null;
                     }
-                    return token;
-                } else {
-                    Log.e(TAG, "Encountered context == null while doInBackground()");
-                    return null;
+
+                    JSONObject googleConfig = null;
+                    try {
+                        googleConfig = new JSONObject(contents);
+                        Log.d(TAG, "googleConfig: " + googleConfig.toString());
+                    } catch (JSONException ex) {
+                        Log.e(TAG, "An error occurred converting contents " + fileName + " to json object.\n" + ex.toString());
+                        return null;
+                    }
+
+                    String clientId = client_id;
+                    String clientSecret = "";
+                    String redirectUris = "";
+
+                    try {
+                        clientSecret = googleConfig.getJSONObject("web").getString("client_secret");
+                    } catch (Exception e) {
+                        Log.e(TAG, "Unable to parse client_secret from credentials.json.");
+                        return null;
+                    }
+
+                    try {
+                        redirectUris = googleConfig.getJSONObject("web").getJSONArray("redirect_uris").get(0).toString();
+                    } catch (JSONException e) {
+                        Log.e(TAG, "redirect_uris will be empty. ");
+                    } catch (NullPointerException e) {
+                        Log.e(TAG, "Unable to parse redirect_uris from credentials.json.");
+                        return null;
+                    }
+
+                    // Exchange auth code for access token
+                    GoogleTokenResponse tokenResponse = null;
+                    try {
+                        tokenResponse = new GoogleAuthorizationCodeTokenRequest(
+                                new NetHttpTransport(),
+                                JacksonFactory.getDefaultInstance(),
+                                "https://www.googleapis.com/oauth2/v4/token",
+                                clientId,
+                                clientSecret,
+                                authCode,
+                                redirectUris)  // Specify the same redirect URI that you use with your web
+                                // app. If you don't have a web version of your app, you can
+                                // specify an empty string.
+                                .execute();
+                    } catch (Exception e) {
+                        Log.e(TAG, "Unable to getAccessToken. \n" + e.toString());
+                        return null;
+                    }
+
+                    try {
+                        String accessToken = tokenResponse.getAccessToken();
+                        Log.d(TAG, "accessToken: " + accessToken);
+
+                    }
+                    catch (NullPointerException npe) {
+                        return null;
+                    }
+                    return tokenResponse;
                 }
-            }
 
-            @Override
-            protected void onPostExecute(String token) {
-                if (token != null) {
-                    googleSigninBody.access_token = token;
-                    onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
-                            generateProfileClientTokenGoogleRequestBody(),
-                            AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
-                                @Override
-                                public void onComplete(String rawResponse) {
-                                    Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
-                                }
+                @Override
+                protected void onPostExecute(GoogleTokenResponse tokenResponse) {
+                    if (tokenResponse != null) {
+                        String accessToken = tokenResponse.getAccessToken();
+                        String refreshToken = tokenResponse.getRefreshToken();
+                        Log.d(TAG, "accessToken: " + accessToken);
+                        Log.d(TAG, "refreshToken: " + refreshToken);
+                        googleSigninBody.access_token = accessToken;
+                        googleSigninBody.refresh_token = refreshToken;
+                        onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
+                                generateProfileClientTokenGoogleRequestBody(),
+                                AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
+                                    @Override
+                                    public void onComplete(String rawResponse) {
+                                        Log.d(TAG, "onPostExecute(): "+rawResponse);
+                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
+                                    }
 
-                                @Override
-                                public void onError(int statusCode, String rawResponse) {
-                                    Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
-                                }
+                                    @Override
+                                    public void onError(int statusCode, String rawResponse) {
+                                        Log.e(TAG, "onPostExecute() Error: "+rawResponse);
+                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                    }
 
-                                @Override
-                                public void onFailure(Throwable throwable) {
-                                    Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                    mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
-                                }
-                            });
-                } else {
-                    Log.e(TAG, "Encountered context == null while onPostExecute()");
+                                    @Override
+                                    public void onFailure(Throwable throwable) {
+                                        Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
+                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                    }
+                                });
+                    } else {
+                        Log.e(TAG, "Encountered context == null while onPostExecute()");
+                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                    }
                 }
-            }
-        };
-        task.execute();
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        Log.e(TAG, "Google Connection suspended. result: "+i);
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult result) {
-        Log.e(TAG, "Connection failed. result: "+result);
-        if (mResolvingError) {
-            // Already attempting to resolve an error.
-            return;
-        } else if (result.hasResolution()) {
-            try {
-                mResolvingError = true;
-                result.startResolutionForResult(mFragment.getActivity(), REQUEST_RESOLVE_ERROR);
-            } catch (IntentSender.SendIntentException e) {
-                // There was an error with the resolution intent. Try again.
-                mGoogleApiClient.connect();
-            }
-        } else {
-            // Show dialog using GoogleApiAvailability.getErrorDialog()
-            showErrorDialog(result.getErrorCode());
-            mResolvingError = true;
+            };
+            task.execute();
         }
-    }
-
-    /* Creates a dialog for an error message */
-    private void showErrorDialog(int errorCode) {
-        // Create a fragment for the error dialog
-        ErrorDialogFragment dialogFragment = new ErrorDialogFragment();
-        // Pass the error that should be displayed
-        Bundle args = new Bundle();
-        args.putInt(DIALOG_ERROR, errorCode);
-        dialogFragment.setArguments(args);
-        dialogFragment.show(mFragment.getFragmentManager(), "errordialog");
+        else {
+            mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl() + "/sync/error");
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == WebAuthorizeFragment.RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            Log.d(TAG, "onActivityResult() SignIn Status: "+result.getStatus().toString());
-            handleSignInResult(result);
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
         }
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        result.getSignInAccount();
-        if (result.isSuccess()) {
-            Log.d(TAG, "Native Google Signed In");
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            email = acct.getEmail();
-            googleSigninBody.id_token = acct.getIdToken();
-            googleSigninBody.client_id = client_id;
-            mGoogleApiClient.connect();
-        } else {
-            // Signed out, show unauthenticated UI.
-            Log.e(TAG, "Signed out, show unauthenticated UI");
-            mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/cancel");
+            handleSignInAccount(account);
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            handleSignInAccount(null);
         }
     }
 }
