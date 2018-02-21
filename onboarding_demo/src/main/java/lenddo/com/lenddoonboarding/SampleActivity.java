@@ -17,8 +17,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.models.GovernmentId;
 import com.lenddo.mobile.core.models.VerificationData;
+import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.onboardingsdk.client.LenddoConstants;
 import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
 import com.lenddo.mobile.onboardingsdk.models.AuthorizationStatus;
@@ -116,7 +118,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         homePhone = (TextView)findViewById(R.id.editTextPrimaryNumber);
         mobilePhone = (TextView) findViewById(R.id.editTextMobileNumber);
         customerId = (TextView) findViewById(R.id.editTextCustomerId);
-        customerId.setText("12345678");
+        customerId.setText(String.valueOf(LenddoCoreInfo.generateApplicationId("DEMO_", 5)));
 
         dobButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,6 +232,8 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public boolean onButtonClicked(FormDataCollector formData) {
+        AndroidData.startAndroidData(SampleActivity.this, customerId.getText().toString());
+
         //auto-collect (optional)
         formData.collect(SampleActivity.this, R.id.formContainer);
 

@@ -12,9 +12,6 @@ import android.widget.TextView;
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.LenddoCoreUtils;
 
-import verifime.lenddo.com.verifimelib.VerifiMeManager;
-import verifime.lenddo.com.verifimelib.sdk.utils.Utils;
-
 public class CompleteActivity extends AppCompatActivity {
 
     private TextView successMessage;

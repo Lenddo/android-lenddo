@@ -2,12 +2,18 @@
 
 Table of Contents
 =================
-  * [Introduction](#introduction)
-  * [Pre-requisites](#pre-requisites)
-  * [Installing the Verifi.Me SDK](#installing-the-verifime-sdk)
-  * [Running the Verifi.Me Application](#running-the-demo-applications)
-  * [Document capture using Verifi.Me](#document-capture-using-verifi_me)
-  * [Configuring the Verifi.Me SDK library](#configuring-the-verifime-sdk-library)
+- [Introduction](#introduction)
+- [Pre-requisites](#pre-requisites)
+- [Installing the Verifi.Me SDK](#installing-the-verifime-sdk)
+        - [Adding verifimelib Dependency](#adding-verifimelib-dependency)
+- [Running the Verifi.Me Demo Application](#running-the-verifime-demo-application)
+- [Configuring the Verifi.Me SDK library](#configuring-the-verifime-sdk-library)
+        - [Document Types](#document-types)
+        - [Document Upload Page](#document-upload-page)
+        - [Document Summary Page](#document-summary-page)
+        - [Application Form Data for Verification](#application-form-data-for-verification)
+        - [Setting up a Callback to handle results](#setting-up-a-callback-to-handle-results)
+        - [Starting the Document Capture](#starting-the-document-capture)
 
 ## Introduction
 The Verifi.Me SDK library (verifimelib module) allows you to capture documents using the Android device's camera. This library can be configured to list a set of required documents to be submitted. It allows document photo capture, Selfie image capture, and signature capture. The images are then uploaded to Lenddo's servers and can be viewed in the Lenddo Dashboard.
@@ -93,9 +99,6 @@ import verifime.lenddo.com.verifimelib.listeners.OnDocumentUploadCompleteListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        // Initialise Lenddo credentials using the LenddoCoreInfo
-        LenddoCoreInfo.initCoreInfo(getApplicationContext());
 
         // Initialise the VerifiMeManager member variable
         verifiMeManager = VerifiMeManager.getInstance();

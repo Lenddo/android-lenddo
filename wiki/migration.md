@@ -86,4 +86,3 @@ The new Lenddo SDK has now combined the Data collection module and Social Onboar
     com.lenddo.mobile.core.uiwidgets.TimedRadioButton
     com.lenddo.mobile.core.uiwidgets.TimedSeekbar
     ```
-

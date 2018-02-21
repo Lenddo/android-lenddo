@@ -4,14 +4,17 @@
 Table of Contents
 =================
 
-  * [Introduction](#introduction)
-  * [Pre-requisites](#pre-requisites)
-  * [Installing the Lenddo SDK](#installing-the-lenddo-sdk)
-  * [Migrating from the old SDK](#migrating-from-the-old-sdk)
-  * [Running the Demo Applications](#running-the-demo-applications)
-  * [Lenddo Data Collection](#lenddo-data-collection)
-  * [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
-  * [Document capture using Verifi.Me](#document-capture-using-verifi_me)
+- [Introduction](#introduction)
+- [Pre-requisites](#pre-requisites)
+- [Installing the Lenddo SDK](#installing-the-lenddo-sdk)
+        - [Adding the Lenddo Credentials](#adding-the-lenddo-credentials)
+        - [Adding verifimelib Dependency](#adding-verifimelib-dependency)
+- [Initilizing Lenddo SDK](#initilizing-lenddo-sdk)
+- [Migrating from the old SDK](#migrating-from-the-old-sdk)
+- [Running the Demo Applications](#running-the-demo-applications)
+- [Lenddo Data Collection](#lenddo-data-collection)
+- [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
+- [Document capture using Verifi Me](#document-capture-using-verifi-me)
 
 ## Introduction
 The Lenddo SDK (lenddosdk module) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
@@ -61,8 +64,22 @@ In your applications AndroidManifest.xml file, inside the application key, add t
 ```gradle
 <!-- partner script id is mandatory -->
 <meta-data android:name="partnerScriptId" android:value="@string/partner_script_id" />
+
 <!-- api secret can be optional -->
 <meta-data android:name="partnerApiSecret" android:value="@string/api_secret" />
+```
+
+Or if you wish to have separate partner script id on each module (Data, Onboarding, and VerifiMe), you would have to declare a partnerScriptId tag for each.
+```gradle
+<!-- partner script id for Mobile Data collection  -->
+<meta-data android:name="dataPartnerScriptId" android:value="@string/data_partner_script_id" />
+
+<!-- partner script id for Social Network onboarding -->
+<meta-data android:name="onboardingPartnerScriptId" android:value="@string/onboarding_partner_script_id" />
+
+<!-- partner script id for Document Verification with Verifi.Me -->
+<meta-data android:name="verifiMePartnerScriptId" android:value="@string/verifi_me_partner_script_id" />
+
 ```
 
 In your strings.xml put your partner script id and api secret resource string.
@@ -70,6 +87,10 @@ In your strings.xml put your partner script id and api secret resource string.
 ```xml
 <string name="partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
 <string name="api_secret">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+<!--individual partner script id-->
+<string name="data_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+<string name="onboarding_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
+<string name="verifi_me_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
 ```
 
 #### Adding verifimelib Dependency
@@ -78,6 +99,26 @@ If you are going to use the Document Verification module (Verifi.Me), in your ap
 
 ```gradle
 compile project(':verifimelib')
+```
+## Initilizing Lenddo SDK
+In your Application class initialize Lenddo core info as shown below 
+
+```java
+package com.sample.app;
+
+import android.app.Application;
+
+import com.lenddo.mobile.core.LenddoCoreInfo;
+
+public class  SampleApp extends Application {
+   @Override
+   public void onCreate() {
+       super.onCreate();
+       LenddoCoreInfo.initCoreInfo(getApplicationContext());
+
+       // do other Lenddo stuff after init
+   }
+}
 ```
 
 ## Migrating from the old SDK

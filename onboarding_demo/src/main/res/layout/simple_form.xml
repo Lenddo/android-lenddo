@@ -60,6 +60,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="optional"
                         android:maxLength="2"
                         android:digits="abcdefghijklmnopqrstuvwxyz"
                         android:inputType="text" />

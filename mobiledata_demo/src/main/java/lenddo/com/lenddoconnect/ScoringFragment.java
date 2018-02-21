@@ -53,6 +53,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableLocation;
     private CheckBox cb_enableBatteryCharge;
     private CheckBox cb_enableGalleryMetaData;
+    private CheckBox cb_enableMediaMetaData;
     private CheckBox cb_enableSmsBody;
     private CheckBox cb_enablePhoneNumberHashing;
     private CheckBox cb_enableContactsNameHAshing;
@@ -199,6 +200,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableLocation = (CheckBox) fragmentView.findViewById(R.id.cb_enableLocation);
         cb_enableBatteryCharge = (CheckBox) fragmentView.findViewById(R.id.cb_enableBatteryCharge);
         cb_enableGalleryMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableGalleryMetaData);
+        cb_enableMediaMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableMediaMetaData);
         cb_enableSmsBody = (CheckBox) fragmentView.findViewById(R.id.cb_enableSmsBody);
         cb_enablePhoneNumberHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
         cb_enableContactsNameHAshing = (CheckBox) fragmentView.findViewById(R.id.cb_enableContactsNameHashing);
@@ -252,6 +254,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (!cb_enableLocation.isChecked()) clientOptions.disableLocationDataCollection();
         if (!cb_enableBatteryCharge.isChecked()) clientOptions.disableBattChargeDataCollection();
         if (!cb_enableGalleryMetaData.isChecked()) clientOptions.disableGalleryMetaDataCollection();
+        if (!cb_enableMediaMetaData.isChecked()) clientOptions.disableMediaMetaDataCollection();
         // SMS Body Content
         if (!cb_enableSmsBody.isChecked()) clientOptions.disableSMSBodyCollection();
         //Data Hashing
@@ -361,6 +364,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableLocation.setEnabled(isEnable);
         cb_enableBatteryCharge.setEnabled(isEnable);
         cb_enableGalleryMetaData.setEnabled(isEnable);
+        cb_enableMediaMetaData.setEnabled(isEnable);
         cb_enableSmsBody.setEnabled(isEnable);
         cb_enablePhoneNumberHashing.setEnabled(isEnable);
         cb_enableContactsNameHAshing.setEnabled(isEnable);

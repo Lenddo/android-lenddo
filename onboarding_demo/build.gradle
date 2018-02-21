@@ -22,8 +22,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':lenddosdk')
-    compile 'com.google.android.gms:play-services-auth:11.0.4'
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
+
+    // Dependencies for the Google REST API example
+    compile 'com.google.api-client:google-api-client:1.22.0'
+    compile 'com.google.api-client:google-api-client-android:1.22.0'
+    compile 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
+
     compile 'com.facebook.android:facebook-android-sdk:4.23.0'
 }
-
-apply plugin: 'com.google.gms.google-services'
