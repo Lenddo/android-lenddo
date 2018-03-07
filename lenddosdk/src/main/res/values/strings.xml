@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Lenddo SDK</string>
-
     <!--Lenddo Onboarding SDK Strings-->
     <string name="verify_with_lenddo">Submit and Get Verified </string>
     <string name="hello_world">Hello world!</string>
@@ -70,4 +68,11 @@
     <string name="validation_msg_invalid_date">Invalid date.</string>
     <string name="validation_msg_invalid_date_format">Invalid date format.</string>
     <string name="validation_msg_invalid_email_format">Invalid email format.</string>
+
+    // Permission confirmation
+    <string name="permission_cancel_dialog_title">Important!</string>
+    <string name="permission_cancel_dialog_message">Are you sure you want to cancel this operation.</string>
+    <string name="permission_cancel_dialog_positive_key">YES</string>
+    <string name="permission_cancel_dialog_negative_key">NO</string>
+
 </resources>
