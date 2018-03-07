@@ -23,6 +23,7 @@ Lenddo Data Collection
     2.  [Set Accent color for Material Theme dialog](#user-content-set-accent-color-for-material-theme-dialog) 
     3.  [Registering a Data Sending Completion Callback](#user-content-registering-a-data-sending-completion-callback)
     4.  [Enabling Log Messages](#user-content-enabling-log-messages)
+    5.  [Customizing Permission Layout](#customizing-permission-layout)
 
     
 ## Introduction 
@@ -368,4 +369,8 @@ The Lenddo Data SDK log messages are disabled by default and can be enabled manu
 ```Java
         clientOptions.enableLogDisplay(true);
 ```
+
+### Customizing Permission Layout
+
+For customization of permission layout please follow this [guide](wiki/customized_permission_layout.md)
 

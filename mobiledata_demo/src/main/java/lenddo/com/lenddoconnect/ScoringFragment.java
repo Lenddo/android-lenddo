@@ -104,12 +104,17 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         View fragmentView = inflater.inflate(R.layout.fragment_scoring, container, false);
         setCredentials(null);
         initViews(fragmentView);
-        updateDisplay(getContext());
         if (AndroidData.statisticsEnabled(getContext())) {
             edt_applicationId.setText(AndroidDataUtils.getApplicationId(getContext()));
             edt_applicationId.setSelection(edt_applicationId.length());
         }
         return fragmentView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateDisplay(getContext());
     }
 
     private void setCredentials(String hostname) {
@@ -308,7 +313,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onDataSendingFailed(Throwable t) {
+            public void onDataSendingFailed(final Throwable t) {
                 if (isAdded()) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -316,7 +321,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                             updateDisplay(getContext());
                             tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(getContext())));
                             tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(getContext())));
-                            tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Failed</b>"));
+                            tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Failed: </b>") + t.getMessage());
                             btn_start.setEnabled(true);
 
                         }
@@ -328,24 +333,19 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     }
 
     private void updateDisplay(Context context) {
+        tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+AndroidDataUtils.getApplicationId(context)));
+        tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(context)));
+        tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(context)));
+        tv_uploadMode.setText(Html.fromHtml("Upload Mode: <b>"+spn_connections.getSelectedItem().toString()));
         if (AndroidData.statisticsEnabled(getContext())) {
-            tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+AndroidDataUtils.getApplicationId(context)));
             tv_deviceId.setText(Html.fromHtml("Device ID: <b>"+AndroidDataUtils.getDeviceUID(context)));
-            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(context)));
-            tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(context)));
-            tv_uploadMode.setText(Html.fromHtml("Upload Mode: <b>"+spn_connections.getSelectedItem().toString()));
             enableWidgets(false);
             btn_start.setText("STOP&CLEAR DATA SDK");
         } else {
-            tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+AndroidDataUtils.getApplicationId(context)));
-//            tv_deviceId.setText(Html.fromHtml("Device ID: <b>"+AndroidDataUtils.getDeviceUID(context)));
-            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(context)));
-            tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(context)));
-            tv_uploadMode.setText(Html.fromHtml("Upload Mode: <b>"+spn_connections.getSelectedItem().toString()));
             tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback:"));
-            enableWidgets(false);
-            btn_start.setText("START DATA SDK");
             enableWidgets(true);
+            btn_start.setEnabled(true);
+            btn_start.setText("START DATA SDK");
         }
         tv_hasUploadedInitial.requestFocus();
     }
