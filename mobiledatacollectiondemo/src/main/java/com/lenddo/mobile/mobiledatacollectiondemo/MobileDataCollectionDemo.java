@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.datasdk.AndroidData;
-import com.lenddo.mobile.datasdk.listeners.OnDataSendingCompleteCallback;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
 
 /**
