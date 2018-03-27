@@ -158,7 +158,7 @@ public class GoogleSignInHelper implements SignInHelper {
             googleSigninBody.id_token = account.getIdToken();
             googleSigninBody.client_id = client_id;
 
-            new AsyncTask<Void, Void, GoogleTokenResponse>() {
+            AsyncTask<Void, Void, GoogleTokenResponse > task = new AsyncTask<Void, Void, GoogleTokenResponse>() {
                 @Override
                 protected GoogleTokenResponse doInBackground(Void... params) {
                     String authCode = account.getServerAuthCode();
@@ -272,7 +272,8 @@ public class GoogleSignInHelper implements SignInHelper {
                         mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
                     }
                 }
-            }.execute();
+            };
+            task.execute();
         }
         else {
             mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl() + "/sync/error");
