@@ -178,7 +178,7 @@ public class GoogleSignInHelper implements SignInHelper {
                         return null;
                     }
 
-                    JSONObject googleConfig = null;
+                    JSONObject googleConfig;
                     try {
                         googleConfig = new JSONObject(contents);
                         Log.d(TAG, "googleConfig: " + googleConfig.toString());
