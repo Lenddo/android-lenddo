@@ -372,5 +372,5 @@ The Lenddo Data SDK log messages are disabled by default and can be enabled manu
 
 ### Customizing Permission Layout
 
-For customization of permission layout please follow this [guide](wiki/customized_permission_layout.md)
+For customization of permission layout please follow this [guide](customized_permission_layout.md)
 
