@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,6 +23,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.gson.JsonObject;
+import com.lenddo.mobile.core.Log;
 import com.lenddo.mobile.core.http.AuthV3ApiClient;
 import com.lenddo.mobile.core.http.OnLenddoQueryCompleteListener;
 import com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment;
@@ -44,8 +44,8 @@ import java.util.Collections;
 
 public class GoogleSignInHelper implements SignInHelper {
 
-    public static final String TAG = GoogleSignInHelper.class.getName();
-    public String client_id = null;
+    private static final String TAG = GoogleSignInHelper.class.getName();
+    private String client_id = null;
     private NetworkProfileSigninBody googleSigninBody = new NetworkProfileSigninBody();
     private WebAuthorizeFragment mFragment;
     private GoogleSignInClient mGoogleSignInClient;
@@ -106,14 +106,16 @@ public class GoogleSignInHelper implements SignInHelper {
                         .addOnCompleteListener(mFragment.getActivity(), new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                Log.d(TAG, "signOut onComplete()");
                                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                                mFragment.startActivityForResult(signInIntent, RC_SIGN_IN);
+                                mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
                             }
                         });
         }
         else {
+            Log.d(TAG, "account is null");
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            mFragment.startActivityForResult(signInIntent, RC_SIGN_IN);
+            mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
         }
     }
 
@@ -162,7 +164,7 @@ public class GoogleSignInHelper implements SignInHelper {
                     String authCode = account.getServerAuthCode();
 
                     String fileName = "credentials.json";
-                    String contents = "";
+                    String contents;
                     try {
                         InputStream stream = mFragment.getActivity().getAssets().open(fileName);
 
@@ -176,7 +178,7 @@ public class GoogleSignInHelper implements SignInHelper {
                         return null;
                     }
 
-                    JSONObject googleConfig = null;
+                    JSONObject googleConfig;
                     try {
                         googleConfig = new JSONObject(contents);
                         Log.d(TAG, "googleConfig: " + googleConfig.toString());
@@ -186,7 +188,7 @@ public class GoogleSignInHelper implements SignInHelper {
                     }
 
                     String clientId = client_id;
-                    String clientSecret = "";
+                    String clientSecret;
                     String redirectUris = "";
 
                     try {
@@ -280,6 +282,7 @@ public class GoogleSignInHelper implements SignInHelper {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        Log.d(TAG, "onActivityResult(" +requestCode + ", " + resultCode + ")");
         if (requestCode == WebAuthorizeFragment.RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
@@ -295,6 +298,7 @@ public class GoogleSignInHelper implements SignInHelper {
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            e.printStackTrace();
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
             handleSignInAccount(null);
         }
