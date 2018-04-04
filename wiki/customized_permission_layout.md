@@ -2,20 +2,36 @@ Customise Permission Layout
 ======================
 
 # Introduction
-For Android Marshmallow (api 23) and above, a rationale for each permission is being displayed, and one feature of our Data SDK is to state the use of the permissions on the application. You can see the sample screens below. 
+For Android Marshmallow (API 23) and above, a rationale for each permission is being displayed, and one feature of our Data SDK is to state the use of the permissions on the application. You can see the sample screens below. 
 
-![intro](permission-introduction.png) ![rationale](permission-rationale.png) ![feedback](permission-feedback.png) ![thank-you](permission-feedback-thank-you.png)
+Permission Introduction Screen:
+
+![intro](permission-introduction.png) 
+
+Permission Rationale Screen:
+
+![rationale](permission-rationale.png) 
+
+Permission Feedback Screen:
+
+![feedback](permission-feedback.png) 
+
+Permission Feedback Thank You Screen:
+
+![thank-you](permission-feedback-thank-you.png)
 
 ## Customization a new permission layouts
 
 As an added feature, you can customise the 4 layout for the permissions as shown above.
 
-* Introduction - An informative screen to tell user that permissions are required for the application to generate credit score
-* Rationale - A rationality screen that describe each permission on why and how it is need to generate credit score.
-* Feedback - A feedback screen for user to answer why they don't want to grant the permission required by the application
-* Feedback Thank You - A thank you screen for sending there feedback for not granting the access or use the permissions.
+* **Introduction** - An informative screen to tell user that permissions are required for the application to generate credit score
+* **Rationale** - A rationality screen that describe each permission on why and how it is need to generate credit score.
+* **Feedback** - A feedback screen for user to answer why they don't want to grant the permission required by the application
+* **Feedback Thank You** - A thank you screen for sending there feedback for not granting the access or use the permissions.
+
 
 Below is a sample and proper way to customise permission screen. You can change on how you would display the rationale and etc. 
+
 ### Introduction
 > Default - [permissionintro.xml](https://github.com/Lenddo/android-lenddo/blob/master/lenddosdk/src/main/res/layout/permissionintro.xml)
 >
