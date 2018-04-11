@@ -103,14 +103,14 @@ public class GoogleSignInHelper implements SignInHelper {
             // AuthCode is only used once if you try and use it again you will get an error message.
             // So for simplicity, sign out existing signed in account
             mGoogleSignInClient.signOut()
-                        .addOnCompleteListener(mFragment.getActivity(), new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Log.d(TAG, "signOut onComplete()");
-                                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                                mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
-                            }
-                        });
+                    .addOnCompleteListener(mFragment.getActivity(), new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d(TAG, "signOut onComplete()");
+                            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                            mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
+                        }
+                    });
         }
         else {
             Log.d(TAG, "account is null");
@@ -208,7 +208,7 @@ public class GoogleSignInHelper implements SignInHelper {
                     }
 
                     // Exchange auth code for access token
-                    GoogleTokenResponse tokenResponse = null;
+                    GoogleTokenResponse tokenResponse;
                     try {
                         tokenResponse = new GoogleAuthorizationCodeTokenRequest(
                                 new NetHttpTransport(),

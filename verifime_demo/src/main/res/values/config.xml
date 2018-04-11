@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- Lenddo App partner id -->
     <string name="partner_script_id">5750fbfef7a57905ad4729db</string>
     <string name="api_secret">EnzZJNDVikDoNmUnKP04X7oM4f/rjsziGEw6ZCVjzF+ybxPNIwi9b7ubecVV32sKIkBprOdoGPsdhZi0ebL6Iw==</string>

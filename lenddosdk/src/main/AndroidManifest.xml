@@ -21,7 +21,6 @@
         android:supportsRtl="true">
         <activity
             android:name=".datasdk.mpermission.MPermissionActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
