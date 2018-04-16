@@ -70,9 +70,9 @@
     <string name="validation_msg_invalid_email_format">Invalid email format.</string>
 
     // Permission confirmation
-    <string name="permission_cancel_dialog_title">Important!</string>
-    <string name="permission_cancel_dialog_message">Are you sure you want to cancel this operation.</string>
-    <string name="permission_cancel_dialog_positive_key">YES</string>
-    <string name="permission_cancel_dialog_negative_key">NO</string>
+    <string name="permission_cancel_dialog_title">คำเตือน</string>
+    <string name="permission_cancel_dialog_message">คุณกำลังจะออกจากระบบ กรุณายืนยันว่าคุณต้องการออกจากระบบ</string>
+    <string name="permission_cancel_dialog_positive_key">ออกจากระบบ</string>
+    <string name="permission_cancel_dialog_negative_key">อยู่ในระบบต่อ</string>
 
 </resources>
