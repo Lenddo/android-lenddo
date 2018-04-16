@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
 
     packagingOptions {
@@ -13,16 +13,27 @@ android {
     defaultConfig {
         applicationId "lenddo.com.lenddoonboarding"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 4
         versionName "1.2.1"
+    }
+
+    dexOptions {
+        jumboMode = true
+    }
+
+    configurations {
+        all {
+            exclude module: 'commons-logging'
+            exclude module: 'httpclient'
+        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':lenddosdk')
-    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile 'com.google.android.gms:play-services-auth:12.0.1'
 
     // Dependencies for the Google REST API example
     compile 'com.google.api-client:google-api-client:1.22.0'

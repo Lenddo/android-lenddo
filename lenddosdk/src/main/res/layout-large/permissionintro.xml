@@ -29,12 +29,14 @@
             android:textColor="#ffffff"
             android:textSize="30sp" />
 
-        <com.lenddo.mobile.core.uiwidgets.JustifyTextView
+        <JustifyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:text="@string/permission_intro"
+            android:textAlignment="textStart"
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
