@@ -170,8 +170,8 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         btn_start.setText("STOP&CLEAR DATA SDK");
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
                         ((App) getActivity().getApplication()).setupDataSDK(PS_ID,SECRET,generateClientOptions());
-                        AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
                         btn_start.setEnabled(false);
+                        AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
                     } else {
                         enableWidgets(true);
                         edt_applicationId.requestFocus();

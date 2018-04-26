@@ -37,13 +37,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".kyc.activities.TakePhotoActivity"
-            android:label="@string/title_activity_take_photo"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_activity_take_photo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".kyc.activities.ViewDocumentActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".barcode.BarcodeCaptureActivity"
+            android:label="@string/title_scan_qr_code"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
