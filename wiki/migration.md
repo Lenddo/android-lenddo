@@ -1,6 +1,6 @@
 MIGRATION TO THE NEW LENDDO SDK
 ===
-
+# Updating module
 The new Lenddo SDK has now combined the Data collection module and Social Onboarding module in a single library. It had a lot of changes and improvements that migrating to this new SDK will require the developer to follow the steps below:
 
 1. Remove the old modules that exists from your project, remove the module directory in your workspace
@@ -86,3 +86,7 @@ The new Lenddo SDK has now combined the Data collection module and Social Onboar
     com.lenddo.mobile.core.uiwidgets.TimedRadioButton
     com.lenddo.mobile.core.uiwidgets.TimedSeekbar
     ```
+
+# Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)
+
+Please refer to this [link](wiki/migrating-google-sign-in-v1-to-v2.md).
