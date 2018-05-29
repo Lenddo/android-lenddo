@@ -22,6 +22,8 @@ Lenddo Social Network Onboarding
         - [6.3.3. Native Google Email Sign In Helper Class](#633-native-google-email-sign-in-helper-class)
         - [6.3.4. Enabling Gmail API and Contacts API](#634-enabling-gmail-api-and-contacts-api)
     - [6.4. Permissions](#64-permissions)
+    - [6.5. Embed GoogleSignInHelper into Onboarding process](#65-embed-googlesigninhelper-into-onboarding-process)
+    - [6.6. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)](#66-migrating-google-signin-v1-lenddo-sdk-v13-to-v2-lenddo-sdk-v14)
 - [7. Integration](#7-integration)
     - [7.1. Configuring the Partner Script Id dynamically](#71-configuring-the-partner-script-id-dynamically)
     - [7.2. Adding Probe data for Verification](#72-adding-probe-data-for-verification)
@@ -210,6 +212,22 @@ In addition to the required permissions defined from within the SDK, _which are 
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
+## 6.5. Embed GoogleSignInHelper into Onboarding process
+To use GoogleSignInHelper, we will use UIHelper addGoogleSignIn method
+*addGoogleSignIn(new GoogleSignInHelper())* method after UIHelper object instantiation as shown below.
+
+*Sample code:*
+
+```java
+// UIHelper object instantiation
+helper = new UIHelper(this, this);
+
+// Add support for Native Google SignIn
+helper.addGoogleSignIn(new GoogleSignInHelper());
+```
+
+## 6.6. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)
+Please refer to this [link](wiki/migrating-google-sign-in-v1-to-v2.md).
 
 # 7. Integration
 
