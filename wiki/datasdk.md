@@ -16,8 +16,8 @@ Lenddo Data Collection
 6.  [Using Form Filling Analytics](#user-content-using-form-filling-analytics)
     1.  [Using the TimedWidget Views](#user-content-using-the-timedwidget-views)
     2.  [Collecting Form Analytics from your TimedWidget](#user-content-collecting-form-analytics-from-your-timedwidget) 
-    3.  [Submitting the Data Collected](#user-content-submitting-the-data-collected)
-    4.  [Clearing the Data Collected](#user-content-clearing-the-data-collected)
+    3.  [Submitting the Form Analytics Collected](#user-content-submitting-the-form-analytics-collected)
+    4.  [Clearing the Form Analytics Collected](#user-content-clearing-the-form-analytics-collected)
 7.  [Configuring the Data SDK](#user-content-configuring-the-data-sdk)
     1.  [Using WIFI internet connectivity instead of data plan ](#user-content-using-wifi-internet-connectivity-instead-of-data-plan)
     2.  [Set Accent color for Material Theme dialog](#user-content-set-accent-color-for-material-theme-dialog) 
@@ -287,7 +287,7 @@ To start collecting analytics data with your TimedEditText, simply add the Timed
 ```
 
 
-### Submitting the Data Collected
+### Submitting the Form Analytics Collected
 
 Finally, call the submitFormFillingAnalytics() method to submit the data online.
 
@@ -295,7 +295,7 @@ Finally, call the submitFormFillingAnalytics() method to submit the data online.
         AndroidData.submitFormFillingAnalytics(getApplicationContext());
 ```
 
-### Clearing the Data Collected
+### Clearing the Form Analytics Collected
 
 After submitting the collected data, the stored analytics data are automatically cleared. You may clear the stored analytics data without submitting the collected data online by calling the reset() method. This will clear all collected form filling analytics data without sending it online.
 
