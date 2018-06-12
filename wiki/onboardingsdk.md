@@ -227,7 +227,7 @@ helper.addGoogleSignIn(new GoogleSignInHelper());
 ```
 
 ## 6.6. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)
-Please refer to this [link](wiki/migrating-google-sign-in-v1-to-v2.md).
+Please refer to this [link](migrating-google-sign-in-v1-to-v2.md).
 
 # 7. Integration
 
