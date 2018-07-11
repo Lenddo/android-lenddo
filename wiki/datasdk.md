@@ -28,15 +28,14 @@ Lenddo Data Collection
     
 ## Introduction 
 
-The Lenddo SDK (lenddosdk) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK collects information in the background and can be activated as soon as the user has downloaded the app, given permissions are granted to the app.
+The Lenddo SDK (lenddosdk) allows you to collect information in order for LenddoEFL to verify the user's information and enhance its scoring capabilities. The Lenddo SDK collects information in the background and can be activated as soon as the user has downloaded the app, given permissions are granted to the app.
 
 ## Prerequisites
-Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) The SDK is not compatible with the Beta release of Android Studio.
+Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) 
 
 Before incorporating the Lenddo SDK into your app, you should be provided with the following information:
 
  * Partner Script ID
- * Lenddo Score Service API Secret
 
 Please ask for the information above from your Lenddo representative. If you have a dashboard account, these values can also be found there.
 
@@ -47,10 +46,10 @@ There may be also other partner specific values that you are required to set.
 The LenddoDataSDK captures the following data stored on the phone consistent with the permissions defined (see section on adding permissions):
 
 *   Contacts
-*   SMS (Performed Periodically)
-*   Call History (Performed Periodically)
-*   User's Location (Performed Periodically)
-*   User's Browsing history (Performed Periodically)
+*   SMS
+*   Call History
+*   User's Location
+*   User's Browsing history (API 22 and below)
 *   User’s Installed Apps
 *   Calendar Events
 *   Phone Number, Brand and Model
@@ -60,8 +59,11 @@ Lenddo SDK will use information stored on the users' phone. It is advisable for 
 Below is the list of required permissions.
 
 ```java
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -72,7 +74,9 @@ Below is the list of required permissions.
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-```
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="com.google.android.gm.permission.READ_CONTENT_PROVIDER" />```
 
 If you do not want the all default permissions added, you manually have to remove permissions by editing the **lenddosdk/src/main/AndroidManifest.xml** and comment out permissions you do not wish to grant, however please note that the following permissions at the minimum are required for the operation of the SDK and should NOT be removed:
 
@@ -93,13 +97,13 @@ You need to add an Application class to your app (If it does not already have on
 ```java
 package com.sample.app;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
 
-public class  SampleApp extends Application {
+public class  SampleApp extends MultiDexApplication {
    @Override
    public void onCreate() {
        super.onCreate();
@@ -118,11 +122,11 @@ public class  SampleApp extends Application {
 
 If you already have an Application class, then simply add the AndroidData.setup() call to the onCreate method of your Application class as shown above.
 
-Note that you need to set the secret key and api key provided to you by Lenddo here:
+Note that you need to set the partner_script_id provided to you by Lenddo in to your AndroidManifest.xml:
 
-```java
-PARTNER_SCRIPT_ID
-API_SECRET
+```xml
+<!-- partner script id is mandatory -->
+<meta-data android:name="partnerScriptId" android:value="YOUR_LENDDO_PROVIDED_" />
 ```
 
 Your Lenddo contact will inform you if this is something you need to change.
@@ -145,13 +149,13 @@ If you did not have an application class before, you need to add a android:name 
 
 ### Starting Data Collection
 
-You may start data collection at any time, though ideally it is done after a user has successfully logged in to your app and before the Lenddo Onboarding SDK is started. You are required to pass a string that identifies the user (e.g. user id) as the second parameter. This allows you and our data science team to associate acquired data with the specific user at a later point in time. Below is the sample code to trigger data collection:
+You may start data collection at any time, though ideally it is done after a user has successfully logged in to your app and before the Social Networks Onboarding process is started. You are required to pass a string called the application id, that identifies the user (e.g. user id) as the second parameter. This allows you and our data science team to associate acquired data with the specific user at a later point in time. Below is the sample code to trigger data collection:
 
 ```java
 AndroidData.startAndroidData(YourActivity.this, “USER_IDENTIFIER_OR_APPLICATION_ID”);
 ```
 
-Please note that you only need to do this once for the current user. Data collection will automatically start even on the next session of your app unless your app was uninstalled or had its data cleared.
+**Please note that you only need to do this once** for the current user. Data collection will automatically start even on the next session of your app unless your app was uninstalled or had its data cleared.
 
 Once integration has been completed and you have started Data Collection during testing, notify your Lenddo representative to check on the data that have been collected and if changes are necessary.
 
