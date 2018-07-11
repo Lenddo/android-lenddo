@@ -1,5 +1,6 @@
 package com.lenddo.nativeonboarding;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -17,15 +18,14 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.api.client.auth.oauth2.TokenResponseException;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.gson.JsonObject;
+import com.lenddo.mobile.core.AuthV3ApiManager;
 import com.lenddo.mobile.core.Log;
-import com.lenddo.mobile.core.http.AuthV3ApiClient;
-import com.lenddo.mobile.core.http.OnLenddoQueryCompleteListener;
+import com.lenddo.mobile.core.listeners.OnLenddoQueryCompleteListener;
 import com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment;
 import com.lenddo.mobile.onboardingsdk.models.NetworkProfileSigninBody;
 import com.lenddo.mobile.onboardingsdk.utils.SignInHelper;
@@ -39,8 +39,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by Joey Mar Antonio on 3/21/17.
- */
+* Created by Joey Mar Antonio on 3/21/17.
+*/
 
 public class GoogleSignInHelper implements SignInHelper {
 
@@ -132,7 +132,7 @@ public class GoogleSignInHelper implements SignInHelper {
     }
 
     private void onboardGoogleSignin(final Context context, String request, String servicetoken, final OnLenddoQueryCompleteListener listener) {
-        AuthV3ApiClient.postProfilesClientToken("google", request, servicetoken, new OnLenddoQueryCompleteListener() {
+        AuthV3ApiManager.getInstance().postProfilesClientToken("google", request, servicetoken, new OnLenddoQueryCompleteListener() {
             @Override
             public void onComplete(String rawResponse) {
                 Log.i(TAG, "onboardGoogleSignin(): "+rawResponse);
@@ -153,6 +153,7 @@ public class GoogleSignInHelper implements SignInHelper {
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void handleSignInAccount(@Nullable final GoogleSignInAccount account) {
         if (account != null) {
             googleSigninBody.id_token = account.getIdToken();
@@ -174,7 +175,7 @@ public class GoogleSignInHelper implements SignInHelper {
                         stream.close();
                         contents = new String(buffer);
                     } catch (IOException e) {
-                        Log.e(TAG, "An error occurred on reading comtents from " + fileName + "\n" + e.toString());
+                        Log.e(TAG, "An error occurred on reading contents from " + fileName + "\n" + e.toString());
                         return null;
                     }
 
@@ -248,35 +249,35 @@ public class GoogleSignInHelper implements SignInHelper {
                         googleSigninBody.refresh_token = refreshToken;
                         onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
                                 generateProfileClientTokenGoogleRequestBody(),
-                                AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
+                                AuthV3ApiManager.getInstance().getServiceToken().token, new OnLenddoQueryCompleteListener() {
                                     @Override
                                     public void onComplete(String rawResponse) {
                                         Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
+                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/success");
                                     }
 
                                     @Override
                                     public void onError(int statusCode, String rawResponse) {
                                         Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
                                     }
 
                                     @Override
                                     public void onFailure(Throwable throwable) {
                                         Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
                                     }
                                 });
                     } else {
                         Log.e(TAG, "Encountered context == null while onPostExecute()");
-                        mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
                     }
                 }
             };
             task.execute();
         }
         else {
-            mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl() + "/sync/error");
+            mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl() + "/sync/error");
         }
     }
 

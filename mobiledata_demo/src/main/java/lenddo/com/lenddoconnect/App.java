@@ -11,6 +11,7 @@ public class App extends Application {
 
     public void setupDataSDK(String PSID, String SECRET, ClientOptions clientOptions) {
         LenddoCoreInfo.initCoreInfo(getApplicationContext());
-        AndroidData.setup(getApplicationContext(), PSID, SECRET, clientOptions);
+        LenddoCoreInfo.setCoreInfo(getApplicationContext(), LenddoCoreInfo.COREINFO_DATA_PARTNER_SCRIPT_ID, PSID);
+        AndroidData.setup(getApplicationContext(), clientOptions);
     }
 }

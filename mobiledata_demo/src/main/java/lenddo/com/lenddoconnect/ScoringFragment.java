@@ -16,11 +16,16 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.LenddoCoreUtils;
 import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.datasdk.listeners.OnDataSendingCompleteCallback;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
 import com.lenddo.mobile.datasdk.utils.AndroidDataUtils;
+import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
+import com.lenddo.mobile.onboardingsdk.models.FormDataCollector;
+import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
+import com.lenddo.mobile.onboardingsdk.widget.LenddoButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,14 +36,14 @@ import com.lenddo.mobile.datasdk.utils.AndroidDataUtils;
  * create an instance of this fragment.
  */
 public class ScoringFragment extends Fragment implements View.OnClickListener {
+    public static final int STATE_NOTSTARTED = 0;
+    public static final int STATE_STARTED = 1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     String PS_ID;
     String SECRET;
-
     // TODO: Rename and change types of parameters
     private TextInputEditText edt_applicationId;
     private Spinner spn_hostnames;
@@ -54,6 +59,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableBatteryCharge;
     private CheckBox cb_enableGalleryMetaData;
     private CheckBox cb_enableMediaMetaData;
+    private CheckBox cb_enableTelephonyInfo;
+    private CheckBox cb_enableStoredFilesInfo;
+    private CheckBox cb_enableSensors;
+    private CheckBox cb_enableLaunchers;
+    private CheckBox cb_enableWifi;
+    private CheckBox cb_enableAccounts;
+    private CheckBox cb_enableBluetooth;
     private CheckBox cb_enableSmsBody;
     private CheckBox cb_enablePhoneNumberHashing;
     private CheckBox cb_enableContactsNameHAshing;
@@ -63,16 +75,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableCalendarEmailHashing;
     private CheckBox cb_enableCustomMPermission;
     private Button btn_start;
-
     private TextView tv_applicationId;
     private TextView tv_deviceId;
     private TextView tv_serviceToken;
     private TextView tv_installationId;
     private TextView tv_uploadMode;
     private TextView tv_hasUploadedInitial;
-
-    public static final int STATE_NOTSTARTED = 0;
-    public static final int STATE_STARTED = 1;
+    private boolean isLoadOnboarding;
 
     private OnFragmentInteractionListener mListener;
 
@@ -108,6 +117,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             edt_applicationId.setText(AndroidDataUtils.getApplicationId(getContext()));
             edt_applicationId.setSelection(edt_applicationId.length());
         }
+        isLoadOnboarding = false;
         return fragmentView;
     }
 
@@ -164,12 +174,12 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_start:
                 if (btn_start.getText().toString().equalsIgnoreCase("START DATA SDK")) {
                     Log.d("DataSDK Demo", "START button pressed.");
-                    if (edt_applicationId.getText().length()>0) {
-                        tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+edt_applicationId.getText().toString()));
+                    if (edt_applicationId.getText().length() > 0) {
+                        tv_applicationId.setText(Html.fromHtml("Application ID: <b>" + edt_applicationId.getText().toString()));
                         enableWidgets(false);
                         btn_start.setText("STOP&CLEAR DATA SDK");
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
-                        ((App) getActivity().getApplication()).setupDataSDK(PS_ID,SECRET,generateClientOptions());
+                        ((App) getActivity().getApplication()).setupDataSDK(PS_ID, SECRET, generateClientOptions());
                         btn_start.setEnabled(false);
                         AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
                     } else {
@@ -206,6 +216,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableBatteryCharge = (CheckBox) fragmentView.findViewById(R.id.cb_enableBatteryCharge);
         cb_enableGalleryMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableGalleryMetaData);
         cb_enableMediaMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableMediaMetaData);
+        cb_enableTelephonyInfo = (CheckBox) fragmentView.findViewById(R.id.cb_enableTelephonyInfo);
+        cb_enableStoredFilesInfo = (CheckBox) fragmentView.findViewById(R.id.cb_enableStoredFilesInfo);
+        cb_enableSensors = (CheckBox) fragmentView.findViewById(R.id.cb_enableSensors);
+        cb_enableLaunchers = (CheckBox) fragmentView.findViewById(R.id.cb_enableLaunchers);
+        cb_enableWifi = (CheckBox) fragmentView.findViewById(R.id.cb_enableWifi);
+        cb_enableAccounts = (CheckBox) fragmentView.findViewById(R.id.cb_enableAccounts);
+        cb_enableBluetooth = (CheckBox) fragmentView.findViewById(R.id.cb_enableBluetooth);
         cb_enableSmsBody = (CheckBox) fragmentView.findViewById(R.id.cb_enableSmsBody);
         cb_enablePhoneNumberHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
         cb_enableContactsNameHAshing = (CheckBox) fragmentView.findViewById(R.id.cb_enableContactsNameHashing);
@@ -233,7 +250,8 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
     }
 
@@ -242,7 +260,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         // Hostname (Gateway)
         clientOptions.setApiGatewayUrl(spn_hostnames.getSelectedItem().toString());
         // Upload Mode
-        if (spn_connections.getSelectedItemPosition()==0) {
+        if (spn_connections.getSelectedItemPosition() == 0) {
             clientOptions.setWifiOnly(false);
         } else {
             clientOptions.setWifiOnly(true);
@@ -253,21 +271,32 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (!cb_enableSms.isChecked()) clientOptions.disableSMSDataCollection();
         if (!cb_enableCallLog.isChecked()) clientOptions.disableCallLogDataCollection();
         if (!cb_enableContact.isChecked()) clientOptions.disableContactDataCollection();
-        if (!cb_enableCalendarEvents.isChecked()) clientOptions.disableCalendarEventDataCollection();
+        if (!cb_enableCalendarEvents.isChecked())
+            clientOptions.disableCalendarEventDataCollection();
         if (!cb_enableInstalledApps.isChecked()) clientOptions.disableInstalledAppDataCollection();
-        if (!cb_enableBrowserHistory.isChecked()) clientOptions.disableBrowserHistoryDataCollection();
+        if (!cb_enableBrowserHistory.isChecked())
+            clientOptions.disableBrowserHistoryDataCollection();
         if (!cb_enableLocation.isChecked()) clientOptions.disableLocationDataCollection();
         if (!cb_enableBatteryCharge.isChecked()) clientOptions.disableBattChargeDataCollection();
         if (!cb_enableGalleryMetaData.isChecked()) clientOptions.disableGalleryMetaDataCollection();
         if (!cb_enableMediaMetaData.isChecked()) clientOptions.disableMediaMetaDataCollection();
+        if (!cb_enableTelephonyInfo.isChecked()) clientOptions.disableTelephonyInfoDataCollection();
+        if (!cb_enableStoredFilesInfo.isChecked()) clientOptions.disableStoredFilesInformationCollection();
+        if (!cb_enableSensors.isChecked()) clientOptions.disableSensorsCollection();
+        if (!cb_enableLaunchers.isChecked()) clientOptions.disableLauncherAppsCollection();
+        if (!cb_enableWifi.isChecked()) clientOptions.disableWifiInfoCollection();
+        if (!cb_enableAccounts.isChecked()) clientOptions.disableAccountsInfoCollection();
+        if (!cb_enableBluetooth.isChecked()) clientOptions.disableBluetoothInfoCollection();
         // SMS Body Content
         if (!cb_enableSmsBody.isChecked()) clientOptions.disableSMSBodyCollection();
         //Data Hashing
         if (cb_enablePhoneNumberHashing.isChecked()) clientOptions.enablePhoneNumberHashing();
         if (cb_enableContactsNameHAshing.isChecked()) clientOptions.enableContactsNameHashing();
         if (cb_enableContactsEmailHashing.isChecked()) clientOptions.enableContactsEmailHashing();
-        if (cb_enableCalendarOrganizerHashing.isChecked()) clientOptions.enableCalendarOrganizerHashing();
-        if (cb_enableCalendarDisplayNameHashing.isChecked()) clientOptions.enableCalendarDisplayNameHashing();
+        if (cb_enableCalendarOrganizerHashing.isChecked())
+            clientOptions.enableCalendarOrganizerHashing();
+        if (cb_enableCalendarDisplayNameHashing.isChecked())
+            clientOptions.enableCalendarDisplayNameHashing();
         if (cb_enableCalendarEmailHashing.isChecked()) clientOptions.enableCalendarEmailHashing();
         //Custom M Permisson
         if (cb_enableCustomMPermission.isChecked()) {
@@ -286,27 +315,29 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void run() {
                         updateDisplay(getContext());
-                        tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+AndroidDataUtils.getApplicationId(getContext())));
-                        tv_deviceId.setText(Html.fromHtml("Device ID: <b>"+AndroidDataUtils.getDeviceUID(getContext())));
-                        tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+ AndroidDataUtils.getServiceToken(getContext())));
-                        tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+ LenddoCoreUtils.getInstallationId(getContext())));
+                        tv_applicationId.setText(Html.fromHtml("Application ID: <b>" + AndroidDataUtils.getApplicationId(getContext())));
+                        tv_deviceId.setText(Html.fromHtml("Device ID: <b>" + AndroidDataUtils.getDeviceUID(getContext())));
+                        tv_serviceToken.setText(Html.fromHtml("Service Token: <b>" + AndroidDataUtils.getServiceToken(getContext())));
+                        tv_installationId.setText(Html.fromHtml("Installation ID: <b>" + LenddoCoreUtils.getInstallationId(getContext())));
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Success</b>"));
                         btn_start.setEnabled(true);
+                        loadOnboardingSDK();
                     }
                 });
             }
 
             @Override
             public void onDataSendingError(int statusCode, final String errorMessage) {
-                if(isAdded()) {
+                if (isAdded()) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             updateDisplay(getContext());
-                            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(getContext())));
-                            tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(getContext())));
-                            tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Error:</b>"+errorMessage));
+                            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>" + AndroidDataUtils.getServiceToken(getContext())));
+                            tv_installationId.setText(Html.fromHtml("Installation ID: <b>" + LenddoCoreUtils.getInstallationId(getContext())));
+                            tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Error:</b>" + errorMessage));
                             btn_start.setEnabled(true);
+                            loadOnboardingSDK();
                         }
                     });
                 }
@@ -319,10 +350,11 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         @Override
                         public void run() {
                             updateDisplay(getContext());
-                            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(getContext())));
-                            tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(getContext())));
+                            tv_serviceToken.setText(Html.fromHtml("Service Token: <b>" + AndroidDataUtils.getServiceToken(getContext())));
+                            tv_installationId.setText(Html.fromHtml("Installation ID: <b>" + LenddoCoreUtils.getInstallationId(getContext())));
                             tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Failed: </b>") + t.getMessage());
                             btn_start.setEnabled(true);
+                            loadOnboardingSDK();
 
                         }
                     });
@@ -333,12 +365,12 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     }
 
     private void updateDisplay(Context context) {
-        tv_applicationId.setText(Html.fromHtml("Application ID: <b>"+AndroidDataUtils.getApplicationId(context)));
-        tv_serviceToken.setText(Html.fromHtml("Service Token: <b>"+AndroidDataUtils.getServiceToken(context)));
-        tv_installationId.setText(Html.fromHtml("Installation ID: <b>"+LenddoCoreUtils.getInstallationId(context)));
-        tv_uploadMode.setText(Html.fromHtml("Upload Mode: <b>"+spn_connections.getSelectedItem().toString()));
+        tv_applicationId.setText(Html.fromHtml("Application ID: <b>" + AndroidDataUtils.getApplicationId(context)));
+        tv_serviceToken.setText(Html.fromHtml("Service Token: <b>" + AndroidDataUtils.getServiceToken(context)));
+        tv_installationId.setText(Html.fromHtml("Installation ID: <b>" + LenddoCoreUtils.getInstallationId(context)));
+        tv_uploadMode.setText(Html.fromHtml("Upload Mode: <b>" + spn_connections.getSelectedItem().toString()));
         if (AndroidData.statisticsEnabled(getContext())) {
-            tv_deviceId.setText(Html.fromHtml("Device ID: <b>"+AndroidDataUtils.getDeviceUID(context)));
+            tv_deviceId.setText(Html.fromHtml("Device ID: <b>" + AndroidDataUtils.getDeviceUID(context)));
             enableWidgets(false);
             btn_start.setText("STOP&CLEAR DATA SDK");
         } else {
@@ -365,6 +397,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableBatteryCharge.setEnabled(isEnable);
         cb_enableGalleryMetaData.setEnabled(isEnable);
         cb_enableMediaMetaData.setEnabled(isEnable);
+        cb_enableTelephonyInfo.setEnabled(isEnable);
+        cb_enableStoredFilesInfo.setEnabled(isEnable);
+        cb_enableSensors.setEnabled(isEnable);
+        cb_enableLaunchers.setEnabled(isEnable);
+        cb_enableWifi.setEnabled(isEnable);
+        cb_enableAccounts.setEnabled(isEnable);
+        cb_enableBluetooth.setEnabled(isEnable);
         cb_enableSmsBody.setEnabled(isEnable);
         cb_enablePhoneNumberHashing.setEnabled(isEnable);
         cb_enableContactsNameHAshing.setEnabled(isEnable);
@@ -373,5 +412,45 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarDisplayNameHashing.setEnabled(isEnable);
         cb_enableCalendarEmailHashing.setEnabled(isEnable);
         cb_enableCustomMPermission.setEnabled(isEnable);
+    }
+
+    private void loadOnboardingSDK() {
+        if (isLoadOnboarding) {
+            UIHelper helper = new UIHelper(getActivity(), new LenddoEventListener() {
+                @Override
+                public boolean onButtonClicked(FormDataCollector collector) {
+                    collector.setApplicationId(edt_applicationId.getText().toString());
+                    LenddoCoreInfo.setOnboardingPartnerScriptId(getActivity(), collector.getPartnerScriptId());
+                    return true;
+                }
+
+                @Override
+                public void onAuthorizeStarted(FormDataCollector collector) {
+
+                }
+
+                @Override
+                public void onAuthorizeComplete(FormDataCollector collector) {
+
+                }
+
+                @Override
+                public void onAuthorizeCanceled(FormDataCollector collector) {
+
+                }
+
+                @Override
+                public void onAuthorizeError(int statusCode, String rawResponse) {
+
+                }
+
+                @Override
+                public void onAuthorizeFailure(Throwable throwable) {
+
+                }
+            });
+            LenddoButton button = new LenddoButton(getActivity());
+            UIHelper.showAuthorize(getActivity(), helper);
+        }
     }
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_dark">#0A2E4D</color>
-    <color name="primary">#173F90</color>
-    <color name="accent_dark">#0A2E4D</color>
-    <color name="accent">#173F90</color>
+    <color name="primary_dark">#00334f</color>
+    <color name="primary">#003d5d</color>
+    <color name="accent_dark">#00334f</color>
+    <color name="accent">#003d5d</color>
 
     <color name="required_ids_button_grey">#D8D8D8</color>
     <color name="button_disable">#E7E7E7</color>
+    <color name="verifimeapp_bg_grey">#E7E7E7</color>
 
     <color name="overlay_dark">#59000000</color>
 

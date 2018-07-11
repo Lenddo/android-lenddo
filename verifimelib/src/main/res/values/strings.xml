@@ -1,6 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_settings">Settings</string>
     <string name="upload_in_progress">Uploading</string>
     <string name="upload_progress_message">Please wait while your documents are being uploaded</string>
@@ -34,6 +32,7 @@
     <string name="no">NO</string>
     <string name="fit_document_inside_frame_place_on_contrasting_background">Fit document inside frame.\nPlace on contrasting background.</string>
     <string name="center_your_face_within_the_frame_and_look_directly_into_the_camera">Center your face within the frame and look directly into the camera.</string>
+    <string name="upload">Upload</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="thank_you_header">Thank you</string>
@@ -46,15 +45,26 @@
     <string name="review_and_submit">Review and Submit</string>
     <string name="submit_documents_notice">By clicking enable, you allow this app and Google to use your information in accordance with the terms of service and privacy policy. You can change this and any other account permsissions at any time.</string>
     <string name="submit">Submit</string>
+    <string name="add_more">Add more pages</string>
     <string name="delete">DELETE</string>
     <string name="error_camera_permission_denied">Error: Camera permission denied.</string>
     <string name="settings">SETTINGS</string>
+    <string name="preview_document">Preview Document</string>
+    <string name="success_sending_to_server">You have successfully uploaded your documents.</string>
+    <string name="success_connecting_online_accounts">You have successfully connected your online accounts.</string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="connect_your_online_accounts">Connect your online accounts</string>
 
     <!-- Strings related to barcode scanner -->
     <string name="title_scan_qr_code">Scan QR Code</string>
-    <string name="qr_code_scanner_notes">Place the code in the center of the square to scan automatically</string>
+    <string name="qr_code_scanner_notes">Place the code in the center of the\nsquare to scan automatically</string>
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+
+    <string name="title_activity_document_group">Upload your documents</string>
+    <string name="title_activity_document_list">DocumentListActivity</string>
+    <string name="title_activity_capture_document">CaptureDocumentActivity</string>
+    <string name="title_activity_document_upload">DocumentUploadActivity</string>
 </resources>

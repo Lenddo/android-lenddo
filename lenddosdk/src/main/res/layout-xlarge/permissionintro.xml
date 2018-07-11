@@ -5,46 +5,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_perm_intro_buttons"
+        android:layout_alignParentTop="true"
+        android:layout_margin="48dp"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:scaleType="fitCenter"
+            android:layout_weight="1"
             android:src="@drawable/graphics_intro" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="20dp"
             android:text="@string/grant_access"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="36sp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:includeFontPadding="false"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
             android:text="@string/permission_intro"
             android:textAlignment="textStart"
             android:textColor="#ffffff"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
+        <Button
+            android:id="@+id/btn_perm_intro_learnmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginStart="28dp"
+            android:background="@android:color/transparent"
+            android:gravity="start|center_vertical"
+            android:includeFontPadding="false"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="@string/learn_more"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_perm_intro_buttons"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="right|center_vertical"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginStart="48dp"
+        android:gravity="end|center_vertical"
         android:orientation="horizontal">
 
         <Button
@@ -52,24 +82,23 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingRight="20dp"
+            android:gravity="end|center_vertical"
+            android:minHeight="0dp"
             android:text="@string/cancel_allcaps"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/btn_perm_intro_continue"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
+            android:gravity="end|center_vertical"
+            android:minHeight="0dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/continue_allcaps"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
+            android:textSize="32sp" />
     </LinearLayout>
-
 </RelativeLayout>

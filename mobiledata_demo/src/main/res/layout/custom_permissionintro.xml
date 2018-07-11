@@ -6,52 +6,61 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:padding="20dp">
 
 
         <TextView
-            android:text="Conozcámonos Mejor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
-            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:text="Conozcámonos Mejor"
+            android:textColor="#ffffff"
             android:textSize="22sp"
-            android:textColor="#ffffff" />
+            android:textStyle="bold" />
 
         <TextView
-            android:text="Queremos darte cosas geniales y para eso necesitamos conocerte mejor. Por eso te pedimos permiso para ver tu info de teléfono, calendario, contactos, localización y SMS.\n\nTus datos están súper seguros y obviamente no vamos a contactar a tus amigos ni a guardar sus datos. "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:textSize="18sp"
-            android:textColor="#ffffff" />
+            android:text="Queremos darte cosas geniales y para eso necesitamos conocerte mejor. Por eso te pedimos permiso para ver tu info de teléfono, calendario, contactos, localización y SMS.\n\nTus datos están súper seguros y obviamente no vamos a contactar a tus amigos ni a guardar sus datos. "
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btn_perm_intro_learnmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:gravity="start|center_vertical"
+            android:includeFontPadding="false"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="@string/learn_more"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
         android:paddingBottom="20dp"
         android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn_perm_intro_continue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/button_selector"
-            android:textColor="#FFFFFF"
-            android:text="Listo"/>
+        android:paddingRight="25dp">
 
         <Button
             android:id="@+id/btn_perm_intro_cancel"
@@ -60,8 +69,18 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_selector"
-            android:textColor="#FFFFFF"
-            android:text="Más tarde"/>
+            android:text="Más tarde"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_perm_intro_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/button_selector"
+            android:text="Listo"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

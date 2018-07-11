@@ -6,21 +6,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:layout_marginBottom="50dp">
-
+        android:layout_margin="30dp"
+        android:layout_above="@+id/ll_perm_rationale_buttons"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_permission_rationale_maintext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="18dp"
             android:text="@string/permission_rationale_complete"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="20sp"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -28,7 +25,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- Phone -->
@@ -37,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -57,14 +54,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_phone"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_phone"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -94,14 +91,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_sms"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_sms"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -131,14 +128,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_contacts"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_contacts"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -168,14 +165,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_media"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_media"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -205,14 +202,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_location"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_location"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -242,51 +239,73 @@
                             android:layout_height="wrap_content"
                             android:text="@string/permission_title_calendar"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permission_detail_calendar"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
 
+        <TextView
+            android:id="@+id/tv_permission_rationale_important_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/permission_rationale_important_message"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_perm_rationale_buttons"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="right|center_vertical"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginStart="30dp"
+        android:gravity="end|center_vertical"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_perm_rationale_cancel"
+            android:id="@+id/btn_perm_rationale_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingRight="20dp"
-            android:text="@string/cancel_allcaps"
+            android:gravity="end|center_vertical"
+            android:text="@string/back_allcaps"
+            android:minHeight="0dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
         <Button
-            android:id="@+id/btn_perm_rationale_continue"
+            android:id="@+id/btn_perm_rationale_dismiss"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/continue_allcaps"
+            android:gravity="end|center_vertical"
+            android:text="@string/dismiss_allcaps"
+            android:minHeight="0dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
+        <Button
+            android:id="@+id/btn_perm_rationale_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="end|center_vertical"
+            android:text="@string/retry_allcaps"
+            android:minHeight="0dp"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
     </LinearLayout>
 </RelativeLayout>

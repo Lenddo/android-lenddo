@@ -153,8 +153,8 @@ If you have the e-mail onboarding step included with your Authorize onboarding e
 > #### 2. In your project's top-level build.gradle file, ensure that Google's Maven repository is included:
 >```java
 > dependencies {
->        classpath 'com.android.tools.build:gradle:2.3.1'
->        classpath 'com.google.gms:google-services:3.0.0'
+>        classpath 'com.android.tools.build:gradle:3.0.1'
+>        classpath 'com.google.gms:google-services:3.1.2'
 > }
 >
 > allprojects {
@@ -177,6 +177,7 @@ Android Studio should tell you to resync, the SDK classes should now be availabl
 You need to configure a google api console project by click the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). You need to provide the package name of your android application, you can check your **AndroidManifest.xml** file to verify the package name and you also need to provide the SHA-1 hash of your signing certificate. After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last configure a project dialog window. Put the **credentials.json** file onto your src **assets** directory and place your client id into your **AndroidManifest.xml** as meta data inside the application key, as shown below.
 
 AndroidManifest.xml
+
 ```xml
 <application
    ...
@@ -188,7 +189,8 @@ AndroidManifest.xml
 </application>
 ```
 
-string.xml
+strings.xml
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
     <string name="google_client_id">PLACE_YOUR_GOOGLE_API_CLIENT_ID_HERE</string>
@@ -238,13 +240,13 @@ Normally, an application will only need a partner script id. The Onboarding SDK 
 ```java
 package com.sample.app;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
 
-public class  SampleApp extends Application {
+public class  SampleApp extends MultiDexApplication {
    @Override
    public void onCreate() {
        super.onCreate();
@@ -260,7 +262,7 @@ public class  SampleApp extends Application {
     String onboardingPartnerScriptId = "YOUR NEW PARTNER SCRIPT ID";
     
     // Configure the partner script dynamically if needed
-    FormDataCollector formDataCollector = new FormDataCollector()
+    FormDataCollector formData = new FormDataCollector()
     formData.setPartnerScriptId(onboardingPartnerScriptId);
 ```
 

@@ -117,6 +117,48 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="Enable Media Meta data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableTelephonyInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Telephony information collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableStoredFilesInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Stored Files information collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableSensors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Sensors data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableLaunchers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Apps Launcher data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableWifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable WIFI connection data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableAccounts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Accounts data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableBluetooth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Bluetooth data collection"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

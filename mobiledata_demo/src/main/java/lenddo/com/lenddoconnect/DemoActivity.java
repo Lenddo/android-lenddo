@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import com.lenddo.mobile.datasdk.client.LenddoConstants;
+import com.lenddo.mobile.core.LenddoCoreInfo;
 
 
 public class DemoActivity extends AppCompatActivity implements OnFragmentInteractionListener{
@@ -79,7 +79,7 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
 
             AlertDialog.Builder builder = new AlertDialog.Builder(DemoActivity.this);
             builder.setTitle("DataSDK Demo Application")
-                    .setMessage("Application version: v"+BuildConfig.VERSION_NAME+"\nData SDK version: v"+ LenddoConstants.DATA_SDK_VERSION)
+                    .setMessage("Application version: v"+BuildConfig.VERSION_NAME+"\nData SDK version: v"+ LenddoCoreInfo.DATA_SDK_VERSION)
                     .setPositiveButton("Ok",null);
             builder.create().show();
         }

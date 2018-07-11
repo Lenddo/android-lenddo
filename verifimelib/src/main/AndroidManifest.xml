@@ -26,26 +26,51 @@
         android:allowBackup="true"
         android:largeHeap="true">
         <activity
-            android:name=".kyc.activities.SignatureCaptureActivity"
+            android:name="com.lenddo.mobile.verifimelib.ui.ViewDocumentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.barcode.BarcodeCaptureActivity"
+            android:label="@string/title_scan_qr_code"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.DocumentGroupActivity"
+            android:label="@string/title_activity_document_group"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.DocumentListActivity"
+            android:parentActivityName="com.lenddo.mobile.verifimelib.ui.DocumentGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lenddo.mobile.verifimelib.ui.DocumentGroupActivity" />
+        </activity>
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.CaptureDocumentActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.PreviewDocumentActivity"
+            android:label="@string/preview_document"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.CaptureDoctActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.lenddo.mobile.verifimelib.ui.CaptureSignatureActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/sign_here"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".kyc.activities.DocumentUploaderActivity"
+            android:name="com.lenddo.mobile.verifimelib.ui.DocumentUploadActivity"
             android:label="@string/document_upload"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".kyc.activities.TakePhotoActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/title_activity_take_photo"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".kyc.activities.ViewDocumentActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".barcode.BarcodeCaptureActivity"
-            android:label="@string/title_scan_qr_code"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
