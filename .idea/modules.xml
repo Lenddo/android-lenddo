@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/mobiledata_demo/mobiledata_demo.iml" filepath="$PROJECT_DIR$/mobiledata_demo/mobiledata_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobiledatacollectiondemo/mobiledatacollectiondemo.iml" filepath="$PROJECT_DIR$/mobiledatacollectiondemo/mobiledatacollectiondemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/onboarding_demo/onboarding_demo.iml" filepath="$PROJECT_DIR$/onboarding_demo/onboarding_demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/verifime_demo/verifime_demo.iml" filepath="$PROJECT_DIR$/verifime_demo/verifime_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/verifimelib/verifimelib.iml" filepath="$PROJECT_DIR$/verifimelib/verifimelib.iml" />
     </modules>
   </component>

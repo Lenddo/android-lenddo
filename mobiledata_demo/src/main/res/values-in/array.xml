@@ -3,6 +3,8 @@
     <string-array name="hostnames">
         <item>https://gateway.partner-service.link</item>
         <item>https://gateway-kr.partner-service.link</item>
+        <item>https://api-gateway-mb.partner-service.link</item>
+        <item>https://api-gateway.lendqa.com</item>
     </string-array>
 
     <string-array name="connections">

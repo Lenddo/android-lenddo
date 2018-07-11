@@ -12,8 +12,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.gson.JsonObject;
-import com.lenddo.mobile.core.http.AuthV3ApiClient;
-import com.lenddo.mobile.core.http.OnLenddoQueryCompleteListener;
+import com.lenddo.mobile.core.AuthV3ApiManager;
+import com.lenddo.mobile.core.listeners.OnLenddoQueryCompleteListener;
 import com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment;
 import com.lenddo.mobile.onboardingsdk.models.NetworkProfileSigninBody;
 import com.lenddo.mobile.onboardingsdk.utils.SignInHelper;
@@ -60,23 +60,23 @@ public class FacebookSignInHelper implements SignInHelper {
 
                 onboardFacebookSignin(mFragment.getActivity().getApplicationContext(),
                         generateProfileClientTokenFacebookRequestBody(),
-                        AuthV3ApiClient.getOnboardingServiceToken(), new OnLenddoQueryCompleteListener() {
+                        AuthV3ApiManager.getInstance().getServiceToken().token, new OnLenddoQueryCompleteListener() {
                             @Override
                             public void onComplete(String rawResponse) {
                                 Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/success");
+                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/success");
                             }
 
                             @Override
                             public void onError(int statusCode, String rawResponse) {
                                 Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
                             }
 
                             @Override
                             public void onFailure(Throwable throwable) {
                                 Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
                             }
                         });
             }
@@ -84,13 +84,13 @@ public class FacebookSignInHelper implements SignInHelper {
             @Override
             public void onCancel() {
                 Log.e(TAG, "FB Login Cancel!");
-                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/cancel");
+                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/cancel");
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.e(TAG, "FB Login Error! :"+error.toString());
-                mFragment.loadURL(null, AuthV3ApiClient.getBaseUrl()+"/sync/error");
+                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
             }
         });
 
@@ -119,7 +119,7 @@ public class FacebookSignInHelper implements SignInHelper {
     }
 
     private void onboardFacebookSignin(final Context context, String request, String servicetoken, final OnLenddoQueryCompleteListener listener) {
-        AuthV3ApiClient.postProfilesClientToken("facebook", request, servicetoken, new OnLenddoQueryCompleteListener() {
+        AuthV3ApiManager.getInstance().postProfilesClientToken("facebook", request, servicetoken, new OnLenddoQueryCompleteListener() {
             @Override
             public void onComplete(String rawResponse) {
                 Log.i(TAG, "onboardFacebookSignin(): "+rawResponse);

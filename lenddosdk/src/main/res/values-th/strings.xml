@@ -16,7 +16,6 @@
     <string name="mark_your_address">Mark your address</string>
     <string name="confirm">Confirm</string>
     <string name="marker_required">Tap on the map to place a marker</string>
-    <string name="verify_your_address" />
     <string name="address_set">Address confirmed. Click here to change.</string>
     <string name="type_place_name">Type the name of a place</string>
     <string name="map_navigation_instructions">Tap on the map to mark the location.\n\nYou may type on the search bar, drag the map or use pinch to zoom to navigate the map.</string>
@@ -34,6 +33,11 @@
     <string name="done_allcaps">สำเร็จ</string>
     <string name="submit_allcaps">ส่ง</string>
     <string name="continue_allcaps">ดำเนินการต่อ</string>
+    <string name="learn_more">Learn more</string>
+    <string name="dismiss_allcaps">DISMISS</string>
+    <string name="no_thanks_allcaps">NO THANKS</string>
+    <string name="retry_allcaps">RETRY</string>
+    <string name="send_feedback_allcaps">SEND FEEDBACK</string>
 
     <string name="permission_rationale_partial">หากคุณต้องการใช้งานแอปพลิเคชันนี้ต่อ กรุณาอนุญาตให้เราเข้าถึงข้อมูลต่อไปนี้:</string>
     <string name="permission_rationale_complete">เพื่อให้คุณเข้าใจว่าเราเก็บข้อมูลประเภทใดบ้าง เราขอแจกแจงรายละเอียดของการเก็บข้อมูลต่าง ๆ ดังต่อไปนี้:</string>
@@ -74,5 +78,12 @@
     <string name="permission_cancel_dialog_message">คุณกำลังจะออกจากระบบ กรุณายืนยันว่าคุณต้องการออกจากระบบ</string>
     <string name="permission_cancel_dialog_positive_key">ออกจากระบบ</string>
     <string name="permission_cancel_dialog_negative_key">อยู่ในระบบต่อ</string>
+
+    // Permission dismiss
+    <string name="permission_dismiss_dialog_title">Important!</string>
+    <string name="permission_dismiss_dialog_message">Are you sure you want to continue without granting all permission?</string>
+    <string name="permission_dismiss_dialog_positive_key">YES</string>
+    <string name="permission_dismiss_dialog_negative_key">NO</string>
+    <string name="permission_rationale_important_message">You can still allow these permissions by choosing RE-TRY or you may choose DISMISS so you will no longer be asked for permissions.</string>
 
 </resources>

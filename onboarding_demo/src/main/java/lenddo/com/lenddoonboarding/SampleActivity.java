@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lenddo.mobile.core.AuthV3ApiManager;
 import com.lenddo.mobile.core.LenddoCoreInfo;
+import com.lenddo.mobile.core.Log;
 import com.lenddo.mobile.core.models.GovernmentId;
 import com.lenddo.mobile.core.models.VerificationData;
 import com.lenddo.mobile.datasdk.AndroidData;
@@ -182,7 +183,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         helper = new UIHelper(this, this);
         helper.setAssistedPsychometrics(false);
         helper.addGoogleSignIn(new GoogleSignInHelper());
-        helper.addFacebookSignIn(new FacebookSignInHelper());
+//        helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
 
         String genderChoices[] = {"Male","Female"};
@@ -200,10 +201,10 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selected = adapterView.getItemAtPosition(i).toString();
                 if (selected.equals("https://authorize-api.partner-service.link")) {
-                    if (Utils.getApiRegion().isEmpty()) {
+                    if (AuthV3ApiManager.getInstance().getApiRegion().isEmpty()) {
                         selected = "https://authorize-api%s.partner-service.link";
                     } else {
-                        selected = Utils.getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
+                        selected = AuthV3ApiManager.getInstance().getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
                     }
                 }
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;
@@ -232,8 +233,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public boolean onButtonClicked(FormDataCollector formData) {
-        AndroidData.startAndroidData(SampleActivity.this, customerId.getText().toString());
-
+        button.setEnabled(false);
         //auto-collect (optional)
         formData.collect(SampleActivity.this, R.id.formContainer);
 
@@ -269,17 +269,18 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         //send custom fields
         formData.putField("Loan_Amount", loanAmount.getText().toString());
         formData.validate();
-        helper.setApiRegion(apiRegion.getText().toString());
+        UIHelper.setApiRegion(apiRegion.getText().toString());
         return true;
     }
 
     @Override
     public void onAuthorizeStarted(FormDataCollector collector) {
-
+//        AndroidData.startAndroidData(SampleActivity.this, customerId.getText().toString());
     }
 
     @Override
     public void onAuthorizeComplete(FormDataCollector collector) {
+        button.setEnabled(true);
         Intent finishIntent = new Intent(SampleActivity.this, CompleteActivity.class);
         AuthorizationStatus status = collector.getAuthorizationStatus();
         finishIntent.putExtra("client_id", status.getClientId());
@@ -290,6 +291,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public void onAuthorizeCanceled(FormDataCollector collector) {
+        button.setEnabled(true);
         Toast.makeText(SampleActivity.this, "cancelled!", Toast.LENGTH_LONG).show();
         Intent finishIntent = new Intent(SampleActivity.this, CanceledActivity.class);
         startActivity(finishIntent);
@@ -298,11 +300,13 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public void onAuthorizeError(int statusCode, String rawResponse) {
+        button.setEnabled(true);
         Toast.makeText(SampleActivity.this, "Error! code: "+statusCode+" response:"+rawResponse, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onAuthorizeFailure(Throwable throwable) {
+        button.setEnabled(true);
         Toast.makeText(SampleActivity.this, "Failure: "+throwable.getMessage(), Toast.LENGTH_LONG).show();
     }
 
@@ -354,8 +358,4 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         super.onDestroy();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 }

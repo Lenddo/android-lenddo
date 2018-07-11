@@ -20,10 +20,10 @@
 
     <!-- ToolBar -->
     <style name="ToolBarStyle" parent="Theme.AppCompat">
-        <item name="android:textColorPrimary">#FF0000</item>
-        <item name="android:textColorPrimaryInverse">#FF0000</item>
-        <item name="android:textColorSecondary">#FF0000</item>
-        <item name="android:textColorTertiary">#FF0000</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimaryInverse">#000000</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="android:textColorTertiary">#FFFFFF</item>
         <item name="actionMenuTextColor">#FFFFFF</item>
     </style>
 

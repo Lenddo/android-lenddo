@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="verifime.lenddo.com.verifimelib.kyc.fragments.SignatureCaptureFragment">
+    tools:context="com.lenddo.mobile.verifimelib.ui.TakeSignatureFragment">
 
     <android.support.v7.widget.CardView
         android:id='@+id/signature_card'
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <verifime.lenddo.com.verifimelib.kyc.signature.SignatureView
+            <com.lenddo.mobile.verifimelib.signature.SignatureView
                 android:id="@+id/signature"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -86,9 +86,10 @@
 
         <Button
             android:id="@+id/button_cancel"
-            android:layout_width="36dp"
+            android:layout_width="46dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_alignParentLeft="true"
             android:textColor="@drawable/textcolor_button"
             android:drawableLeft="@drawable/ic_arrow_left_white_24dp"

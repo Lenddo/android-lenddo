@@ -39,8 +39,9 @@ Below is a sample and proper way to customise permission screen. You can change 
 
 #### Requirements
 1. Retain the buttons with id:
+    * btn_perm_intro_learnmore - a button for continuing to rationale screen to view a more detailed description of each permission.
 	* btn_perm_intro_cancel - a button for cancelling permission screen and will be go to feedback.
-	* btn_perm_intro_continue - a button for continuing to rationale screen to view a more detailed description of each permission.
+	* btn_perm_intro_continue - a button for requesting granting permissions required by the application.
 
 
 ### Rationale
@@ -50,8 +51,10 @@ Below is a sample and proper way to customise permission screen. You can change 
 
 #### Requirements
 1. Retain the buttons with id:
-	* btn_perm_rationale_cancel - a button for cancelling permission screen and will be go to feedback.
-	* btn_perm_rationale_continue - a button for continuing to application after successfully granting required permission.
+	* btn_perm_rationale_back - a button for going back to intro screen.
+	* btn_perm_rationale_dismiss - a button for cancelling permission screen and run Lenddo Data sdk given with the permission that have been granted.
+    * btn_perm_rationale_retry - a button for retrying to request granting permissions required by the application.
+    > dissmiss and retry is shown only when not all permission are granted.
 2. Retain the text view with id:
 	* tv_permission_rationale_maintext - a label introduction for the permission rationale. It has two state shown in the [string.xml](https://github.com/Lenddo/android-lenddo/blob/master/lenddosdk/src/main/res/values/strings.xml) (permission_rationale_partial and permission_rationale_complete)
 3. Retain the layout views with id:
@@ -69,8 +72,8 @@ Below is a sample and proper way to customise permission screen. You can change 
 
 #### Requirements
 1. Retain the buttons with id:
-	* btn_perm_feedback_back - a button for cancelling feedback permission screen and will be go back to introduction / rationale.
-	* btn_perm_feedback_continue - a button for submitting feedback on not granting access for the permissions.
+	* btn_perm_feedback_cancel - a button for cancelling feedback permission screen and will also cancel Lenddo Data sdk.
+	* btn_perm_feedback_send - a button for submitting feedback on not granting access for the permissions.
 2. Retain the radio group and radio buttons with id:
 	* rgrp_feedback - a radio group that contains the different posible reason for not granting the permission
 	* rbtn_feedback1 - a radio button describe worries about data privacy 

@@ -6,9 +6,9 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 5
-        versionName "1.5.1"
+        targetSdkVersion 26
+        versionCode 6
+        versionName "1.6.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -23,30 +23,42 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:exifinterface:26.1.0'
-    compile 'commons-codec:commons-codec:1.10'
-    compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.squareup.mimecraft:mimecraft:1.1.1'
-    compile 'com.squareup.okio:okio:1.14.0'
-    compile 'com.squareup.okhttp3:okhttp:3.10.0'
-    compile 'com.google.android.gms:play-services-base:12.0.1'
-    compile 'com.google.android.gms:play-services-basement:12.0.1'
+    testApi 'junit:junit:4.12'
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.android.support:design:26.1.0'
+    api 'com.android.support:support-v4:26.1.0'
+    api 'com.android.support:exifinterface:26.1.0'
+    api 'commons-codec:commons-codec:1.10'
+    api 'org.apache.commons:commons-lang3:3.4'
+    api 'com.google.code.gson:gson:2.8.2'
+    api 'com.squareup.mimecraft:mimecraft:1.1.1'
+    api 'com.squareup.okio:okio:1.14.0'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.google.android.gms:play-services-base:15.0.1'
+    api 'com.google.android.gms:play-services-basement:15.0.1'
 }
 
 task deleteJar(type: Delete) {

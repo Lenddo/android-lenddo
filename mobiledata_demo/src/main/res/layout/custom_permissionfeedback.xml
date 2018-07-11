@@ -116,25 +116,25 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_perm_feedback_back"
+            android:id="@+id/btn_perm_feedback_cancel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:gravity="right|center_vertical"
             android:paddingRight="20dp"
-            android:text="@string/back_allcaps"
+            android:text="@string/no_thanks_allcaps"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/btn_perm_feedback_continue"
+            android:id="@+id/btn_perm_feedback_send"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:gravity="right|center_vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="@string/continue_allcaps"
+            android:text="@string/send_feedback_allcaps"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
 

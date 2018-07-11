@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "25541455225-olm5sc2mop62cfq7c6pecrof3otsbj68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lenddo.com.lenddoonboarding",
+            "certificate_hash": "4502bafa4f73b598b115e76849f97c1a9bece5e0"
+          }
+        },
+        {
           "client_id": "25541455225-rlvp5orpkpj6hienf526r16knt58ug84.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -29,6 +37,10 @@
             "package_name": "lenddo.com.lenddoonboarding",
             "certificate_hash": "9328ee8f9cb429d47a967acca3bedfb9f6d4e12f"
           }
+        },
+        {
+          "client_id": "25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com",

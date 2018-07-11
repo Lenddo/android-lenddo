@@ -13,29 +13,26 @@
         android:layout_margin="@dimen/standard_grid_size"
         app:contentPadding="@dimen/standard_grid_size">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/document_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_weight="1"
+                android:layout_centerInParent="true"
                 android:scaleType="fitCenter" />
 
-            <TextView
-                android:id="@+id/document_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standard_grid_size"
-                android:layout_weight="0"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Voter's ID"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/document_card_menu"
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_menu_more_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"/>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>
