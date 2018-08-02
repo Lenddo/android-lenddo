@@ -154,6 +154,12 @@
                 android:checked="true"
                 android:text="Enable Accounts data collection"/>
             <CheckBox
+                android:id="@+id/cb_enableGmailLabels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable Gmail Labels data collection"/>
+            <CheckBox
                 android:id="@+id/cb_enableBluetooth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

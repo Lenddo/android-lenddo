@@ -6,7 +6,6 @@
         android:name="lenddo.com.lenddoconnect.App"
         android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
         <meta-data android:name="partnerScriptId" android:value="@string/partner_script_id" />
-        <meta-data android:name="partnerApiSecret" android:value="@string/api_secret" />
 
         <activity android:name="lenddo.com.lenddoconnect.DemoActivity" android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

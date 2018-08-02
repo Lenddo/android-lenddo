@@ -12,6 +12,7 @@
     <string name="email">Email Address*</string>
     <string name="work_email">Work Email Address*</string>
     <string name="title_activity_loan_application">LoanApplicationActivity</string>
+    <string name="ps_id">Partnerscript ID</string>
     <string name="api_region">API Region</string>
     <string name="loan_amount">Loan Amount</string>
     <string name="title_activity_complete">CompleteActivity</string>
@@ -55,6 +56,7 @@
     <string name="title_activity_login">LoginActivity</string>
 
     <string-array name="array_hostname">
+        <item>https://authorize-api.lendqa.com</item>
         <item>https://authorize-api.partner-service.link</item>
     </string-array>
 

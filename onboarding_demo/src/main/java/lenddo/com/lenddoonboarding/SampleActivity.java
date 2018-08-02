@@ -3,6 +3,7 @@ package lenddo.com.lenddoonboarding;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -75,6 +76,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
     private EditText city;
     private EditText postalCode;
     private EditText apiRegion;
+    private EditText ps_id;
 
 
     @Override
@@ -185,6 +187,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         helper.addGoogleSignIn(new GoogleSignInHelper());
 //        helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
+        helper.enableKioskMode();
 
         String genderChoices[] = {"Male","Female"};
         gender.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, genderChoices));
@@ -217,6 +220,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         });
 
         apiRegion = (EditText) findViewById(R.id.editTextApiRegion);
+        ps_id = (EditText) findViewById(R.id.editTextPSID);
     }
 
     private void setEmployerHints() {
@@ -235,6 +239,9 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
     public boolean onButtonClicked(FormDataCollector formData) {
         button.setEnabled(false);
         //auto-collect (optional)
+        if (ps_id.getText().length() == 24) {
+            formData.setPartnerScriptId(ps_id.getText().toString());
+        }
         formData.collect(SampleActivity.this, R.id.formContainer);
 
         VerificationData.Address primaryAddress = new VerificationData.Address();
@@ -269,7 +276,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         //send custom fields
         formData.putField("Loan_Amount", loanAmount.getText().toString());
         formData.validate();
-        UIHelper.setApiRegion(apiRegion.getText().toString());
+        helper.setApiRegion(apiRegion.getText().toString());
         return true;
     }
 
