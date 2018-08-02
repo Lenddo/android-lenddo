@@ -25,6 +25,9 @@
     <application
         android:allowBackup="true"
         android:largeHeap="true">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
         <activity
             android:name="com.lenddo.mobile.verifimelib.ui.ViewDocumentActivity"
             android:screenOrientation="portrait"

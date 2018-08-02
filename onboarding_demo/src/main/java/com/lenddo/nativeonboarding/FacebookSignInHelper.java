@@ -98,7 +98,7 @@ public class FacebookSignInHelper implements SignInHelper {
             LoginManager.getInstance().logOut();
             AccessToken.setCurrentAccessToken(null);
         }
-        FacebookSdk.setApplicationId(clientId);
+        // FacebookSdk.setApplicationId(clientId);
         LoginManager.getInstance().logInWithReadPermissions(fragment, scopes);
     }
 

@@ -80,11 +80,10 @@ Or if you wish to have separate partner script id on each module (Data, Onboardi
 
 ```
 
-In your strings.xml put your partner script id and api secret resource string.
+In your strings.xml put your partnerscript_id resource string.
 
 ```xml
 <string name="partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
-<string name="api_secret">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
 <!--individual partner script id-->
 <string name="data_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
 <string name="onboarding_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>

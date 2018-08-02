@@ -1,0 +1,72 @@
+<resources>
+    <!--Lenddo Onboarding SDK Strings-->
+    <string name="verify_with_lenddo">Hantar untuk pengesahan akaun anda </string>
+    <string name="action_settings">Tetapan</string>
+    <string name="next">Seterusnya</string>
+    <string name="please_wait">Sedang diproses…</string>
+    <string name="psychometrics_title">Terma Penggunaan Psikometrik</string>
+    <string name="psychometrics_introduction">Untuk memastikan yang anda adalah individu yang sama yang sedang melengkapkan kuiz, app ini akan mengambil gambar selfie secara rawak (bukan video) semasa sesi kuiz. \n\n\n Dengan memilih "Seterusnya" anda bersetuju dengan Terma dan Kegunaan.</string>
+
+    <!--Lenddo Data SDK Strings-->
+    <string name="grant_access">Benarkan akses</string>
+    <string name="permission_intro">Kami memerlukan kebenaran anda untuk mengakses telefon, SMS, kenalan, foto/media/fail, lokasi, dan kalendar untuk menjana skor kredit anda. Maklumat anda dijamin selamat kerana kami menggunakan piawaian taraf industri untuk megendalikan maklumat peribadi menerusi internet. \n</string>
+    <string name="back_allcaps">Kembali</string>
+    <string name="cancel_allcaps">Batal</string>
+    <string name="done_allcaps">Selesai</string>
+    <string name="submit_allcaps">Hantar</string>
+    <string name="continue_allcaps">Seterusnya</string>
+    <string name="learn_more">Ketahui lebih lanjut</string>
+    <string name="dismiss_allcaps">Batal</string>
+    <string name="no_thanks_allcaps">Tidak, terima kasih</string>
+    <string name="retry_allcaps">Cuba lagi</string>
+    <string name="send_feedback_allcaps">Hantar maklum balas</string>
+
+    <string name="permission_rationale_partial">Anda telah menafikan kebenaran untuk:</string>
+    <string name="permission_rationale_complete">Anda harus mempunyai kebenaran seperti berikut untuk terus menggunakan app ini:</string>
+
+    <string name="permission_title_sms">SMS</string>
+    <string name="permission_title_phone">Telefon</string>
+    <string name="permission_title_location">Lokasi</string>
+    <string name="permission_title_contacts">Kenalan</string>
+    <string name="permission_title_calendar">Kalender</string>
+    <string name="permission_title_media">Foto/Media/Fail</string>
+    <string name="permission_title_accounts">Accounts</string>
+
+    <string name="permission_detail_sms">Kami akses dan analisa mesej SMS untuk menentukan senarai orang yang paling kerap anda mesej. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami.</string>
+    <string name="permission_detail_phone">Kami menggunakan keadaan telefon untuk mendapatkan ID peranti Android anda, di mana ia dihantar ke pelayan kami dan digunakan untuk tujuan analisis dan pelaporan. Kami menggunakan akses baca ke log panggilan anda untuk menentukan senarai orang yang paling kerap anda hubungi. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami.</string>
+    <string name="permission_detail_location">Kami mengkaji aktiviti berdasarkan lokasi secara berkala. Ini membantu kami menganggar lokasi-lokasi kunjungan anda yang paling kerap dengan lebih tepat. Kami menggunakan maklumat ini sebagai piawai untuk membina skor kredit anda.</string>
+    <string name="permission_detail_contacts">Kami akses dan analisa senarai kenalan untuk menentukan senarai orang dalam senarai kenalan anda. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami. Kami tidak akan menggunakan maklumat ini untuk menghubungi rakan anda.</string>
+    <string name="permission_detail_calendar">Kami menggunakan akses kepada aktiviti berjadual anda untuk mengenalpasti masa yang anda paling sibuk dalam sehari. Individu yang sibuk pada waktu siang mempunyai tingkahlaku kredit yang berbeza berbanding dengan individu yang sibuk pada waktu malam. Kami menggunakan maklumat ini sebagai piawai untuk membina skor kredit anda.</string>
+    <string name="permission_detail_media">Kami akses dan analisa Foto / Media / Fail untuk mendapatkan maklumat lokasi geografi dari fail imej dan video. Ini membantu kami menganggarkan dengan tepat lokasi yang paling banyak dikunjungi. Kami menggunakan ini sebagai isyarat untuk membina skor kredit anda.</string>
+    <string name="permission_detail_accounts">We use read access to your Google accounts linked to your device. We use this as a signal for building your credit score.</string>
+
+    <string name="feedback_title">Bantu kami meningkatkan kualiti servis</string>
+    <string name="feedback_inquiry">Apakah sebab utama anda tidak ingin berkongsi maklumat?</string>
+    <string name="feedback1">Saya bimbang mengenai privasi maklumat saya</string>
+    <string name="feedback2">Saya tidak faham bagaimana berkongsi maklumat boleh membantu saya</string>
+    <string name="feedback3">Saya tidak faham bagaimana maklumat saya akan digunakan</string>
+    <string name="feedback4">Lain-lain</string>
+    <string name="thank_you_title">Terima kasih</string>
+    <string name="thank_you_detail">Maklum balas anda amat dihargai dan ianya akan digunakan untuk meningkatkan kualiti pengalaman produk konsumer.</string>
+
+    <!--Validation Message-->
+    <string name="validation_msg_unsupported_exception">Proses pengesahan telah dibatalkan</string>
+    <string name="validation_msg_mandatory_field">Maklumat ini diperlukan</string>
+    <string name="validation_msg_validation_disabled">Proses pengesahan telah dibatalkan</string>
+    <string name="validation_msg_invalid_date">Tarikh tidak sah</string>
+    <string name="validation_msg_invalid_date_format">Format tarikh tdak tepat</string>
+    <string name="validation_msg_invalid_email_format">Format e-mel tidak tepat</string>
+
+    <!--Permission confirmation-->
+    <string name="permission_cancel_dialog_title">Penting!</string>
+    <string name="permission_cancel_dialog_message">Adakah anda pasti anda mahu batalkan operasi ini?</string>
+    <string name="permission_cancel_dialog_positive_key">YA</string>
+    <string name="permission_cancel_dialog_negative_key">TIDAK</string>
+
+    <!--Permission dismiss-->
+    <string name="permission_rationale_important_message">Anda masih boleh memberi kebenaran dengan memilih CUBA LAGI atau KELUAR supaya anda tidak lagi diminta untuk memberi kebenaran.</string>
+    <string name="permission_dismiss_dialog_title">Penting!</string>
+    <string name="permission_dismiss_dialog_message">Adakah anda pasti mahu teruskan tanpa memberi kebenaran?</string>
+    <string name="permission_dismiss_dialog_positive_key">YA</string>
+    <string name="permission_dismiss_dialog_negative_key">TIDAK</string>
+</resources>

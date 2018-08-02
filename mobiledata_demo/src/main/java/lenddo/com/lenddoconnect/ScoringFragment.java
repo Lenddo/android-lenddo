@@ -25,7 +25,6 @@ import com.lenddo.mobile.datasdk.utils.AndroidDataUtils;
 import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
 import com.lenddo.mobile.onboardingsdk.models.FormDataCollector;
 import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
-import com.lenddo.mobile.onboardingsdk.widget.LenddoButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +42,6 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     String PS_ID;
-    String SECRET;
     // TODO: Rename and change types of parameters
     private TextInputEditText edt_applicationId;
     private Spinner spn_hostnames;
@@ -65,6 +63,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableLaunchers;
     private CheckBox cb_enableWifi;
     private CheckBox cb_enableAccounts;
+    private CheckBox cb_enableGmailLabels;
     private CheckBox cb_enableBluetooth;
     private CheckBox cb_enableSmsBody;
     private CheckBox cb_enablePhoneNumberHashing;
@@ -130,16 +129,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private void setCredentials(String hostname) {
         if (spn_hostnames == null) {
             PS_ID = getString(R.string.partner_script_id);
-            SECRET = getString(R.string.api_secret);
         } else {
             if (hostname.equalsIgnoreCase(getResources().getStringArray(R.array.hostnames)[0])) {
                 Log.i("DataSDK Demo", "Setting credentials to PROD.");
                 PS_ID = getString(R.string.partner_script_id);
-                SECRET = getString(R.string.api_secret);
             } else if (hostname.equalsIgnoreCase(getResources().getStringArray(R.array.hostnames)[1])) {
                 Log.i("DataSDK Demo", "Setting credentials to PROD_KR.");
                 PS_ID = getString(R.string.partner_script_id_kr);
-                SECRET = getString(R.string.api_secret_kr);
             }
         }
     }
@@ -179,8 +175,9 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         enableWidgets(false);
                         btn_start.setText("STOP&CLEAR DATA SDK");
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
-                        ((App) getActivity().getApplication()).setupDataSDK(PS_ID, SECRET, generateClientOptions());
                         btn_start.setEnabled(false);
+                        LenddoCoreInfo.setDataPartnerScriptId(getContext(), PS_ID);
+                        AndroidData.setup(getContext(), generateClientOptions());
                         AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
                     } else {
                         enableWidgets(true);
@@ -222,6 +219,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableLaunchers = (CheckBox) fragmentView.findViewById(R.id.cb_enableLaunchers);
         cb_enableWifi = (CheckBox) fragmentView.findViewById(R.id.cb_enableWifi);
         cb_enableAccounts = (CheckBox) fragmentView.findViewById(R.id.cb_enableAccounts);
+        cb_enableGmailLabels = (CheckBox) fragmentView.findViewById(R.id.cb_enableGmailLabels);
         cb_enableBluetooth = (CheckBox) fragmentView.findViewById(R.id.cb_enableBluetooth);
         cb_enableSmsBody = (CheckBox) fragmentView.findViewById(R.id.cb_enableSmsBody);
         cb_enablePhoneNumberHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
@@ -286,6 +284,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (!cb_enableLaunchers.isChecked()) clientOptions.disableLauncherAppsCollection();
         if (!cb_enableWifi.isChecked()) clientOptions.disableWifiInfoCollection();
         if (!cb_enableAccounts.isChecked()) clientOptions.disableAccountsInfoCollection();
+        if (!cb_enableGmailLabels.isChecked()) clientOptions.disableGmailLabelsInfoCollection();
         if (!cb_enableBluetooth.isChecked()) clientOptions.disableBluetoothInfoCollection();
         // SMS Body Content
         if (!cb_enableSmsBody.isChecked()) clientOptions.disableSMSBodyCollection();
@@ -403,6 +402,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableLaunchers.setEnabled(isEnable);
         cb_enableWifi.setEnabled(isEnable);
         cb_enableAccounts.setEnabled(isEnable);
+        cb_enableGmailLabels.setEnabled(isEnable);
         cb_enableBluetooth.setEnabled(isEnable);
         cb_enableSmsBody.setEnabled(isEnable);
         cb_enablePhoneNumberHashing.setEnabled(isEnable);
@@ -449,8 +449,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
 
                 }
             });
-            LenddoButton button = new LenddoButton(getActivity());
-            UIHelper.showAuthorize(getActivity(), helper);
+            helper.showAuthorize();
         }
     }
 }

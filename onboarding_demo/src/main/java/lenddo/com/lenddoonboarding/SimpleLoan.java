@@ -1,13 +1,13 @@
 package lenddo.com.lenddoonboarding;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
 
 
-public class SimpleLoan extends Application {
+public class SimpleLoan extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();

@@ -1,33 +1,15 @@
 <resources>
     <!--Lenddo Onboarding SDK Strings-->
     <string name="verify_with_lenddo">Submit and Get Verified </string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_address_view">Set Location</string>
     <string name="next">Next</string>
-    <string name="confirm_location">Confirm</string>
-    <string name="map_instructions">Click on confirm once you have placed the marker on the correct position.</string>
-    <string name="choose_location">Choose Location</string>
-    <string name="required_field">This field is required</string>
-    <string name="enter_your_home_address">Enter your home address</string>
-    <string name="cancel">Cancel</string>
-    <string name="find_on_map">Find on map</string>
-    <string name="mark_your_address">Mark your address</string>
-    <string name="confirm">Confirm</string>
-    <string name="marker_required">Tap on the map to place a marker</string>
-    <string name="address_set">Address confirmed. Click here to change.</string>
-    <string name="type_place_name">Type the name of a place</string>
-    <string name="map_navigation_instructions">Tap on the map to mark the location.\n\nYou may type on the search bar, drag the map or use pinch to zoom to navigate the map.</string>
     <string name="please_wait">Loading ...</string>
-    <string name="notification_error_ssl_cert_invalid">Loading ...</string>
     <string name="psychometrics_title">Psychometric Terms of Use</string>
     <string name="psychometrics_introduction">To ensure that you are the person who is taking the quiz, the app takes random selfie snapshots (not video) during the quiz session.\n\n\nBy Tapping "Continue" you agree to the Terms and Use.</string>
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Memberikan akses</string>
     <string name="permission_intro">Tolong beri kami izin akses ke Telepon, SMS, Kontak, Lokasi, dan Kalender untuk memberi kredit anda. Kami mengambil perlindungan data dengan sangat serius.</string>
-    <string name="learnmore_allcaps">BELAJARLAH LAGI</string>
     <string name="cancel_allcaps">BATALKAN</string>
     <string name="done_allcaps">SUDAH</string>
     <string name="back_allcaps">KEMBALI</string>
@@ -48,6 +30,7 @@
     <string name="permission_title_contacts">Kontak</string>
     <string name="permission_title_calendar">Kalender</string>
     <string name="permission_title_media">Foto/Media/Arsip</string>
+    <string name="permission_title_accounts">Accounts</string>
 
     <string name="permission_detail_sms">Kami memanfaatkan akses terhadap pesan SMS Anda untuk memastikan daftar orang-orang yang paling sering Anda kirimi pesan. Hal ini membantu kita membangun "social graph" dengan memanfaatkan data yang Anda berikan kepada kami.</string>
     <string name="permission_detail_phone">Kami mempergunakan status telepon untuk mendapatkan ID perangkat Android Anda, yang dikirim ke server Kami dan digunakan untuk tujuan analisis dan pelaporan. Kami mengakses log panggilan Anda untuk menentukan daftar orang yang paling sering Anda hubungi. Hal ini membantu kita membangun "social graph" dengan memanfaatkan data yang Anda berikan kepada kami.</string>
@@ -55,6 +38,7 @@
     <string name="permission_detail_contacts">Kami mengakses kontak Anda untuk menentukan daftar orang yang ada dalam daftar kontak Anda. Hal ini membantu kita membangun _social graph_ dengan memanfaatkan data yang Anda berikan kepada kami. Kami tidak akan menggunakan informasi ini untuk menghubungi teman Anda.</string>
     <string name="permission_detail_calendar">Memiliki akses ke kalender Anda membantu kita menentukan waktu tersibuk Anda. Orang-orang yang sibuk siang hari memiliki perilaku kredit yang berbeda dibanding orang yang sibuk di malam hari. Kami menggunakan ini sebagai indikator untuk membangun nilai kredit Anda.</string>
     <string name="permission_detail_media">Kami menggunakan akses baca terhadap foto/media/file untuk mendapatkan informasi lokasi geografis dari file gambar dan video. Hal ini akan membantu kami untuk melakukan prakiraan yang cukup akurat terhadap lokasi yang paling sering anda kunjungi. Kami menggunakan ini sebagai masukan untuk membangun score kredit anda.</string>
+    <string name="permission_detail_accounts">We use read access to your Google accounts linked to your device. We use this as a signal for building your credit score.</string>
 
     <string name="feedback_title">Bantu kami memperbaiki</string>
     <string name="feedback_inquiry">Mengapa Anda tak bersedia memberikan izin pada kami?</string>
@@ -65,7 +49,7 @@
     <string name="thank_you_title">Terima Kasih</string>
     <string name="thank_you_detail">Pendapat Anda penting bagi kami dan akan membantu kami memperbaiki pengalaman produk.</string>
 
-    // Validation Message
+    <!--Validation Message-->
     <string name="validation_msg_unsupported_exception">Validation is disabled.</string>
     <string name="validation_msg_mandatory_field">This field is required.</string>
     <string name="validation_msg_validation_disabled">Validation is disabled.</string>
@@ -73,16 +57,16 @@
     <string name="validation_msg_invalid_date_format">Invalid date format.</string>
     <string name="validation_msg_invalid_email_format">Invalid email format.</string>
 
-    // Permission confirmation
+    <!--Permission confirmation-->
     <string name="permission_cancel_dialog_title">Important!</string>
     <string name="permission_cancel_dialog_message">Are you sure you want to cancel this operation.</string>
     <string name="permission_cancel_dialog_positive_key">YES</string>
     <string name="permission_cancel_dialog_negative_key">NO</string>
 
-    // Permission dismiss
+    <!--Permission dismiss-->
+    <string name="permission_rationale_important_message">You can still allow these permissions by choosing RE-TRY or you may choose DISMISS so you will no longer be asked for permissions.</string>
     <string name="permission_dismiss_dialog_title">Important!</string>
     <string name="permission_dismiss_dialog_message">Are you sure you want to continue without granting all permission?</string>
     <string name="permission_dismiss_dialog_positive_key">YES</string>
     <string name="permission_dismiss_dialog_negative_key">NO</string>
-    <string name="permission_rationale_important_message">You can still allow these permissions by choosing RE-TRY or you may choose DISMISS so you will no longer be asked for permissions.</string>
 </resources>
