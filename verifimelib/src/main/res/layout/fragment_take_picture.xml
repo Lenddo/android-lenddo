@@ -153,6 +153,16 @@
                     android:indeterminate="true" />
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/preview_document_name"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/image_preview_control"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
             <RelativeLayout
                 android:id="@+id/image_preview_control"
                 android:layout_width="match_parent"
@@ -196,6 +206,16 @@
                         android:src="@drawable/ic_circle_check_white" />
                 </FrameLayout>
 
+                <ImageButton
+                    android:id="@+id/rotate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@+id/useTakePictureFrameLayout"
+                    android:layout_toRightOf="@+id/useTakePictureFrameLayout"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_rotate_left_white" />
             </RelativeLayout>
         </RelativeLayout>
     </FrameLayout>

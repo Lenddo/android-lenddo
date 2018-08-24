@@ -1,7 +1,8 @@
 package com.lenddo.mobile.mobiledatacollectiondemo;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
+import com.lenddo.mobile.BuildConfig;
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.datasdk.AndroidData;
 import com.lenddo.mobile.datasdk.models.ClientOptions;
@@ -10,7 +11,7 @@ import com.lenddo.mobile.datasdk.models.ClientOptions;
  * Created by Joey Mar Antonio on 09/02/2018.
  */
 
-public class MobileDataCollectionDemo extends Application {
+public class MobileDataCollectionDemo extends MultiDexApplication {
 
     @Override
     public void onCreate() {

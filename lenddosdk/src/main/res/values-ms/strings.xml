@@ -30,7 +30,6 @@
     <string name="permission_title_contacts">Kenalan</string>
     <string name="permission_title_calendar">Kalender</string>
     <string name="permission_title_media">Foto/Media/Fail</string>
-    <string name="permission_title_accounts">Accounts</string>
 
     <string name="permission_detail_sms">Kami akses dan analisa mesej SMS untuk menentukan senarai orang yang paling kerap anda mesej. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami.</string>
     <string name="permission_detail_phone">Kami menggunakan keadaan telefon untuk mendapatkan ID peranti Android anda, di mana ia dihantar ke pelayan kami dan digunakan untuk tujuan analisis dan pelaporan. Kami menggunakan akses baca ke log panggilan anda untuk menentukan senarai orang yang paling kerap anda hubungi. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami.</string>
@@ -38,7 +37,6 @@
     <string name="permission_detail_contacts">Kami akses dan analisa senarai kenalan untuk menentukan senarai orang dalam senarai kenalan anda. Ini membantu kami membina grafik sosial dengan menggunakan data yang anda berikan kepada kami. Kami tidak akan menggunakan maklumat ini untuk menghubungi rakan anda.</string>
     <string name="permission_detail_calendar">Kami menggunakan akses kepada aktiviti berjadual anda untuk mengenalpasti masa yang anda paling sibuk dalam sehari. Individu yang sibuk pada waktu siang mempunyai tingkahlaku kredit yang berbeza berbanding dengan individu yang sibuk pada waktu malam. Kami menggunakan maklumat ini sebagai piawai untuk membina skor kredit anda.</string>
     <string name="permission_detail_media">Kami akses dan analisa Foto / Media / Fail untuk mendapatkan maklumat lokasi geografi dari fail imej dan video. Ini membantu kami menganggarkan dengan tepat lokasi yang paling banyak dikunjungi. Kami menggunakan ini sebagai isyarat untuk membina skor kredit anda.</string>
-    <string name="permission_detail_accounts">We use read access to your Google accounts linked to your device. We use this as a signal for building your credit score.</string>
 
     <string name="feedback_title">Bantu kami meningkatkan kualiti servis</string>
     <string name="feedback_inquiry">Apakah sebab utama anda tidak ingin berkongsi maklumat?</string>
