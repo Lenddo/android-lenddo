@@ -9,7 +9,7 @@
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Grant Access</string>
-    <string name="permission_intro">Please give us access permission to Phone, SMS, Contacts, Photos/Media/Files, Location, and Calendar in order to generate your credit score. Rest assured, your data is safe as we use industry standard for encrypting private data over the internet.\n</string>
+    <string name="permission_intro">Please give us access permission to Phone, SMS, Contacts, Photos/Media/Files, Location, Accounts, and Calendar in order to generate your credit score. Rest assured, your data is safe as we use industry standard for encrypting private data over the internet.\n</string>
     <string name="back_allcaps">BACK</string>
     <string name="cancel_allcaps">CANCEL</string>
     <string name="done_allcaps">DONE</string>

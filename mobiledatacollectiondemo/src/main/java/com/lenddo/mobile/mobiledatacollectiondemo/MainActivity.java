@@ -2,14 +2,11 @@ package com.lenddo.mobile.mobiledatacollectiondemo;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tv_status.setText("Mobile data collection has completed!\nYour Application ID is: "+edt_application_id.getText().toString());
+                        tv_status.setText("Thank you!\nMobile data collection has completed!\nYour Application ID is: "+edt_application_id.getText().toString());
                     }
                 });
             }
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tv_status.setText("Failed! "+t.getMessage());
+                        tv_status.setText(""+t.getMessage());
                     }
                 });
             }
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         edt_application_id = (EditText) findViewById(R.id.edt_application_id);
         if (AndroidDataUtils.isInitialDataSent(getApplicationContext())) {
             edt_application_id.setText(LenddoCoreUtils.getApplicationId(getApplicationContext()));
-            tv_status.setText("Mobile data collection has completed!\nYour Application ID is: "+edt_application_id.getText().toString());
+            tv_status.setText("Thank you!\nMobile data collection has completed!\nYour Application ID is: "+edt_application_id.getText().toString());
         } else {
             edt_application_id.setText(LenddoCoreInfo.generateApplicationId("DEMO_", 7));
             launchLenddoMobileDataCollection();
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchLenddoMobileDataCollection() {
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 String application_id = edt_application_id.getText().toString();
