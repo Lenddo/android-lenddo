@@ -60,7 +60,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     implementation 'com.google.android.gms:play-services-basement:15.0.1'
-    api 'android.arch.work:work-runtime:1.0.0-alpha05'
+    api 'android.arch.work:work-runtime:1.0.0-alpha07'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
