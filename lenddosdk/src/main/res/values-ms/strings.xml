@@ -9,7 +9,7 @@
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Benarkan akses</string>
-    <string name="permission_intro">Kami memerlukan kebenaran anda untuk mengakses telefon, SMS, kenalan, foto/media/fail, lokasi, dan kalendar untuk menjana skor kredit anda. Maklumat anda dijamin selamat kerana kami menggunakan piawaian taraf industri untuk megendalikan maklumat peribadi menerusi internet. \n</string>
+    <string name="permission_intro">Kami memerlukan kebenaran anda untuk mengakses telefon, kenalan, foto/media/fail, lokasi, dan kalendar untuk menjana skor kredit anda. Maklumat anda dijamin selamat kerana kami menggunakan piawaian taraf industri untuk megendalikan maklumat peribadi menerusi internet. \n</string>
     <string name="back_allcaps">Kembali</string>
     <string name="cancel_allcaps">Batal</string>
     <string name="done_allcaps">Selesai</string>
@@ -69,4 +69,16 @@
     <string name="permission_dismiss_dialog_message">Adakah anda pasti mahu teruskan tanpa memberi kebenaran?</string>
     <string name="permission_dismiss_dialog_positive_key">YA</string>
     <string name="permission_dismiss_dialog_negative_key">TIDAK</string>
+
+    <!--Liveness Detection-->
+    <string name="liveness_initial_instruction">Please keep your face centered inside\nthe perimeter. Start recording\nwhen you\'re ready</string>
+    <string name="video_capture_tooltip">Press the button when you\'re ready</string>
+    <string name="preview">Preview</string>
+    <string name="recording_done">Recording done!</string>
+    <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
+    <string name="done">Done!</string>
+    <string name="uploading">Uploading</string>
+    <string name="submit">Submit</string>
+    <string name="retake">Retake</string>
+    <string name="your_document_has_been_successfully_uploaded">Your %s has\nbeen successfully uploaded.</string>
 </resources>

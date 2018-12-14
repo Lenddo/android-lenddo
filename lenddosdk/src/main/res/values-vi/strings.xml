@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Lenddo Onboarding SDK Strings-->
+    <string name="verify_with_lenddo">Nộp đơn và được xác minh </string>
+    <string name="action_settings">Cài Đặt</string>
+    <string name="next">Bước tiếp theo</string>
+    <string name="please_wait">Đang tải dữ liệu…</string>
+    <string name="psychometrics_title">Điều khoản sử dụng liên quan đến Trắc nghiệm tâm lý</string>
+    <string name="psychometrics_introduction">"Để chắc chắn rằng Quý khách là người thực hiện bài trắc nghiệm này, ứng dụng sẽ tự động chụp ảnh ngẫu nhiên (không phải video) bằng camera trước của thiết bị mà quý khách sử dụng trong quá trình Quý khách thực hiện bài trắc nghiệm này\n\n\nBằng cách nhấn nút ""Tiếp tục"", Quý khách đồng ý với Điều khoản sử dụng"</string>
+
+    <!--Lenddo Data SDK Strings-->
+    <string name="grant_access">Cấp quyền truy cập</string>
+    <string name="permission_intro">Vui lòng cấp cho chúng tôi quyền truy cập tới điện thoại, danh bạ, hình ảnh/ Công cụ lưu trữ và truyền tải thông tin dữ liệu/ tệp, vị trí và lịch để chúng tôi chấm điểm tín dụng cho Quý khách. Hãy yên tâm, dữ liệu của Quý khách được an toàn vì chúng tôi sử dụng chuẩn công nghiệp để mã hóa dữ liệu riêng tư qua internet.\n</string>
+    <string name="back_allcaps">Trở lại bước trước đó</string>
+    <string name="cancel_allcaps">Hủy</string>
+    <string name="done_allcaps">Hoàn thành</string>
+    <string name="submit_allcaps">Nộp đơn</string>
+    <string name="continue_allcaps">Tiếp tục</string>
+    <string name="learn_more">Tìm hiểu thêm</string>
+    <string name="dismiss_allcaps">Bỏ qua</string>
+    <string name="no_thanks_allcaps">Không, cảm ơn</string>
+    <string name="retry_allcaps">Thử lại</string>
+    <string name="send_feedback_allcaps">Gửi phản hồi</string>
+
+    <string name="permission_rationale_partial">Quý khách đã từ chối các quyền sau:</string>
+    <string name="permission_rationale_complete">Để tiếp tục sử dụng ứng dụng, Quý khách phải có đủ các quyền sau đây:</string>
+
+    <string name="permission_title_sms">Tin nhắn SMS</string>
+    <string name="permission_title_phone">Điện thoại</string>
+    <string name="permission_title_location">Vị trí</string>
+    <string name="permission_title_contacts">Danh bạ</string>
+    <string name="permission_title_calendar">Lịch</string>
+    <string name="permission_title_media">Hình ảnh/Truyền Thông/Tệp</string>
+    <string name="permission_title_accounts">Tài khoản</string>
+
+    <string name="permission_detail_sms">Chúng tôi sử dụng quyền truy cập (đọc) đến tin nhắn SMS để xác định danh sách những người Quý khách thường xuyên gửi tin nhắn nhất. Điều này giúp chúng tôi xây dựng biểu đồ xã hội bằng cách sử dụng dữ liệu Quý khách đã cung cấp cho chúng tôi.</string>
+    <string name="permission_detail_phone">Chúng tôi sử dụng trạng thái điện thoại để nhận biết thiết bị của Quý khách. Nó sẽ được gửi đến máy chủ của chúng tôi và được sử dụng cho mục đích phân tích và báo cáo. Chúng tôi sử dụng quyền truy cập (đọc) đến nhật ký cuộc gọi của Quý khách để xác định danh sách những người Quý khách liên hệ thường xuyên nhất. Điều này giúp chúng tôi xây dựng biểu đồ xã hội bằng cách sử dụng dữ liệu Quý khách cung cấp cho chúng tôi.</string>
+    <string name="permission_detail_location">Chúng tôi nghiên cứu hoạt động định vị định kỳ. Điều này giúp chúng tôi ước tính chính xác các vị trí mà Quý khách thường xuyên ghé thăm. Chúng tôi sử dụng điều này như một dấu hiệu để chấm điểm tín dụng của Quý khách.</string>
+    <string name="permission_detail_contacts">Chúng tôi sử dụng quyền truy cập (đọc) đến danh bạ để xác định danh sách người liên hệ trong danh bạ của Quý khách. Điều này giúp chúng tôi xây dựng biểu đồ xã hội bằng cách sử dụng dữ liệu Quý khách đã cung cấp cho chúng tôi. Chúng tôi sẽ không sử dụng thông tin này để liên lạc với những người trong danh bạ của Quý khách.</string>
+    <string name="permission_detail_calendar">Có quyền truy cập vào các sự kiện trong lịch giúp chúng tôi xác định khoảng thời gian trong ngày mà Quý khách bận rộn nhất. Những người bận rộn ban ngày có hành vi tín dụng khác với những người bận rộn về đêm. Chúng tôi sử dụng điều này như một dấu hiệu để chấm điểm tín dụng của Quý khách.</string>
+    <string name="permission_detail_media">Chúng tôi sử dụng quyền truy cập (đọc) đến Hình ảnh/Truyền Thông/Tệp để trích xuất thông tin về vị trí địa lý từ tệp hình ảnh và video. Điều này giúp chúng tôi ước tính chính xác các vị trí mà Quý khách thường xuyên ghé thăm. Chúng tôi sử dụng điều này như một dấu hiệu để chấm điểm tín dụng của Quý khách.</string>
+    <string name="permission_detail_accounts">Chúng tôi sử dụng quyền truy cập đến tài khoản Google mà Quý khách đã kết nối với thiết bị của Quý khách. Chúng tôi sử dụng điều này như một dấu hiệu để chấm điểm tín dụng của Quý khách.</string>
+
+    <string name="feedback_title">Hãy giúp chúng tôi cải thiện</string>
+    <string name="feedback_inquiry">Lý do chính để Quý khách không chia sẻ dữ liệu là gì ?</string>
+    <string name="feedback1">Tôi lo lắng về quyền riêng tư dữ liệu của mình.</string>
+    <string name="feedback2">Tôi không rõ việc chia sẽ những quyền này sẽ mang lại điều gì cho tôi.</string>
+    <string name="feedback3">Tôi không rõ việc dữ liệu của tôi sẽ được sử dụng như thế nào.</string>
+    <string name="feedback4">Các lý do khác</string>
+    <string name="thank_you_title">Cám ơn Quý khách</string>
+    <string name="thank_you_detail">Phản hồi của Quý khách rất thiết thực và sẽ giúp chúng tôi cải thiện trải nghiệm của khách hàng về sản phẩm</string>
+
+    <!--Validation Message-->
+    <string name="validation_msg_unsupported_exception">Việc xác thực bị vô hiệu hóa</string>
+    <string name="validation_msg_mandatory_field">Trường thông tin này là bắt buộc</string>
+    <string name="validation_msg_validation_disabled">Việc xác thực bị vô hiệu hóa</string>
+    <string name="validation_msg_invalid_date">Ngày không hợp lệ</string>
+    <string name="validation_msg_invalid_date_format">Định dạng ngày tháng không hợp lệ</string>
+    <string name="validation_msg_invalid_email_format">Định dạng email không hợp lệ</string>
+
+    <!--Permission confirmation-->
+    <string name="permission_cancel_dialog_title">Quan trọng!</string>
+    <string name="permission_cancel_dialog_message">Quý khách có chắc chắn muốn hủy thao tác này không?</string>
+    <string name="permission_cancel_dialog_positive_key">Đồng ý</string>
+    <string name="permission_cancel_dialog_negative_key">Không đồng ý</string>
+
+    <!--Permission dismiss-->
+    <string name="permission_rationale_important_message">Quý khách vẫn có thể cho phép các quyền truy cập này bằng cách chọn "Thử lại" hoặc Quý khách có thể chọn "Bỏ qua" và sẽ không được hỏi về việc cấp các quyền truy cập này nữa</string>
+    <string name="permission_dismiss_dialog_title">Quan trọng!</string>
+    <string name="permission_dismiss_dialog_message">Quý khách có chắc chắn muốn tiếp tục mà không cấp tất cả các quyền không?</string>
+    <string name="permission_dismiss_dialog_positive_key">Đồng ý</string>
+    <string name="permission_dismiss_dialog_negative_key">Không đồng ý</string>
+
+    <!--Liveness Detection-->
+    <string name="liveness_initial_instruction">Please keep your face centered inside\nthe perimeter. Start recording\nwhen you\'re ready</string>
+    <string name="video_capture_tooltip">Press the button when you\'re ready</string>
+    <string name="preview">Preview</string>
+    <string name="recording_done">Recording done!</string>
+    <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
+    <string name="done">Done!</string>
+    <string name="uploading">Uploading</string>
+    <string name="submit">Submit</string>
+    <string name="retake">Retake</string>
+    <string name="your_document_has_been_successfully_uploaded">Your %s has\nbeen successfully uploaded.</string>
+</resources>

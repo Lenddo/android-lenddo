@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Lenddo Onboarding SDK Strings-->
     <string name="verify_with_lenddo">Submit and Get Verified </string>
@@ -9,7 +10,7 @@
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Grant Access</string>
-    <string name="permission_intro">Please give us access permission to Phone, SMS, Contacts, Photos/Media/Files, Location, Accounts, and Calendar in order to generate your credit score. Rest assured, your data is safe as we use industry standard for encrypting private data over the internet.\n</string>
+    <string name="permission_intro">Please give us access permission to Phone, Contacts, Photos/Media/Files, Location, Accounts, and Calendar in order to generate your credit score. Rest assured, your data is safe as we use industry standard for encrypting private data over the internet.\n</string>
     <string name="back_allcaps">BACK</string>
     <string name="cancel_allcaps">CANCEL</string>
     <string name="done_allcaps">DONE</string>
@@ -69,4 +70,16 @@
     <string name="permission_dismiss_dialog_message">Are you sure you want to continue without granting all permission?</string>
     <string name="permission_dismiss_dialog_positive_key">YES</string>
     <string name="permission_dismiss_dialog_negative_key">NO</string>
+
+    <!--Liveness Detection-->
+    <string name="liveness_initial_instruction">Please keep your face centered inside\nthe perimeter. Start recording\nwhen you\'re ready</string>
+    <string name="video_capture_tooltip">Press the button when you\'re ready</string>
+    <string name="preview">Preview</string>
+    <string name="recording_done">Recording done!</string>
+    <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
+    <string name="done">Done!</string>
+    <string name="uploading">Uploading</string>
+    <string name="submit">Submit</string>
+    <string name="retake">Retake</string>
+    <string name="your_document_has_been_successfully_uploaded">Your selfie has\nbeen successfully uploaded.</string>
 </resources>
