@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_purple"
+    android:padding="32dp"
+    tools:context=".onboardingsdk.activities.LivenessActivity">
+
+
+    <TextView
+        android:id="@+id/tv_thankyou_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/your_document_has_been_successfully_uploaded"
+        android:textAlignment="center"
+        android:textColor="#FFFFFFFF"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_thankyou_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_thankyou_caption"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/thank_you_title"
+        android:textAlignment="center"
+        android:textColor="#FFFFFFFF"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/img_thankyou_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_thankyou_title"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/thankyou" />
+
+    <Button
+        android:id="@+id/btn_thankyou_next"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/rounded_rect_corner_button_transparent"
+        android:text="@string/next" />
+
+</RelativeLayout>
