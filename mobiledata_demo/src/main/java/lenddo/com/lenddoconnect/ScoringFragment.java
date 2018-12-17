@@ -359,6 +359,9 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                     });
                 }
             }
+
+            @Override
+            public void onDataSendingStart() { }
         });
         return clientOptions;
     }

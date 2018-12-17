@@ -194,26 +194,26 @@ public class VerificationFragment extends Fragment implements View.OnClickListen
         tv_sendpartnerdata_callback = (TextView) fragmentView.findViewById(R.id.tv_sendpartnerdata_callback);
         tv_sendprovideraccesstoken_callback = (TextView) fragmentView.findViewById(R.id.tv_sendprovideraccesstoken_callback);
 
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_referenceno.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_application_payload.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_firstname.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_middlename.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_lastname.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_dob.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_phone_mobile.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_phone_home.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_email.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_employer.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_university.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_mother_firstname.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_mother_middlename.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_mother_lastname.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_line1.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_line2.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_city.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_adm_div.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_country_code.getFormFillingAnalyticsDataValue());
-        FormFillingAnalytics.getInstance(getContext()).add(tedt_address_postal_code.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_referenceno.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_application_payload.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_firstname.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_middlename.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_lastname.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_dob.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_phone_mobile.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_phone_home.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_email.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_employer.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_university.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_mother_firstname.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_mother_middlename.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_mother_lastname.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_line1.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_line2.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_city.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_adm_div.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_country_code.getFormFillingAnalyticsDataValue());
+        FormFillingAnalytics.Companion.getInstance(getContext()).add(tedt_address_postal_code.getFormFillingAnalyticsDataValue());
     }
 
     private String generatePartnerAppDataPayload() {
@@ -315,6 +315,9 @@ public class VerificationFragment extends Fragment implements View.OnClickListen
                                 }
                             });
                         }
+
+                        @Override
+                        public void onDataSendingStart() { }
                     });
                 }
                 break;
@@ -363,6 +366,9 @@ public class VerificationFragment extends Fragment implements View.OnClickListen
                                     }
                                 });
                             }
+
+                            @Override
+                            public void onDataSendingStart() { }
                         });
                 break;
             default:
