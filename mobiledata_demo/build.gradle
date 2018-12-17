@@ -13,8 +13,8 @@ android {
         applicationId "lenddo.com.lenddoconnect"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 8
-        versionName "2.1.0"
+        versionCode 9
+        versionName "2.2.0"
         setProperty("archivesBaseName", "datasdk_demo_v${versionName}")
         multiDexEnabled true
     }
@@ -41,6 +41,6 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation project(':lenddosdk')
 }
