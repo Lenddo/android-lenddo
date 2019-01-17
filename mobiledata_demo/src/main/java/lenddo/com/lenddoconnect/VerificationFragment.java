@@ -273,7 +273,7 @@ public class VerificationFragment extends Fragment implements View.OnClickListen
 
         apd.verification_data = vd;
 
-        String payload = new GsonBuilder().serializeSpecialFloatingPointValues().disableHtmlEscaping().create().toJson(apd);;
+        String payload = new GsonBuilder().serializeSpecialFloatingPointValues().disableHtmlEscaping().create().toJson(apd);
         Log.d("JSON", payload);
         return payload;
     }

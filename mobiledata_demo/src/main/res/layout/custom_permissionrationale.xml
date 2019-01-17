@@ -6,18 +6,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:layout_marginBottom="50dp">
-
+        android:layout_margin="24dp"
+        android:layout_above="@+id/ll_perm_rationale_buttons"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_permission_rationale_maintext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="18dp"
             android:text="@string/permission_rationale_complete"
             android:textColor="#FFFFFF" />
 
@@ -27,7 +24,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- Phone -->
@@ -252,8 +249,45 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <!-- Accounts -->
+                <LinearLayout
+                    android:id="@+id/grp_permission_accounts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/icon_accounts" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/permission_title_accounts"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/permission_detail_accounts"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
         <TextView
             android:id="@+id/tv_permission_rationale_important_message"
             android:layout_width="match_parent"
@@ -264,10 +298,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_perm_rationale_buttons"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="right|center_vertical"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:gravity="end|center_vertical"
         android:orientation="horizontal">
 
         <Button
@@ -275,21 +315,20 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingRight="20dp"
+            android:gravity="end|center_vertical"
             android:text="@string/back_allcaps"
+            android:minHeight="0dp"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
-
 
         <Button
             android:id="@+id/btn_perm_rationale_dismiss"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingRight="20dp"
+            android:gravity="end|center_vertical"
             android:text="@string/dismiss_allcaps"
+            android:minHeight="0dp"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
@@ -298,12 +337,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:gravity="right|center_vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:gravity="end|center_vertical"
             android:text="@string/retry_allcaps"
+            android:minHeight="0dp"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
-
     </LinearLayout>
 </RelativeLayout>

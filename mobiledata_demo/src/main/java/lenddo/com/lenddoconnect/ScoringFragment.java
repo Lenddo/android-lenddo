@@ -44,6 +44,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     String PS_ID;
     // TODO: Rename and change types of parameters
     private TextInputEditText edt_applicationId;
+    private TextInputEditText edt_partnerScriptId;
     private Spinner spn_hostnames;
     private Spinner spn_connections;
     private CheckBox cb_enableDebugLogs;
@@ -110,7 +111,6 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.fragment_scoring, container, false);
-        setCredentials(null);
         initViews(fragmentView);
         if (AndroidData.statisticsEnabled(getContext())) {
             edt_applicationId.setText(AndroidDataUtils.getApplicationId(getContext()));
@@ -176,6 +176,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         btn_start.setText("STOP&CLEAR DATA SDK");
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
                         btn_start.setEnabled(false);
+                        PS_ID = edt_partnerScriptId.getText().toString();
                         LenddoCoreInfo.setDataPartnerScriptId(getContext(), PS_ID);
                         AndroidData.setup(getContext(), generateClientOptions());
                         AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
@@ -200,6 +201,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
 
     private void initViews(View fragmentView) {
         edt_applicationId = (TextInputEditText) fragmentView.findViewById(R.id.edt_applicationId);
+        edt_partnerScriptId = (TextInputEditText) fragmentView.findViewById(R.id.edt_partnerScriptId);
         spn_hostnames = (Spinner) fragmentView.findViewById(R.id.spn_hostnames);
         spn_connections = (Spinner) fragmentView.findViewById(R.id.spn_connections);
         cb_enableDebugLogs = (CheckBox) fragmentView.findViewById(R.id.cb_enableDebugLogs);
@@ -239,18 +241,8 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         tv_uploadMode = (TextView) fragmentView.findViewById(R.id.tv_uploadMode);
         tv_hasUploadedInitial = (TextView) fragmentView.findViewById(R.id.tv_hasUploadedInitial);
 
-        // Set PS_ID when changing hostnames
-        spn_hostnames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                String selected = parent.getItemAtPosition(pos).toString();
-                setCredentials(selected);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
+        PS_ID = getString(R.string.partner_script_id);
+        edt_partnerScriptId.setText(PS_ID);
     }
 
     private ClientOptions generateClientOptions() {
@@ -267,7 +259,9 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         clientOptions.enableLogDisplay(cb_enableDebugLogs.isChecked());
         // Data types
         if (!cb_enableSms.isChecked()) clientOptions.disableSMSDataCollection();
+        else clientOptions.enableSMSDataCollection();
         if (!cb_enableCallLog.isChecked()) clientOptions.disableCallLogDataCollection();
+        else clientOptions.enableCallLogDataCollection();
         if (!cb_enableContact.isChecked()) clientOptions.disableContactDataCollection();
         if (!cb_enableCalendarEvents.isChecked())
             clientOptions.disableCalendarEventDataCollection();
@@ -386,6 +380,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
 
     private void enableWidgets(boolean isEnable) {
         edt_applicationId.setEnabled(isEnable);
+        edt_partnerScriptId.setEnabled(isEnable);
         spn_hostnames.setEnabled(isEnable);
         spn_connections.setEnabled(isEnable);
         cb_enableDebugLogs.setEnabled(isEnable);
