@@ -46,8 +46,6 @@ There may be also other partner specific values that you are required to set.
 The LenddoDataSDK captures the following data stored on the phone consistent with the permissions defined (see section on adding permissions):
 
 *   Contacts
-*   SMS
-*   Call History
 *   User's Location
 *   User's Browsing history (API 22 and below)
 *   User’s Installed Apps

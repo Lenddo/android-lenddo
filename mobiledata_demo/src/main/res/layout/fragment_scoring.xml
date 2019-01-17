@@ -33,22 +33,35 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Settings:"/>
-            <Spinner
-                android:id="@+id/spn_hostnames"
-                android:layout_marginTop="3dp"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_partnerScriptId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:hint="Partner Script ID"/>
+            </android.support.design.widget.TextInputLayout>
+            <Spinner
+                android:id="@+id/spn_hostnames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:entries="@array/hostnames"/>
             <Spinner
                 android:id="@+id/spn_connections"
-                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:entries="@array/connections"/>
             <CheckBox
                 android:id="@+id/cb_enableDebugLogs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:checked="true"
                 android:text="Enable Debug Logs"/>
             <TextView
