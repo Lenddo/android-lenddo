@@ -34,7 +34,9 @@
 -keep public class com.lenddo.mobile.datasdk.DataManager {
      public com.lenddo.mobile.datasdk.models.ClientOptions getClientOptions();
      public static synchronized com.lenddo.mobile.datasdk.DataManager getInstance();
+     public void setClientOptions(com.lenddo.mobile.datasdk.models.ClientOptions);
 }
+-keep public class com.lenddo.mobile.datasdk.mpermission.MPermissionActivity { public static <fields>; }
 -keep public class com.lenddo.mobile.datasdk.listeners.OnDataSendingCompleteCallback { public *; }
 -keep public class com.lenddo.mobile.datasdk.listeners.NetworkStatusListener { public *; }
 -keep public class com.lenddo.mobile.datasdk.listeners.BrowserBatchQueryCallback { public *; }
@@ -43,6 +45,11 @@
 -keep public class com.lenddo.mobile.datasdk.models.ClientOptions { public *; }
 -keep public class com.lenddo.mobile.datasdk.utils.AndroidDataUtils { public *; }
 # ONBOARDING SDK
+-keep public class com.lenddo.mobile.onboardingsdk.activities.ButtonUtils { public *; }
+-keep public class com.lenddo.mobile.onboardingsdk.activities.DocumentCaptureActivity { public *; }
+-keep public class com.lenddo.mobile.onboardingsdk.activities.DocumentPreviewActivity { public *; }
+-keep public class com.lenddo.mobile.onboardingsdk.activities.DocumentThankYouActivity { public *; }
+-keep public class com.lenddo.mobile.onboardingsdk.activities.SignatureCaptureActivity { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.client.LenddoConstants { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.client.LenddoEventListener { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.client.FieldPreProcessListener { public *; }
@@ -58,6 +65,8 @@
 # VERIFIME SDK
 -keep class com.lenddo.mobile.verifime.models.* { public *; }
 -keep class com.lenddo.mobile.verifime.listeners.OnVerifiMeQueryCompleteListener { public *; }
+-keep class com.lenddo.mobile.verifime.VerifiMe2Manager { public *; }
+-keep class com.lenddo.mobile.verifime.barcode.BarcodeCaptureActivity { public *; }
 
 #Google
 -keep public class com.google.android.gms.* { public *; }

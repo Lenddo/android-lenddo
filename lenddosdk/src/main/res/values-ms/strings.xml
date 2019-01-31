@@ -71,7 +71,7 @@
     <string name="permission_dismiss_dialog_negative_key">TIDAK</string>
 
     <!--Liveness Detection-->
-    <string name="liveness_initial_instruction">Please keep your face centered inside\nthe perimeter. Start recording\nwhen you\'re ready</string>
+    <string name="liveness_initial_instruction">Position your face within the outline</string>
     <string name="video_capture_tooltip">Press the button when you\'re ready</string>
     <string name="preview">Preview</string>
     <string name="recording_done">Recording done!</string>

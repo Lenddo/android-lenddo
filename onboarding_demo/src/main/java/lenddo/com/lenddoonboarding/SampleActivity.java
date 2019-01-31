@@ -37,6 +37,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 public class SampleActivity extends AppCompatActivity implements LenddoEventListener {
@@ -151,7 +152,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         c.set(year, monthOfYear, dayOfMonth);
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentStart.setText(dateFormat.format(c.getTime()));
                     }
                 }, year, month, day);
@@ -171,7 +172,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         c.set(year, monthOfYear, dayOfMonth);
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentEnd.setText(dateFormat.format(c.getTime()));
                     }
                 }, year, month, day);
@@ -180,7 +181,6 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         });
 
         helper = new UIHelper(this, this);
-        helper.setAssistedPsychometrics(false);
         helper.addGoogleSignIn(new GoogleSignInHelper());
 //        helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");

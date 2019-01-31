@@ -12,7 +12,6 @@
         android:theme="@style/AppTheme">
 
         <meta-data android:name="partnerScriptId" android:value="@string/partner_script_id" />
-        <meta-data android:name="partnerApiSecret" android:value="@string/api_secret" />
 
         <activity
             android:name=".MainActivity"

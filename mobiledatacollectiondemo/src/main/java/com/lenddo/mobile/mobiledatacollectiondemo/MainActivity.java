@@ -61,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
+
+            @Override
+            public void onDataSendingStart() {
+
+            }
         });
         tv_status = (TextView) findViewById(R.id.tv_status);
         edt_application_id = (EditText) findViewById(R.id.edt_application_id);

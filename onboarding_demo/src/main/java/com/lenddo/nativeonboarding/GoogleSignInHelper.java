@@ -107,28 +107,37 @@ public class GoogleSignInHelper implements SignInHelper {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Log.d(TAG, "signOut onComplete()");
-                            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                            mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
+                            signIn();
                         }
                     });
         }
         else {
             Log.d(TAG, "account is null");
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
+            signIn();
         }
     }
 
+    private void signIn() {
+        Log.d(TAG, "Google SignIn() invoked.");
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        mFragment.startActivityForResult(signInIntent, WebAuthorizeFragment.RC_SIGN_IN);
+    }
+
+    private void signOut() {
+        Log.d(TAG, "Google SignOut() invoked.");
+        mGoogleSignInClient.signOut();
+    }
+
     private String generateProfileClientTokenGoogleRequestBody() {
-        JsonObject object = new JsonObject();
-        object.addProperty("oauth_version", "2.0");
-        object.addProperty("client_id", googleSigninBody.client_id);
-        object.addProperty("access_token", googleSigninBody.access_token);
-        object.addProperty("id_token", googleSigninBody.id_token);
+        JsonObject body = new JsonObject();
+        body.addProperty("oauth_version", "2.0");
+        body.addProperty("client_id", googleSigninBody.client_id);
+        body.addProperty("access_token", googleSigninBody.access_token);
+        body.addProperty("id_token", googleSigninBody.id_token);
         if (googleSigninBody.refresh_token != null && !googleSigninBody.refresh_token.isEmpty()) {
-            object.addProperty("refresh_token", googleSigninBody.refresh_token);
+            body.addProperty("refresh_token", googleSigninBody.refresh_token);
         }
-        return object.toString();
+        return body.toString();
     }
 
     private void onboardGoogleSignin(final Context context, String request, String servicetoken, final OnLenddoQueryCompleteListener listener) {
@@ -254,6 +263,7 @@ public class GoogleSignInHelper implements SignInHelper {
                                     public void onComplete(String rawResponse) {
                                         Log.d(TAG, "onPostExecute(): "+rawResponse);
                                         mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/success");
+                                        signOut();
                                     }
 
                                     @Override

@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
-
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
@@ -13,9 +12,9 @@ android {
     defaultConfig {
         applicationId "lenddo.com.lenddoonboarding"
         minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 4
-        versionName "1.2.1"
+        targetSdkVersion 28
+        versionCode 6
+        versionName "1.2.3"
         setProperty("archivesBaseName", "onboarding_demo_v${versionName}")
         multiDexEnabled true
     }
@@ -28,6 +27,7 @@ android {
         all {
             exclude module: 'commons-logging'
             exclude module: 'httpclient'
+            exclude group: 'com.google.guava', module: 'listenablefuture'
         }
     }
 }
@@ -35,11 +35,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':lenddosdk')
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.google.code.gson:gson:2.8.5'
 
     // Dependencies for the Google REST API example
