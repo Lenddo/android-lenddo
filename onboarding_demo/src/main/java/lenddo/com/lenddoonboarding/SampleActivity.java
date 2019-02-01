@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.lenddo.mobile.core.AuthV3ApiManager;
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.Log;
+import com.lenddo.mobile.core.http.BaseUrlConfig;
 import com.lenddo.mobile.core.models.GovernmentId;
 import com.lenddo.mobile.core.models.VerificationData;
 import com.lenddo.mobile.onboardingsdk.client.LenddoConstants;
@@ -26,6 +27,7 @@ import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
 import com.lenddo.mobile.onboardingsdk.models.AuthorizationStatus;
 import com.lenddo.mobile.onboardingsdk.models.AutoCompleteQuery;
 import com.lenddo.mobile.onboardingsdk.models.FormDataCollector;
+import com.lenddo.mobile.onboardingsdk.utils.OnboardingConfiguration;
 import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
 import com.lenddo.mobile.onboardingsdk.widget.LenddoButton;
 import com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView;
@@ -37,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 public class SampleActivity extends AppCompatActivity implements LenddoEventListener {
@@ -151,7 +154,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         c.set(year, monthOfYear, dayOfMonth);
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentStart.setText(dateFormat.format(c.getTime()));
                     }
                 }, year, month, day);
@@ -171,7 +174,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         c.set(year, monthOfYear, dayOfMonth);
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentEnd.setText(dateFormat.format(c.getTime()));
                     }
                 }, year, month, day);
@@ -180,7 +183,6 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         });
 
         helper = new UIHelper(this, this);
-        helper.setAssistedPsychometrics(false);
         helper.addGoogleSignIn(new GoogleSignInHelper());
 //        helper.addFacebookSignIn(new FacebookSignInHelper());
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
@@ -209,6 +211,11 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                 }
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;
                 Log.i(TAG, "Changed hostname to: "+selected);
+                if (selected.contains("lendqa")) {
+                    LenddoConstants.BINARY_BASEURL = BaseUrlConfig.BASEURL_QA_BINARY;
+                } else {
+                    LenddoConstants.BINARY_BASEURL = BaseUrlConfig.BASEURL_PROD_BINARY;
+                }
             }
 
             @Override

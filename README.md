@@ -9,50 +9,45 @@ Table of Contents
 - [Installing the Lenddo SDK](#installing-the-lenddo-sdk)
    - [Adding the Lenddo Credentials](#adding-the-lenddo-credentials)
    - [Adding verifimelib Dependency](#adding-verifimelib-dependency)
-- [Initilizing Lenddo SDK](#initilizing-lenddo-sdk)
-- [Migrating from the old SDK](#migrating-from-the-old-sdk)
+- [Initializing Lenddo SDK](#initializing-lenddo-sdk)
 - [Running the Demo Applications](#running-the-demo-applications)
 - [Lenddo Mobile Data Collection](#lenddo-mobile-data-collection)
-- [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
-- [Document capture using Verifi Me](#document-capture-using-verifi-me)
+- [Connecting Social Networks and eKYC](#connecting-social-networks-and-ekyc)
+
 
 ## Introduction
-The Lenddo SDK (lenddosdk module) allows you to collect information in order for Lenddo to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
+The Lenddo SDK (lenddosdk module) allows you to collect information in order for LenddoEFL to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
 
 ## Pre-requisites
-Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) Use API 26 Build tools as minimum.
+Make sure you have Android Studio properly setup and installed, please refer to the Google Developer site for the instructions [Android Studio Download and Installation Instructions.](https://developer.android.com/sdk/index.html) Use API28 Build tools as minimum.
 
-Before incorporating the Data SDK into your app, you should be provided with the following information:
+Before incorporating the Lenddo SDK into your app, you should be provided with the following information:
 
  * Partner Script ID
 
-Please ask for the information above from your Lenddo representative. If you have a dashboard account, these values can also be found there.
+Please ask for the information above from your LenddoEFL representative. If you have a dashboard account, these values can also be found there.
 
 There may be also other partner specific values that you are required to set.
 
 ## Installing the Lenddo SDK
 
-1. Extract the contents of source.zip
-2. Import Modules
-
- + **lenddosdk** - Lenddo Mobile SDK
- + **verifimelib** - Verifi.Me SDK library (optional)
- + **mobiledata_demo** - demo application that showcases the data collection and submission (optional)
- + **onboarding_demo** - demo application for the Lenddo onboarding process (optional)
- + **verifime_demo** - demo application for Verifi.Me SDK (optional)
-       
-       File > New > Import Module
-![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/file_new_import-module.png)
-       
- Import the modules to use:
-![](https://github.com/Lenddo/android-lenddo/blob/master/wiki/import_selected_modules.png)
-
-
-In your applications build.gradle file, under dependencies, add the following line
+1. Add the JitPack repository to your build file
 
 ```gradle
-compile 'com.android.support:multidex:1.0.3'
-compile project(':lenddosdk')
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+2. Add the dependency
+
+```gradle
+dependencies {
+    implementation 'com.github.lenddo.android-lenddo:lenddosdk:v2.0.0'
+}
 ```
 
 3. Sync Gradle
@@ -90,15 +85,8 @@ In your strings.xml put your partnerscript_id resource string.
 <string name="verifi_me_partner_script_id">ASK_YOUR_LENDDO_REPRESENTATIVE_FOR_THIS_VALUE</string>
 ```
 
-#### Adding verifimelib Dependency (optional)
 
-If you are going to use the Document Verification module (Verifi.Me), in your applications build.gradle file, under dependencies, add the following line
-
-```gradle
-compile project(':verifimelib')
-```
-
-## Initilizing Lenddo SDK
+## Initializing Lenddo SDK
 In your Application class initialize Lenddo core info as shown below 
 
 ```java
@@ -119,17 +107,6 @@ public class  SampleApp extends MultiDexApplication {
 }
 ```
 
-## Migrating from the old SDK
-
-To migrate from the old sdk (released last 2017) to the new sdk (released 2018), click this [link](wiki/migration.md).
-
-To update the LenddoSDK from a version update, simply follow the following steps:
-
- 1. Remove the old module (:lenddosdk) from your project workspace
- 2. Delete the old SDK directory
- 3. Extract the latest version and Import as module in your project
- 4. Ensure you have the required credentials in your Manifest file
-
 ## Running the Demo Applications
 
 To see how to use the demo applications, click this [link](wiki/demo.md).
@@ -138,10 +115,7 @@ To see how to use the demo applications, click this [link](wiki/demo.md).
 
 For mobile data collection guide, click this [link](wiki/datasdk.md).
 
-## Connecting Social Networks to Lenddo
+## Connecting Social Networks and eKYC
 
-For onboarding your Social Networks accounts with LenddoEFL, click this [link](wiki/onboardingsdk.md).
+For onboarding your Social Networks accounts with LenddoEFL and using the eKYC feature, click this [link](wiki/onboardingsdk.md).
 
-## Document capture using Verifi Me
-
-To use Verifi.Me library to capture documents, click this [link](wiki/verifime.md).

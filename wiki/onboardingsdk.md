@@ -33,10 +33,14 @@ Lenddo Social Network Onboarding
     - [7.6. Using the Lenddo AutoComplete View](#76-using-the-lenddo-autocomplete-view)
     - [7.7. Setting API Region](#77-setting-api-region)
     - [7.8. Adding Native Facebook Integration](#78-adding-native-facebook-integration)
-- [8. Frequently Asked Questions](#8-frequently-asked-questions)
-    - [8.1. *How do I use the Lenddo button without form data?*](#81-how-do-i-use-the-lenddo-button-without-form-data)
-    - [8.2. *Why do we require the Google Web Client ID?*](#82-why-do-we-require-the-google-web-client-id)
-    - [8.3. *Why do I get an INVALID_AUDIENCE error when using Native Google Integration?*](#83-why-do-i-get-an-invalid_audience-error-when-using-native-google-integration)
+- [8. eKYC](#7-ekyc)
+    - [8.1. Selfie and Liveness](#81-selfie-and-liveness)
+    - [8.2. Document Capture](#81-document-capture)
+    - [8.3. Signature Capture](#81-signature-capture)
+- [9. Frequently Asked Questions](#8-frequently-asked-questions)
+    - [9.1. *How do I use the Lenddo button without form data?*](#81-how-do-i-use-the-lenddo-button-without-form-data)
+    - [9.2. *Why do we require the Google Web Client ID?*](#82-why-do-we-require-the-google-web-client-id)
+    - [9.3. *Why do I get an INVALID_AUDIENCE error when using Native Google Integration?*](#83-why-do-i-get-an-invalid_audience-error-when-using-native-google-integration)
 
 <!-- /TOC -->
 
@@ -114,14 +118,14 @@ include ':lenddosdk'
 
 ## 6.2. Edit the App build.gradle
 ### 6.2.1. Edit build.gradle
-Open and edit the app-level **build.gradle** file (not the project's top-level). You should see a section for dependencies and add `compile project(':lenddosdk')`
+Open and edit the app-level **build.gradle** file (not the project's top-level). You should see a section for dependencies and add `implementation project(':lenddosdk')`
 
 #### 6.2.1.1. Example Gradle Dependencies _after modification_
 ```java
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':lenddosdk')
+    implementation project(':lenddosdk')
 }
 ```
 
@@ -135,16 +139,16 @@ If you have the e-mail onboarding step included with your Authorize onboarding e
 > #### 1. In your app-level **build.gradle** file, declare Google Play services with Google REST API as dependencies, in your application module **build.gradle** file:
 >```java
 > dependencies {
->    compile fileTree(dir: 'libs', include: ['*.jar'])
->    compile project(':lenddosdk')
+>    implementation fileTree(dir: 'libs', include: ['*.jar'])
+>    implementation project(':lenddosdk')
 >
 >    // Dependencies for the Google Play services
->    compile 'com.google.android.gms:play-services-auth:11.8.0'
+>    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 >
 >    // Dependencies for the Google REST API
->    compile 'com.google.api-client:google-api-client:1.22.0'
->    compile 'com.google.api-client:google-api-client-android:1.22.0'
->    compile 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
+>    implementation 'com.google.api-client:google-api-client:1.22.0'
+>    implementation 'com.google.api-client:google-api-client-android:1.22.0'
+>    implementation 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
 > }
 >
 > apply plugin: 'com.google.gms.google-services'
@@ -153,8 +157,8 @@ If you have the e-mail onboarding step included with your Authorize onboarding e
 > #### 2. In your project's top-level build.gradle file, ensure that Google's Maven repository is included:
 >```java
 > dependencies {
->        classpath 'com.android.tools.build:gradle:3.0.1'
->        classpath 'com.google.gms:google-services:3.1.2'
+>        classpath 'com.android.tools.build:gradle:3.3.0'
+>        classpath 'com.google.gms:google-services:4.2.0'
 > }
 >
 > allprojects {
@@ -210,10 +214,14 @@ In order for the application to have login access and use Gmail onboarding for s
 ## 6.4. Permissions
 In addition to the required permissions defined from within the SDK, _which are automatically incorporated into your app_, you must ensure the following permissions are also required:
 
-```java
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.CAMERA" />
 ```
+
+Camera permission is required for eKYC feature.
+
 ## 6.5. Embed GoogleSignInHelper into Onboarding process
 To use GoogleSignInHelper, we will use UIHelper addGoogleSignIn method
 *addGoogleSignIn(new GoogleSignInHelper())* method after UIHelper object instantiation as shown below.
@@ -287,13 +295,13 @@ private FormDataCollector getProbeData(FormDataCollector formData) {
     
     // Adding Government IDs
     governmentIds.add(new GovernmentId("DEMO-TYPE", "DEMO-VALUE"));
-    governmentIds.add(new GovernmentId("passport", "PAS018218ASVR"));
-    governmentIds.add(new GovernmentId("sss", "0-390128411-1274"));
-    governmentIds.add(new GovernmentId("tin", "3023749103"));
+    governmentIds.add(new GovernmentId("passport", "PAS_018218ASVR"));
+    governmentIds.add(new GovernmentId("sss", "SSS_0-390128411-1274"));
+    governmentIds.add(new GovernmentId("tin", "TIN_3023749103"));
     formData.setGovernmentIds(governmentIds);
 
     // send custom fields
-    formData.putField("Loan_Amount", loanAmmount.getText().toString());
+    formData.putField("Loan_Amount", "25000");
 
     formData.validate();
     return formData;
@@ -319,7 +327,7 @@ The Lenddo button greatly simplifies integrating the Lenddo workflow to your app
     *   University
     *   Employer
 
-    However the exact fields that is required for your App may be different depending on your requirements or use cases, please talk to your Lenddo Representative regarding this.
+    However the exact fields that is required for your App may be different depending on your requirements or use cases, please talk to your LenddoEFL Representative regarding this.
 
 2.  Open up your Forms' layout xml and add the following to include the Lenddo Button onto your Layout:
 
@@ -434,7 +442,7 @@ You may customize the Look and Feel of the Lenddo Button in a couple of ways:
     sampleButton.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View v) {
-           UIHelper.showAuthorize(SampleActivity.this, helper);
+           helper.showAuthorize();
        }
     });
     ```
@@ -474,10 +482,25 @@ To configure the Lenddo Onboarding SDK to use a specific API region. Refer to th
 
 To configure the Lenddo Onboarding SDK to add native Facebook Integration. Refer to this [link](nativefacebookintegration.md)
 
+# 8. eKYC
 
-# 8. Frequently Asked Questions
+Dependending on the workflow configuration, the SDK will be able to perform eKYC features such as Selfie and Liveness, Document Capture, and Signature capture. A camera and record audio permission will be requested by the SDK and must be provided by the user. Contact your LenddoEFL representative to have the document capture feature configured for your partner_script_id.
 
-## 8.1. *How do I use the Lenddo button without form data?*
+## 8.1. Selfie and Liveness
+
+The SDK will use the device camera to record a selfie snapshot and a video recording. It will require audio capture as well to record sound from the device's microphone. A series of simple instructions that the user needs to follow within a timeframe are provided.
+
+## 8.2. Document Capture
+
+Based on the configuration, a set of required documents will be presented to the user and must be captured via the camera. Ensure that the image is clear and readable before submission.
+
+## 8.3. Signature Capture
+
+The screen is used for capturing signature using touch pen or finger touch. The user is allowed to clear and retry the signature capture before submission to get the best possible signature stroke.
+
+# 9. Frequently Asked Questions
+
+## 9.1. *How do I use the Lenddo button without form data?*
 
 The application form data used as probe information are passed in the FormDataCollector object inside the onButtonClicked method. It is possible to not pass any other information aside from the application ID. See snippet below.
 
@@ -490,10 +513,10 @@ public boolean onButtonClicked(FormDataCollector formData) {
 }
 ```
 
-## 8.2. *Why do we require the Google Web Client ID?*
+## 9.2. *Why do we require the Google Web Client ID?*
 
 While the google-services.json already contains the Google Android and Web OAuth2.0 Client IDs, it is still important to include the Google Web Client ID as a meta-data in the AndroidManifest.xml file. This data is then passed to the GoogleSignInHelper.java class and is part of the OAuth2.0 Native login process. The Web Client ID will be used by Lenddo's backend server to communicate callbacks for the login results. More information from [Google documentations](https://developers.google.com/identity/sign-in/android/start-integrating)
 
-## 8.3. *Why do I get an INVALID_AUDIENCE error when using Native Google Integration?*
+## 9.3. *Why do I get an INVALID_AUDIENCE error when using Native Google Integration?*
 
 The INVALID_AUDIENCE error is caused by using the incorrect SHA1 signing certificate in the google-services.json file. Get your correct signing certificate hash for both debug and release using the gradle task "signingReport" and view the result in the Gradle console. Update your SHA1 certificate in the Firebase Console and download the latest google-services.json file.

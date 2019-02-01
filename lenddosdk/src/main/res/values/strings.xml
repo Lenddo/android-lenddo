@@ -72,14 +72,45 @@
     <string name="permission_dismiss_dialog_negative_key">NO</string>
 
     <!--Liveness Detection-->
-    <string name="liveness_initial_instruction">Please keep your face centered inside\nthe perimeter. Start recording\nwhen you\'re ready</string>
+    <string name="liveness_initial_instruction">Position your face within the outline</string>
     <string name="video_capture_tooltip">Press the button when you\'re ready</string>
     <string name="preview">Preview</string>
     <string name="recording_done">Recording done!</string>
     <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
     <string name="done">Done!</string>
-    <string name="uploading">Uploading</string>
+    <string name="processing">Processing</string>
     <string name="submit">Submit</string>
     <string name="retake">Retake</string>
-    <string name="your_document_has_been_successfully_uploaded">Your selfie has\nbeen successfully uploaded.</string>
+    <string name="your_document_has_been_successfully_uploaded">Your document has been\nsuccessfully uploaded.</string>
+    <string name="downloading_instructions">Downloading instructions…</string>
+    <string name="selfie_done_label">Selfie done!</string>
+    <string name="selfie_done_sub_label">Your selfie has been\nsuccessfully processed.</string>
+
+    <!--Liveness Actions-->
+    <string name="look_left" translatable="false">Turn your head to the left then\nback at the camera</string>
+    <string name="look_right" translatable="false">Turn your head to the right then\nback at the camera</string>
+    <string name="look_front" translatable="false">Look at the camera</string>
+    <string name="smile" translatable="false">Smile</string>
+    <string name="blink" translatable="false">Blink your eyes once</string>
+    <string name="show_id" translatable="false">Show your id to the camera</string>
+    <string name="read" translatable="false">Read the numbers out loud</string>
+
+    <string name="redo" translatable="false">Redo</string>
+    <string name="save" translatable="false">Save</string>
+
+    <!--Document Capture -->
+    <string name="position_your_card_into_the_frame" translatable="false">Position your card into the frame</string>
+    <string name="document_capture_done_label" translatable="false">Voila!</string>
+    <string name="document_capture_done_sub_label" translatable="false">Your document has been successfully uploaded.</string>
+    <string name="sign_here" translatable="false">Sign here</string>
+
+    <!-- Strings related to barcode scanner -->
+    <string name="title_scan_qr_code">Scan QR Code</string>
+    <string name="qr_code_scanner_notes">Place the code in the center of the\nsquare to scan automatically</string>
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+
+
 </resources>

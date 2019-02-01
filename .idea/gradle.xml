@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/mobiledata_demo" />
             <option value="$PROJECT_DIR$/mobiledatacollectiondemo" />
             <option value="$PROJECT_DIR$/onboarding_demo" />
-            <option value="$PROJECT_DIR$/verifimelib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

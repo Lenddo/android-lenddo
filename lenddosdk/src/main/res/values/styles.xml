@@ -63,7 +63,7 @@
         <item name="ttlm_backgroundColor">#ffffffff</item>
         <item name="ttlm_strokeWeight">2dip</item>
         <item name="ttlm_cornerRadius">8dip</item>
-        <item name="ttlm_overlayStyle">@style/ToolTipOverlayCustomStyle</item>
+        <!--<item name="ttlm_overlayStyle">@style/ToolTipOverlayCustomStyle</item>-->
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textAppearance">@style/TextAppearanceCustom</item>
     </style>
@@ -73,10 +73,10 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="ToolTipOverlayCustomStyle">
-        <item name="android:color">#ffff0000</item>
-        <item name="ttlm_repeatCount">999</item>
-        <item name="ttlm_duration">400</item>
-    </style>
+    <!--<style name="ToolTipOverlayCustomStyle">-->
+        <!--<item name="android:color">#ffff0000</item>-->
+        <!--<item name="ttlm_repeatCount">999</item>-->
+        <!--<item name="ttlm_duration">400</item>-->
+    <!--</style>-->
 
 </resources>
