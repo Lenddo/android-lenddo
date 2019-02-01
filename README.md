@@ -10,11 +10,10 @@ Table of Contents
    - [Adding the Lenddo Credentials](#adding-the-lenddo-credentials)
    - [Adding verifimelib Dependency](#adding-verifimelib-dependency)
 - [Initializing Lenddo SDK](#initializing-lenddo-sdk)
-- [Migrating from the old SDK](#migrating-from-the-old-sdk)
 - [Running the Demo Applications](#running-the-demo-applications)
 - [Lenddo Mobile Data Collection](#lenddo-mobile-data-collection)
-- [Connecting Social Networks to Lenddo](#connecting-social-networks-to-lenddo)
-- [Document capture using Verifi Me](#document-capture-using-verifi-me)
+- [Connecting Social Networks and eKYC](#connecting-social-networks-and-ekyc)
+
 
 ## Introduction
 The Lenddo SDK (lenddosdk module) allows you to collect information in order for LenddoEFL to verify the user's information and enhance its scoring capabilities. The Lenddo SDK connects to user's social networks and also collects information and mobile data in the background and can be activated as soon as the user has downloaded the app, granted permissions and logged into the app.
@@ -36,19 +35,19 @@ There may be also other partner specific values that you are required to set.
 
 ```gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 2. Add the dependency
 
 ```gradle
 dependencies {
-	        implementation 'com.github.lenddo.android-lenddo:lenddosdk:v2.0.0'
-	}
+    implementation 'com.github.lenddo.android-lenddo:lenddosdk:v2.0.0'
+}
 ```
 
 3. Sync Gradle

@@ -490,19 +490,13 @@ Dependending on the workflow configuration, the SDK will be able to perform eKYC
 
 The SDK will use the device camera to record a selfie snapshot and a video recording. It will require audio capture as well to record sound from the device's microphone. A series of simple instructions that the user needs to follow within a timeframe are provided.
 
-![selfie-liveness](selfie_liveness.jpg) 
-
 ## 8.2. Document Capture
 
 Based on the configuration, a set of required documents will be presented to the user and must be captured via the camera. Ensure that the image is clear and readable before submission.
 
-![document-capture](document_capture.jpg)
-
 ## 8.3. Signature Capture
 
 The screen is used for capturing signature using touch pen or finger touch. The user is allowed to clear and retry the signature capture before submission to get the best possible signature stroke.
-
-![signature-capture](signature_capture.jpg)
 
 # 9. Frequently Asked Questions
 
