@@ -22,7 +22,7 @@
 -keep public class com.lenddo.mobile.core.LenddoCoreUtils { public *; }
 -keep public class com.lenddo.mobile.core.listeners.* { public *; }
 -keep public class com.lenddo.mobile.core.Log { public *; }
--keep public class com.lenddo.mobile.core.models.* { public *; }
+-keepclasseswithmembers public class com.lenddo.mobile.core.models.* { *; }
 -keep public class com.lenddo.mobile.core.uiwidgets.* { public *; }
 -keep public class com.lenddo.mobile.core.uiwidgets.TimedAutoCompleteTextView { public *; }
 -keep public class com.lenddo.mobile.core.uiwidgets.TimedEditText { public *; }
@@ -41,7 +41,7 @@
 -keep public class com.lenddo.mobile.datasdk.listeners.NetworkStatusListener { public *; }
 -keep public class com.lenddo.mobile.datasdk.listeners.BrowserBatchQueryCallback { public *; }
 -keep public class com.lenddo.mobile.datasdk.listeners.OnLocationFoundListener { public *; }
--keep public class com.lenddo.mobile.datasdk.models.* { *; }
+-keepclasseswithmembers public class com.lenddo.mobile.datasdk.models.* { *; }
 -keep public class com.lenddo.mobile.datasdk.models.ClientOptions { public *; }
 -keep public class com.lenddo.mobile.datasdk.utils.AndroidDataUtils { public *; }
 # ONBOARDING SDK
@@ -56,14 +56,14 @@
 -keep public class com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.dialogs.AuthorizeCallbackCollector { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.listeners.* { public *; }
--keep public class com.lenddo.mobile.onboardingsdk.models.* { public *; }
+-keepclasseswithmembers public class com.lenddo.mobile.onboardingsdk.models.* { *; }
 -keep public class com.lenddo.mobile.onboardingsdk.utils.SignInHelper { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.utils.UIHelper { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.utils.Utils { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.widget.LenddoButton { public *; }
 -keep public class com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView { public *; }
 # VERIFIME SDK
--keep class com.lenddo.mobile.verifime.models.* { public *; }
+-keepclasseswithmembers class com.lenddo.mobile.verifime.models.* { *; }
 -keep class com.lenddo.mobile.verifime.listeners.OnVerifiMeQueryCompleteListener { public *; }
 -keep class com.lenddo.mobile.verifime.VerifiMe2Manager { public *; }
 -keep class com.lenddo.mobile.verifime.barcode.BarcodeCaptureActivity { public *; }
