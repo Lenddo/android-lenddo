@@ -15,7 +15,7 @@ public class CompleteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_generic);
-        TextView transactionInfo = (TextView)findViewById(R.id.transactionInformation);
+        TextView transactionInfo = findViewById(R.id.transactionInformation);
         Intent intent = getIntent();
         String clientId = intent.getStringExtra("client_id");
         transactionInfo.setText(Html.fromHtml("Your Client Id is: <b>" + clientId + "</b>"));

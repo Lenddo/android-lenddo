@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.lenddo.mobile.core.AuthV3ApiManager;
 import com.lenddo.mobile.core.LenddoCoreInfo;
 import com.lenddo.mobile.core.Log;
-import com.lenddo.mobile.core.http.BaseUrlConfig;
 import com.lenddo.mobile.core.models.GovernmentId;
 import com.lenddo.mobile.core.models.VerificationData;
 import com.lenddo.mobile.onboardingsdk.client.LenddoConstants;
@@ -27,11 +26,9 @@ import com.lenddo.mobile.onboardingsdk.client.LenddoEventListener;
 import com.lenddo.mobile.onboardingsdk.models.AuthorizationStatus;
 import com.lenddo.mobile.onboardingsdk.models.AutoCompleteQuery;
 import com.lenddo.mobile.onboardingsdk.models.FormDataCollector;
-import com.lenddo.mobile.onboardingsdk.utils.OnboardingConfiguration;
 import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
 import com.lenddo.mobile.onboardingsdk.widget.LenddoButton;
 import com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView;
-import com.lenddo.nativeonboarding.FacebookSignInHelper;
 import com.lenddo.nativeonboarding.GoogleSignInHelper;
 
 import java.text.DateFormat;
@@ -212,9 +209,9 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;
                 Log.i(TAG, "Changed hostname to: "+selected);
                 if (selected.contains("lendqa")) {
-                    LenddoConstants.BINARY_BASEURL = BaseUrlConfig.BASEURL_QA_BINARY;
+                    LenddoConstants.BINARY_BASEURL = "https://bin-api%s.lendqa.com";
                 } else {
-                    LenddoConstants.BINARY_BASEURL = BaseUrlConfig.BASEURL_PROD_BINARY;
+                    LenddoConstants.BINARY_BASEURL = "https://bin-api%s.partner-service.link";
                 }
             }
 
