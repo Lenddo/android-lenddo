@@ -55,7 +55,8 @@
         <activity
             android:name=".onboardingsdk.activities.DocumentPreviewActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".onboardingsdk.activities.SignatureCaptureActivity"
             android:screenOrientation="landscape"

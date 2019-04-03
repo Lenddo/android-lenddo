@@ -239,6 +239,13 @@
                 android:layout_height="wrap_content"
                 android:text="Enable Custom M Permission"/>
 
+            <CheckBox
+                android:id="@+id/cb_startAndroidWithContext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Start AndroidData using Context"/>
+
             <Button
                 android:id="@+id/btn_start"
                 android:layout_width="match_parent"
