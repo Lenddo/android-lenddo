@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
-    <!--<string name="partner_script_id">554959c49eb9ab1507e3d3b2</string>  &lt;!&ndash;ASSISTED PSYCHOMETRICS DURANT&ndash;&gt;-->
-    <!--<string name="partner_script_id">57f5da40a747d1910b6a3aeb</string>  &lt;!&ndash;ASSISTED PSYCHOMETRICS QA&ndash;&gt;-->
-
-    <string name="partner_script_id">5acb9172f7a57946e3c2a098</string>  <!--QA & PROD BCP UAT-->
-    <!--<string name="partner_script_id">5b35ef0a02139c000a46f7b7</string>  &lt;!&ndash;QA BESTGOODS&ndash;&gt;-->
-    <!--<string name="partner_script_id">5acb9172f7a57946e3c2a098</string>  &lt;!&ndash;QA & PROD!&ndash;&gt;-->
-    <!--<string name="partner_script_id">56b424e5aa9612216a72e8c7</string>  &lt;!&ndash;QA & PROD!&ndash;&gt;-->
-    <string name="google_client_id">25541455225-58h21n5tj36f2f8posma5er8ieuq539o.apps.googleusercontent.com</string>
+<resources>
+    <string name="partner_script_id">ENTER YOUR LENDDO PROVIDED PARTNER SCRIPT ID HERE</string>  <!--ASSISTED PSYCHOMETRICS QA-->
+    <string name="api_secret">ENTER YOUR LENDDO PROVIDED API SECRET HERE</string>
+    <string name="google_client_id">ENTER YOUR GOOGLE WEB CLIENT ID HERE</string>
 </resources>
