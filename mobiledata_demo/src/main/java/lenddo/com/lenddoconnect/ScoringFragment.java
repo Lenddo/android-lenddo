@@ -35,6 +35,7 @@ import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
  * create an instance of this fragment.
  */
 public class ScoringFragment extends Fragment implements View.OnClickListener {
+    private static String TAG = "DataSDK Demo";
     public static final int STATE_NOTSTARTED = 0;
     public static final int STATE_STARTED = 1;
     // TODO: Rename parameter arguments, choose names that match
@@ -74,6 +75,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableCalendarDisplayNameHashing;
     private CheckBox cb_enableCalendarEmailHashing;
     private CheckBox cb_enableCustomMPermission;
+    private CheckBox cb_startAndroidWithContext;
     private Button btn_start;
     private TextView tv_applicationId;
     private TextView tv_deviceId;
@@ -131,10 +133,10 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             PS_ID = getString(R.string.partner_script_id);
         } else {
             if (hostname.equalsIgnoreCase(getResources().getStringArray(R.array.hostnames)[0])) {
-                Log.i("DataSDK Demo", "Setting credentials to PROD.");
+                Log.i(TAG, "Setting credentials to PROD.");
                 PS_ID = getString(R.string.partner_script_id);
             } else if (hostname.equalsIgnoreCase(getResources().getStringArray(R.array.hostnames)[1])) {
-                Log.i("DataSDK Demo", "Setting credentials to PROD_KR.");
+                Log.i(TAG, "Setting credentials to PROD_KR.");
                 PS_ID = getString(R.string.partner_script_id_kr);
             }
         }
@@ -169,7 +171,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_start:
                 if (btn_start.getText().toString().equalsIgnoreCase("START DATA SDK")) {
-                    Log.d("DataSDK Demo", "START button pressed.");
+                    Log.d(TAG, "START button pressed.");
                     if (edt_applicationId.getText().length() > 0) {
                         tv_applicationId.setText(Html.fromHtml("Application ID: <b>" + edt_applicationId.getText().toString()));
                         enableWidgets(false);
@@ -177,9 +179,15 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>process currently running</b>"));
                         btn_start.setEnabled(false);
                         PS_ID = edt_partnerScriptId.getText().toString();
-                        LenddoCoreInfo.setDataPartnerScriptId(getContext(), PS_ID);
+                        LenddoCoreInfo.setDataPartnerScriptId(PS_ID);
                         AndroidData.setup(getContext(), generateClientOptions());
-                        AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
+                        if (cb_startAndroidWithContext.isChecked()) {
+                            Log.d(TAG, "Started Android Data collection using CONTEXT object");
+                            AndroidData.startAndroidDataWithContext(getActivity().getApplicationContext(), edt_applicationId.getText().toString());
+                        } else {
+                            Log.d(TAG, "Started Android Data collection using ACTIVITY object");
+                            AndroidData.startAndroidData(getActivity(), edt_applicationId.getText().toString());
+                        }
                     } else {
                         enableWidgets(true);
                         edt_applicationId.requestFocus();
@@ -187,7 +195,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                         btn_start.setEnabled(true);
                     }
                 } else if (btn_start.getText().toString().equalsIgnoreCase("STOP&CLEAR DATA SDK")) {
-                    Log.i("DataSDK Demo", "STOP button pressed. Clearing data.");
+                    Log.i(TAG, "STOP button pressed. Clearing data.");
                     AndroidData.clear(getContext());
                     updateDisplay(getContext());
                     btn_start.setText("START DATA SDK");
@@ -231,6 +239,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarDisplayNameHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarDisplayNameHashing);
         cb_enableCalendarEmailHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarEmailHashing);
         cb_enableCustomMPermission = (CheckBox) fragmentView.findViewById(R.id.cb_enableCustomMPermission);
+        cb_startAndroidWithContext = (CheckBox) fragmentView.findViewById(R.id.cb_startAndroidWithContext);
         btn_start = (Button) fragmentView.findViewById(R.id.btn_start);
         btn_start.setOnClickListener(this);
 
@@ -410,6 +419,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarDisplayNameHashing.setEnabled(isEnable);
         cb_enableCalendarEmailHashing.setEnabled(isEnable);
         cb_enableCustomMPermission.setEnabled(isEnable);
+        cb_startAndroidWithContext.setEnabled(isEnable);
     }
 
     private void loadOnboardingSDK() {
