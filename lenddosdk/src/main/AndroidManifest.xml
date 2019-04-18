@@ -31,6 +31,9 @@
         android:name="android.hardware.sensor.accelerometer"
         android:required="false" />
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
@@ -60,11 +63,8 @@
         <activity
             android:name=".onboardingsdk.activities.SignatureCaptureActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-        <activity
-            android:name=".onboardingsdk.activities.DocumentThankYouActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
