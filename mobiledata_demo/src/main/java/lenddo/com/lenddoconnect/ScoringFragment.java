@@ -48,6 +48,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private TextInputEditText edt_partnerScriptId;
     private Spinner spn_hostnames;
     private Spinner spn_connections;
+    private Spinner spn_forcedLocales;
     private CheckBox cb_enableDebugLogs;
     private CheckBox cb_enableSms;
     private CheckBox cb_enableCallLog;
@@ -212,6 +213,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         edt_partnerScriptId = (TextInputEditText) fragmentView.findViewById(R.id.edt_partnerScriptId);
         spn_hostnames = (Spinner) fragmentView.findViewById(R.id.spn_hostnames);
         spn_connections = (Spinner) fragmentView.findViewById(R.id.spn_connections);
+        spn_forcedLocales = (Spinner) fragmentView.findViewById(R.id.spn_forcedLocales);
         cb_enableDebugLogs = (CheckBox) fragmentView.findViewById(R.id.cb_enableDebugLogs);
         cb_enableSms = (CheckBox) fragmentView.findViewById(R.id.cb_enableSms);
         cb_enableCallLog = (CheckBox) fragmentView.findViewById(R.id.cb_enableCallLog);
@@ -263,6 +265,13 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             clientOptions.setWifiOnly(false);
         } else {
             clientOptions.setWifiOnly(true);
+        }
+        // Forced Locales
+        if (spn_forcedLocales.getSelectedItemPosition()>0) {
+            Log.d(TAG, "Forced Locale set to: " + spn_forcedLocales.getSelectedItem().toString());
+            clientOptions.setForcedLocale(spn_forcedLocales.getSelectedItem().toString());
+        } else if (spn_forcedLocales.getSelectedItemPosition() == 0) {
+            clientOptions.setForcedLocale("EN");
         }
         // Debug Logs
         clientOptions.enableLogDisplay(cb_enableDebugLogs.isChecked());
@@ -357,7 +366,6 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
                             tv_hasUploadedInitial.setText(Html.fromHtml("Data Sending Callback: <b>Failed: </b>") + t.getMessage());
                             btn_start.setEnabled(true);
                             loadOnboardingSDK();
-
                         }
                     });
                 }
@@ -392,6 +400,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         edt_partnerScriptId.setEnabled(isEnable);
         spn_hostnames.setEnabled(isEnable);
         spn_connections.setEnabled(isEnable);
+        spn_forcedLocales.setEnabled(isEnable);
         cb_enableDebugLogs.setEnabled(isEnable);
         cb_enableSms.setEnabled(isEnable);
         cb_enableCallLog.setEnabled(isEnable);

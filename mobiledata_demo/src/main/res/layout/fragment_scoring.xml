@@ -57,6 +57,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:entries="@array/connections"/>
+            <Spinner
+                android:id="@+id/spn_forcedLocales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:entries="@array/locales" />
             <CheckBox
                 android:id="@+id/cb_enableDebugLogs"
                 android:layout_width="match_parent"

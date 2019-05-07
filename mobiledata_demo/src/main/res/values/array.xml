@@ -24,6 +24,15 @@
         <item>twitter</item>
     </string-array>
 
+    <string-array name="locales">
+        <item>Do not force locale (LenddoSDK Default)</item>
+        <item>ES</item>
+        <item>IN</item>
+        <item>MS</item>
+        <item>TH</item>
+        <item>VI</item>
+    </string-array>
+
     <string-array name="countries_array">
         <item>Afghanistan</item>
         <item>Albania</item>
