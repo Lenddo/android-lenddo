@@ -10,7 +10,7 @@
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Memberikan akses</string>
-    <string name="permission_intro">Tolong beri kami izin akses ke Telepon, Kontak, Lokasi, dan Kalender untuk memberi kredit anda. Kami mengambil perlindungan data dengan sangat serius.</string>
+    <string name="permission_intro">Tolong beri kami izin akses ke %s untuk memberi kredit anda. Kami mengambil perlindungan data dengan sangat serius.</string>
     <string name="cancel_allcaps">BATALKAN</string>
     <string name="done_allcaps">SUDAH</string>
     <string name="back_allcaps">KEMBALI</string>
@@ -78,7 +78,6 @@
     <string name="recording_done">Recording done!</string>
     <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
     <string name="done">Done!</string>
-    <string name="uploading">Uploading</string>
     <string name="submit">Submit</string>
     <string name="retake">Retake</string>
     <string name="your_document_has_been_successfully_uploaded">Your %s has\nbeen successfully uploaded.</string>
