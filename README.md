@@ -46,7 +46,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.lenddo.android-lenddo:lenddosdk:v2.0.0'
+    implementation 'com.github.Lenddo:android-lenddo:v2.2.0'
 }
 ```
 
