@@ -24,6 +24,7 @@ Lenddo Data Collection
     3.  [Registering a Data Sending Completion Callback](#user-content-registering-a-data-sending-completion-callback)
     4.  [Enabling Log Messages](#user-content-enabling-log-messages)
     5.  [Customizing Permission Layout](#customizing-permission-layout)
+    6.  [Handling Error Callbacks](#handling-error-callbacks)
 
     
 ## Introduction 
@@ -370,4 +371,27 @@ The Lenddo Data SDK log messages are disabled by default and can be enabled manu
 ### Customizing Permission Layout
 
 For customization of permission layout please follow this [guide](customized_permission_layout.md)
+
+
+### Handling Error Callbacks
+
+As shown in the Data Sending Completion Callback above, the following are the possible error status codes and their meaning. These error codes are called in the `onDataSendingError()` method
+
+|     | startAndroidData()                                                               |
+|-----|----------------------------------------------------------------------------------|
+| 101 | Application id must not be null!                                                 |
+| 102 | DataSDK is already running, cancelling call to startAndroidData({applicationId}) |
+| 103 | Device Offline, no internet connection!                                          |
+| 100 | "User cancelled permission requests." Cancelled without sending any feedback     |
+| 104 | "User cancelled permission requests." Cancelled with feedback                    |
+
+|     | sendProviderAccessToken()                                                        |
+|-----|----------------------------------------------------------------------------------|
+| -1  | "Offline! Queueing..." This will be replaced by code 200                         |
+| -1  | "No service token! Queueing..." This will be replaced by code 201                |
+
+|     | setProviderAccessToken()                                                         |
+|-----|----------------------------------------------------------------------------------|
+| -1  | "Fields can not be empty!" This will be replaced by code 300                     |
+
 
