@@ -117,5 +117,19 @@
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission. The application can not proceed without this permission.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
 
+    <!-- Supervised Journey -->
+    <string name="title_staff_login" translatable="false">Staff Login</string>
+    <string name="otp_caption_1a" translatable="false">We will send you a text message with the One Time Password to enter on the next screen</string>
+    <string name="otp_caption_1b" translatable="false">Enter your phone number</string>
+    <string name="otp_caption_2a" translatable="false">We sent you a One Time Password to your mobile ********%s</string>
+    <string name="otp_caption_2b" translatable="false">Enter the OTP to login</string>
+    <string name="send" translatable="false">Send</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="otp_expires_in" translatable="false">OTP expires in %s</string>
+    <string name="resend_otp" translatable="false">Resend OTP</string>
+    <string name="error_otp_im_sorry_you_have_to_be_connected" translatable="false">I\'m sorry, you have to be connected to request an OTP.</string>
+    <string name="otp_verified" translatable="false">OTP Verified!</string>
+    <string name="each_time_you_logout" translatable="false">Each time you log out of the app, you will need to log in by entering a One Time Password again.</string>
+
 
 </resources>

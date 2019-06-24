@@ -14,6 +14,7 @@
     <color name="lenddo_white">#FFFFFF</color>
     <color name="lenddo_light_blue">#1E55C4</color>
     <color name="verifime_blue">#093d60</color>
+    <color name="verifime_button_grey">#B7B7B7</color>
     <color name="verifime_lt_blue">#0c5688</color>
     <color name="white">#55FFFFFF</color>
     <color name="blue_header_divider">#3e56a5</color>

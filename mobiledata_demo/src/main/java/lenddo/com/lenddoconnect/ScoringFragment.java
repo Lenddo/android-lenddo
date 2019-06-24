@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
@@ -68,6 +67,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableAccounts;
     private CheckBox cb_enableGmailLabels;
     private CheckBox cb_enableBluetooth;
+    private CheckBox cb_enableImei;
     private CheckBox cb_enableSmsBody;
     private CheckBox cb_enablePhoneNumberHashing;
     private CheckBox cb_enableContactsNameHAshing;
@@ -75,6 +75,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableCalendarOrganizerHashing;
     private CheckBox cb_enableCalendarDisplayNameHashing;
     private CheckBox cb_enableCalendarEmailHashing;
+    private CheckBox cb_enableImeiHashing;
     private CheckBox cb_enableCustomMPermission;
     private CheckBox cb_startAndroidWithContext;
     private Button btn_start;
@@ -117,8 +118,10 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         initViews(fragmentView);
         if (AndroidData.statisticsEnabled(getContext())) {
             edt_applicationId.setText(AndroidDataUtils.getApplicationId(getContext()));
-            edt_applicationId.setSelection(edt_applicationId.length());
+        } else {
+            edt_applicationId.setText(LenddoCoreInfo.generateApplicationId("DEMO_", 7));
         }
+        edt_applicationId.setSelection(edt_applicationId.length());
         isLoadOnboarding = false;
         return fragmentView;
     }
@@ -233,6 +236,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableAccounts = (CheckBox) fragmentView.findViewById(R.id.cb_enableAccounts);
         cb_enableGmailLabels = (CheckBox) fragmentView.findViewById(R.id.cb_enableGmailLabels);
         cb_enableBluetooth = (CheckBox) fragmentView.findViewById(R.id.cb_enableBluetooth);
+        cb_enableImei = (CheckBox) fragmentView.findViewById(R.id.cb_enableImei);
         cb_enableSmsBody = (CheckBox) fragmentView.findViewById(R.id.cb_enableSmsBody);
         cb_enablePhoneNumberHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
         cb_enableContactsNameHAshing = (CheckBox) fragmentView.findViewById(R.id.cb_enableContactsNameHashing);
@@ -240,6 +244,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarOrganizerHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarOrganizerHashing);
         cb_enableCalendarDisplayNameHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarDisplayNameHashing);
         cb_enableCalendarEmailHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarEmailHashing);
+        cb_enableImeiHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableImeiHashing);
         cb_enableCustomMPermission = (CheckBox) fragmentView.findViewById(R.id.cb_enableCustomMPermission);
         cb_startAndroidWithContext = (CheckBox) fragmentView.findViewById(R.id.cb_startAndroidWithContext);
         btn_start = (Button) fragmentView.findViewById(R.id.btn_start);
@@ -298,6 +303,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (!cb_enableAccounts.isChecked()) clientOptions.disableAccountsInfoCollection();
         if (!cb_enableGmailLabels.isChecked()) clientOptions.disableGmailLabelsInfoCollection();
         if (!cb_enableBluetooth.isChecked()) clientOptions.disableBluetoothInfoCollection();
+        if (!cb_enableImei.isChecked()) clientOptions.disableImeiCollection();
         // SMS Body Content
         if (!cb_enableSmsBody.isChecked()) clientOptions.disableSMSBodyCollection();
         //Data Hashing
@@ -309,6 +315,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (cb_enableCalendarDisplayNameHashing.isChecked())
             clientOptions.enableCalendarDisplayNameHashing();
         if (cb_enableCalendarEmailHashing.isChecked()) clientOptions.enableCalendarEmailHashing();
+        if (cb_enableImeiHashing.isChecked()) clientOptions.enableImeiHashing();
         //Custom M Permisson
         if (cb_enableCustomMPermission.isChecked()) {
             clientOptions.setCustomMPermissionLayout(
@@ -420,6 +427,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableAccounts.setEnabled(isEnable);
         cb_enableGmailLabels.setEnabled(isEnable);
         cb_enableBluetooth.setEnabled(isEnable);
+        cb_enableImei.setEnabled(isEnable);
         cb_enableSmsBody.setEnabled(isEnable);
         cb_enablePhoneNumberHashing.setEnabled(isEnable);
         cb_enableContactsNameHAshing.setEnabled(isEnable);
@@ -427,6 +435,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarOrganizerHashing.setEnabled(isEnable);
         cb_enableCalendarDisplayNameHashing.setEnabled(isEnable);
         cb_enableCalendarEmailHashing.setEnabled(isEnable);
+        cb_enableImeiHashing.setEnabled(isEnable);
         cb_enableCustomMPermission.setEnabled(isEnable);
         cb_startAndroidWithContext.setEnabled(isEnable);
     }

@@ -203,10 +203,10 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selected = adapterView.getItemAtPosition(i).toString();
                 if (selected.equals("https://authorize-api.partner-service.link")) {
-                    if (AuthV3ApiManager.getInstance().getApiRegion().isEmpty()) {
+                    if (AuthV3ApiManager.getInstance(getApplicationContext()).getApiRegion().isEmpty()) {
                         selected = "https://authorize-api%s.partner-service.link";
                     } else {
-                        selected = AuthV3ApiManager.getInstance().getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
+                        selected = AuthV3ApiManager.getInstance(getApplicationContext()).getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
                     }
                 }
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;

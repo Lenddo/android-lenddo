@@ -11,7 +11,6 @@ public class SimpleLoan extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        AndroidData.clear(getApplicationContext());
         LenddoCoreInfo.initCoreInfo(getApplicationContext());
         ClientOptions clientOptions = new ClientOptions();
         clientOptions.enableLogDisplay(BuildConfig.DEBUG);

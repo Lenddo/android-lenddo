@@ -17,9 +17,9 @@
     <string name="submit_allcaps">MENGAJUKAN</string>
     <string name="continue_allcaps">LANJUTKAN</string>
     <string name="learn_more">Belajarlah Lagi</string>
-    <string name="dismiss_allcaps">DISMISS</string>
+    <string name="dismiss_allcaps">ABAIKAN</string>
     <string name="no_thanks_allcaps">NO THANKS</string>
-    <string name="retry_allcaps">RETRY</string>
+    <string name="retry_allcaps">COBA LAGI</string>
     <string name="send_feedback_allcaps">SEND FEEDBACK</string>
 
     <string name="permission_rationale_partial">Untuk terus menggunakan aplikasi, Anda harus memberikan izin berikut:</string>
@@ -31,7 +31,7 @@
     <string name="permission_title_contacts">Kontak</string>
     <string name="permission_title_calendar">Kalender</string>
     <string name="permission_title_media">Foto/Media/Arsip</string>
-    <string name="permission_title_accounts">Accounts</string>
+    <string name="permission_title_accounts">Aku</string>
 
     <string name="permission_detail_sms">Kami memanfaatkan akses terhadap pesan SMS Anda untuk memastikan daftar orang-orang yang paling sering Anda kirimi pesan. Hal ini membantu kita membangun "social graph" dengan memanfaatkan data yang Anda berikan kepada kami.</string>
     <string name="permission_detail_phone">Kami mempergunakan status telepon untuk mendapatkan ID perangkat Android Anda, yang dikirim ke server Kami dan digunakan untuk tujuan analisis dan pelaporan. Kami mengakses log panggilan Anda untuk menentukan daftar orang yang paling sering Anda hubungi. Hal ini membantu kita membangun "social graph" dengan memanfaatkan data yang Anda berikan kepada kami.</string>
@@ -39,7 +39,7 @@
     <string name="permission_detail_contacts">Kami mengakses kontak Anda untuk menentukan daftar orang yang ada dalam daftar kontak Anda. Hal ini membantu kita membangun _social graph_ dengan memanfaatkan data yang Anda berikan kepada kami. Kami tidak akan menggunakan informasi ini untuk menghubungi teman Anda.</string>
     <string name="permission_detail_calendar">Memiliki akses ke kalender Anda membantu kita menentukan waktu tersibuk Anda. Orang-orang yang sibuk siang hari memiliki perilaku kredit yang berbeda dibanding orang yang sibuk di malam hari. Kami menggunakan ini sebagai indikator untuk membangun nilai kredit Anda.</string>
     <string name="permission_detail_media">Kami menggunakan akses baca terhadap foto/media/file untuk mendapatkan informasi lokasi geografis dari file gambar dan video. Hal ini akan membantu kami untuk melakukan prakiraan yang cukup akurat terhadap lokasi yang paling sering anda kunjungi. Kami menggunakan ini sebagai masukan untuk membangun score kredit anda.</string>
-    <string name="permission_detail_accounts">We use read access to your Google accounts linked to your device. We use this as a signal for building your credit score.</string>
+    <string name="permission_detail_accounts">Kami menggunakan akses baca terhadap akun Google yang terhubung dengan perangkat Anda. Hal ini digunakan untuk membentuk nilai kredit anda.</string>
 
     <string name="feedback_title">Bantu kami memperbaiki</string>
     <string name="feedback_inquiry">Mengapa Anda tak bersedia memberikan izin pada kami?</string>
@@ -59,17 +59,17 @@
     <string name="validation_msg_invalid_email_format">Invalid email format.</string>
 
     <!--Permission confirmation-->
-    <string name="permission_cancel_dialog_title">Important!</string>
-    <string name="permission_cancel_dialog_message">Are you sure you want to cancel this operation.</string>
-    <string name="permission_cancel_dialog_positive_key">YES</string>
-    <string name="permission_cancel_dialog_negative_key">NO</string>
+    <string name="permission_cancel_dialog_title">Penting!</string>
+    <string name="permission_cancel_dialog_message">Apakah Anda yakin ingin membatalkan?</string>
+    <string name="permission_cancel_dialog_positive_key">Ya</string>
+    <string name="permission_cancel_dialog_negative_key">Tidak</string>
 
     <!--Permission dismiss-->
-    <string name="permission_rationale_important_message">You can still allow these permissions by choosing RE-TRY or you may choose DISMISS so you will no longer be asked for permissions.</string>
-    <string name="permission_dismiss_dialog_title">Important!</string>
-    <string name="permission_dismiss_dialog_message">Are you sure you want to continue without granting all permission?</string>
-    <string name="permission_dismiss_dialog_positive_key">YES</string>
-    <string name="permission_dismiss_dialog_negative_key">NO</string>
+    <string name="permission_rationale_important_message">Anda dapat masih memberikan izin dengan memilih Coba Lagi atau pilih Abaikan untuk tidak ingin ditanyakan kembali.</string>
+    <string name="permission_dismiss_dialog_title">Penting!</string>
+    <string name="permission_dismiss_dialog_message">Apakah Anda yakin ingin melanjutkan tanpa memberikan semua izin?</string>
+    <string name="permission_dismiss_dialog_positive_key">Ya</string>
+    <string name="permission_dismiss_dialog_negative_key">Tidak</string>
 
     <!--Liveness Detection-->
     <string name="liveness_initial_instruction">Position your face within the outline</string>

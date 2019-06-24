@@ -57,6 +57,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:entries="@array/connections"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Forced Locale:"/>
             <Spinner
                 android:id="@+id/spn_forcedLocales"
                 android:layout_width="match_parent"
@@ -184,6 +191,12 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="Enable Bluetooth data collection"/>
+            <CheckBox
+                android:id="@+id/cb_enableImei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Enable IMEI data collection"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -231,6 +244,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enable Calendar Email hashing"/>
+            <CheckBox
+                android:id="@+id/cb_enableImeiHashing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable IMEI hashing"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -45,8 +45,8 @@ public class FacebookSignInHelper implements SignInHelper {
 
     // Do Native Login
     public void signIn(WebAuthorizeFragment fragment, int RC_SIGN_IN, String clientId, ArrayList<String> scopes) {
-
         mFragment = fragment;
+        final Context context = mFragment.getActivity().getApplicationContext();
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -58,25 +58,25 @@ public class FacebookSignInHelper implements SignInHelper {
                 profileSigninBody.client_id = FacebookSdk.getApplicationId();
                 profileSigninBody.id_token = loginResult.getAccessToken().getUserId();
 
-                onboardFacebookSignin(mFragment.getActivity().getApplicationContext(),
+                onboardFacebookSignin(context,
                         generateProfileClientTokenFacebookRequestBody(),
-                        AuthV3ApiManager.getInstance().getServiceToken().token, new OnLenddoQueryCompleteListener() {
+                        AuthV3ApiManager.getInstance(context).getServiceToken().token, new OnLenddoQueryCompleteListener() {
                             @Override
                             public void onComplete(String rawResponse) {
                                 Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/success");
+                                mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/success");
                             }
 
                             @Override
                             public void onError(int statusCode, String rawResponse) {
                                 Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                                mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
                             }
 
                             @Override
                             public void onFailure(Throwable throwable) {
                                 Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                                mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
                             }
                         });
             }
@@ -84,13 +84,13 @@ public class FacebookSignInHelper implements SignInHelper {
             @Override
             public void onCancel() {
                 Log.e(TAG, "FB Login Cancel!");
-                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/cancel");
+                mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/cancel");
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.e(TAG, "FB Login Error! :"+error.toString());
-                mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
             }
         });
 
@@ -119,7 +119,7 @@ public class FacebookSignInHelper implements SignInHelper {
     }
 
     private void onboardFacebookSignin(final Context context, String request, String servicetoken, final OnLenddoQueryCompleteListener listener) {
-        AuthV3ApiManager.getInstance().postProfilesClientToken("facebook", request, servicetoken, new OnLenddoQueryCompleteListener() {
+        AuthV3ApiManager.getInstance(context).postProfilesClientToken("facebook", request, servicetoken, new OnLenddoQueryCompleteListener() {
             @Override
             public void onComplete(String rawResponse) {
                 Log.i(TAG, "onboardFacebookSignin(): "+rawResponse);

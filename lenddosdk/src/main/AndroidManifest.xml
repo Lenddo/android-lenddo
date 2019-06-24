@@ -57,14 +57,14 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".onboardingsdk.activities.DocumentPreviewActivity"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".onboardingsdk.activities.SignatureCaptureActivity"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".onboardingsdk.activities.SelfieOnlyActivity"
             android:launchMode="singleTop"
