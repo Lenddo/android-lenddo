@@ -3,13 +3,13 @@
     <domain-config>
         <domain includeSubdomains="true">authorize-api.partner-service.link</domain>
         <trust-anchors>
-            <certificates src="@raw/certdata"/>
+            <certificates src="@raw/certdata_prod"/>
         </trust-anchors>
     </domain-config>
     <domain-config>
         <domain includeSubdomains="true">authorize-api.lendqa.com</domain>
         <trust-anchors>
-            <certificates src="@raw/certdata"/>
+            <certificates src="@raw/certdata_qa"/>
         </trust-anchors>
     </domain-config>
 </network-security-config>

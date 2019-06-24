@@ -4,7 +4,6 @@ import android.support.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 
-
 public class App extends MultiDexApplication {
 
     @Override

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
+import com.lenddo.mobile.core.LenddoCoreUtils;
 
 
 public class DemoActivity extends AppCompatActivity implements OnFragmentInteractionListener{
@@ -57,6 +58,7 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        LenddoCoreUtils.checkGooglePlayServices(this);
     }
 
 

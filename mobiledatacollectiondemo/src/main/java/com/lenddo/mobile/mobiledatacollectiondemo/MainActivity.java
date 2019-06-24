@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Configure a Data Sending Completion Callback for the Lenddo SDK
-        DataManager.getInstance().getClientOptions().registerDataSendingCompletionCallback(new OnDataSendingCompleteCallback() {
+        DataManager.getInstance(getApplicationContext()).getClientOptions().registerDataSendingCompletionCallback(new OnDataSendingCompleteCallback() {
             @Override
             public void onDataSendingSuccess() {
                 runOnUiThread(new Runnable() {

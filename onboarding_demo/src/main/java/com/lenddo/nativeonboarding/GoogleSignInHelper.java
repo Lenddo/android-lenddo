@@ -24,6 +24,8 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.gson.JsonObject;
 import com.lenddo.mobile.core.AuthV3ApiManager;
+import com.lenddo.mobile.core.LenddoCoreInfo;
+import com.lenddo.mobile.core.LenddoCoreUtils;
 import com.lenddo.mobile.core.Log;
 import com.lenddo.mobile.core.listeners.OnLenddoQueryCompleteListener;
 import com.lenddo.mobile.onboardingsdk.dialogs.WebAuthorizeFragment;
@@ -141,7 +143,7 @@ public class GoogleSignInHelper implements SignInHelper {
     }
 
     private void onboardGoogleSignin(final Context context, String request, String servicetoken, final OnLenddoQueryCompleteListener listener) {
-        AuthV3ApiManager.getInstance().postProfilesClientToken("google", request, servicetoken, new OnLenddoQueryCompleteListener() {
+        AuthV3ApiManager.getInstance(context).postProfilesClientToken("google", request, servicetoken, new OnLenddoQueryCompleteListener() {
             @Override
             public void onComplete(String rawResponse) {
                 Log.i(TAG, "onboardGoogleSignin(): "+rawResponse);
@@ -249,6 +251,7 @@ public class GoogleSignInHelper implements SignInHelper {
 
                 @Override
                 protected void onPostExecute(GoogleTokenResponse tokenResponse) {
+                    final Context context = mFragment.getActivity().getApplicationContext();
                     if (tokenResponse != null) {
                         String accessToken = tokenResponse.getAccessToken();
                         String refreshToken = tokenResponse.getRefreshToken();
@@ -256,38 +259,38 @@ public class GoogleSignInHelper implements SignInHelper {
                         Log.d(TAG, "refreshToken: " + refreshToken);
                         googleSigninBody.access_token = accessToken;
                         googleSigninBody.refresh_token = refreshToken;
-                        onboardGoogleSignin(mFragment.getActivity().getApplicationContext(),
+                        onboardGoogleSignin(context,
                                 generateProfileClientTokenGoogleRequestBody(),
-                                AuthV3ApiManager.getInstance().getServiceToken().token, new OnLenddoQueryCompleteListener() {
+                                AuthV3ApiManager.getInstance(context).getServiceToken().token, new OnLenddoQueryCompleteListener() {
                                     @Override
                                     public void onComplete(String rawResponse) {
                                         Log.d(TAG, "onPostExecute(): "+rawResponse);
-                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/success");
+                                        mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/success");
                                         signOut();
                                     }
 
                                     @Override
                                     public void onError(int statusCode, String rawResponse) {
                                         Log.e(TAG, "onPostExecute() Error: "+rawResponse);
-                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                                        mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
                                     }
 
                                     @Override
                                     public void onFailure(Throwable throwable) {
                                         Log.e(TAG, "onPostExecute() Failure: "+throwable.getMessage());
-                                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                                        mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
                                     }
                                 });
                     } else {
                         Log.e(TAG, "Encountered context == null while onPostExecute()");
-                        mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl()+"/sync/error");
+                        mFragment.syncUrl(AuthV3ApiManager.getInstance(context).getBaseUrl()+"/sync/error");
                     }
                 }
             };
             task.execute();
         }
         else {
-            mFragment.loadURL(null, AuthV3ApiManager.getInstance().getBaseUrl() + "/sync/error");
+            mFragment.syncUrl(AuthV3ApiManager.getInstance(mFragment.getActivity().getApplicationContext()).getBaseUrl() + "/sync/error");
         }
     }
 
