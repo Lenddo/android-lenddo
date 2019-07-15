@@ -30,6 +30,10 @@ android {
             exclude group: 'com.google.guava', module: 'listenablefuture'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
