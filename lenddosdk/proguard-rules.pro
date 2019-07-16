@@ -19,7 +19,7 @@
 -keep public class com.lenddo.mobile.core.callbacks.** { *; }
 -keep public class com.lenddo.mobile.core.http.AuthV3ApiClient { public *; }
 -keep public class com.lenddo.mobile.core.http.BaseUrlConfig { public *; }
--keep public class com.lenddo.mobile.core.http.BinaryApiClient { public *; }./copy
+-keep public class com.lenddo.mobile.core.http.BinaryApiClient { public *; }
 -keep public class com.lenddo.mobile.core.http.LenddoOkHttp { public *; }
 -keep public class com.lenddo.mobile.core.http.LenddoHttpOptions { public *; }
 -keep public class com.lenddo.mobile.core.LenddoCoreInfo { public *; }
