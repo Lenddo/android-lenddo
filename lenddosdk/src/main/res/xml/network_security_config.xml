@@ -12,4 +12,10 @@
             <certificates src="@raw/certdata_qa"/>
         </trust-anchors>
     </domain-config>
+    <domain-config>
+        <domain includeSubdomains="true">s3-ap-southeast-1.amazonaws.com</domain>
+        <trust-anchors>
+            <certificates src="@raw/certdata_aws" />
+        </trust-anchors>
+    </domain-config>
 </network-security-config>
