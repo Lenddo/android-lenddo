@@ -17,7 +17,11 @@
 # CORE SDK
 -keep public class com.lenddo.mobile.core.AuthV3ApiManager { public *; }
 -keep public class com.lenddo.mobile.core.callbacks.** { *; }
+-keep public class com.lenddo.mobile.core.http.AuthV3ApiClient { public *; }
 -keep public class com.lenddo.mobile.core.http.BaseUrlConfig { public *; }
+-keep public class com.lenddo.mobile.core.http.BinaryApiClient { public *; }./copy
+-keep public class com.lenddo.mobile.core.http.LenddoOkHttp { public *; }
+-keep public class com.lenddo.mobile.core.http.LenddoHttpOptions { public *; }
 -keep public class com.lenddo.mobile.core.LenddoCoreInfo { public *; }
 -keep public class com.lenddo.mobile.core.LenddoCoreUtils { public *; }
 -keep public class com.lenddo.mobile.core.listeners.* { public *; }
@@ -33,7 +37,7 @@
 -keep public class com.lenddo.mobile.datasdk.core.analytics.FormFillingAnalytics { public *; }
 -keep public class com.lenddo.mobile.datasdk.DataManager {
      public com.lenddo.mobile.datasdk.models.ClientOptions getClientOptions();
-     public static synchronized com.lenddo.mobile.datasdk.DataManager getInstance();
+     public static synchronized com.lenddo.mobile.datasdk.DataManager getInstance(*);
      public void setClientOptions(com.lenddo.mobile.datasdk.models.ClientOptions);
 }
 -keep public class com.lenddo.mobile.datasdk.mpermission.MPermissionActivity { public static <fields>; }
@@ -68,9 +72,11 @@
 -keep class com.lenddo.mobile.verifime.listeners.OnVerifiMeQueryCompleteListener { public *; }
 -keep class com.lenddo.mobile.verifime.VerifiMe2Manager { public *; }
 -keep class com.lenddo.mobile.verifime.barcode.BarcodeCaptureActivity { *; }
+# WING LAUNCHER SDK
+-keep class com.lenddo.mobile.wingloans.** { *; }
 
 #Google
--keep public class com.google.android.gms.* { public *; }
+-keep class com.google.android.gms.* { *; }
 -dontwarn com.google.android.gms.**
 
 # Extends
