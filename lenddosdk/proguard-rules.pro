@@ -37,7 +37,7 @@
 -keep public class com.lenddo.mobile.datasdk.core.analytics.FormFillingAnalytics { public *; }
 -keep public class com.lenddo.mobile.datasdk.DataManager {
      public com.lenddo.mobile.datasdk.models.ClientOptions getClientOptions();
-     public static synchronized com.lenddo.mobile.datasdk.DataManager getInstance(*);
+     public static synchronized com.lenddo.mobile.datasdk.DataManager getInstance(android.content.Context);
      public void setClientOptions(com.lenddo.mobile.datasdk.models.ClientOptions);
 }
 -keep public class com.lenddo.mobile.datasdk.mpermission.MPermissionActivity { public static <fields>; }
