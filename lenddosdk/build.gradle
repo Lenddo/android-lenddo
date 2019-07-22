@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: "kotlin-kapt"
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -11,8 +11,9 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 17
-        versionName "2.4.0"
+        versionName "2.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     packagingOptions {
@@ -67,7 +68,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'com.github.jom16antonio:android-target-tooltip:1.3.15'
     implementation 'com.github.jom16antonio:CameraView:v1.6.1'
-    implementation 'com.bugfender.sdk:android:1.1.5'
+    implementation 'com.bugfender.sdk:android:1.1.7'
+    implementation 'com.android.support:multidex:1.0.3'
 
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.12'
