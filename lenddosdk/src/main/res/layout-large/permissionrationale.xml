@@ -321,7 +321,8 @@
             android:text="@string/back_allcaps"
             android:minHeight="0dp"
             android:textColor="#FFFFFF"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:layout_marginRight="12dp"/>
 
         <Button
             android:id="@+id/btn_perm_rationale_dismiss"
@@ -332,7 +333,8 @@
             android:text="@string/dismiss_allcaps"
             android:minHeight="0dp"
             android:textColor="#FFFFFF"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:layout_marginRight="12dp"/>
 
         <Button
             android:id="@+id/btn_perm_rationale_retry"

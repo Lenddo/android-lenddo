@@ -88,7 +88,8 @@
             android:minHeight="0dp"
             android:text="@string/cancel_allcaps"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_marginRight="12dp"/>
 
         <Button
             android:id="@+id/btn_perm_intro_continue"

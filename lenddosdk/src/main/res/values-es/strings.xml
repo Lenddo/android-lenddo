@@ -10,8 +10,8 @@
 
     <!--Lenddo Data SDK Strings-->
     <string name="grant_access">Permitir Acceso</string>
-    <string name="permission_intro">Para construir tu perfil crediticio por favor danos 7 permisos para acceder a tu información y analizarla.\n\nPuedes elegir libremente que accesos concedes, pero ten en cuenta que las posibilidades de aprobación de tu crédito serán mayores si otorgas más permisos a tu información.\n</string>
-    <string name="back_allcaps">REGRESO</string>
+    <string name="permission_intro">Para construir tu perfil crediticio por favor danos permisos %s para acceder a tu información y analizarla.\n\nPuedes elegir libremente que accesos concedes, pero ten en cuenta que las posibilidades de aprobación de tu crédito serán mayores si otorgas más permisos a tu información.\n</string>
+    <string name="back_allcaps">REGRESAR</string>
     <string name="cancel_allcaps">CANCELAR</string>
     <string name="done_allcaps">HECHO</string>
     <string name="submit_allcaps">SUBMIT</string>
