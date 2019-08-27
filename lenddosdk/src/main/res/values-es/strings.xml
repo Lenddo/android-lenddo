@@ -22,7 +22,7 @@
     <string name="retry_allcaps">REINTENTAR</string>
     <string name="send_feedback_allcaps">ENVIAR COMENTARIOS</string>
 
-    <string name="permission_rationale_partial">Has negado el permiso para:</string>
+    <string name="permission_rationale_partial">Vamos a desarrollar tu perfil crediticio a partir de los patrones de uso del teléfono. Para eso danos acceso a:</string>
     <string name="permission_rationale_complete">Vamos a desarrollar tu perfil crediticio a partir de los patrones de uso del teléfono. Para eso danos acceso a:</string>
 
     <string name="permission_title_sms">Mensajes de Texto</string>
