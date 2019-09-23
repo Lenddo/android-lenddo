@@ -47,5 +47,5 @@ dependencies {
     implementation 'com.google.api-client:google-api-client-android:1.22.0'
     implementation 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
 
-    implementation 'com.facebook.android:facebook-login:4.39.0'
+    implementation 'com.facebook.android:facebook-login:5.4.0'
 }
