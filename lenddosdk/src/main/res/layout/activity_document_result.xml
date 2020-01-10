@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp"
+    android:paddingBottom="24dp"
+    android:background="@android:color/white"
+    tools:context=".onboardingsdk.activities.DocumentResultActivity">
+
+    <TextView
+        android:id="@+id/doc_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/something_is_wrong_with_your_photo"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/doc_result_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/doc_result_title"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/doc_result_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toBottomOf="@id/doc_result_img"
+        app:layout_constraintBottom_toTopOf="@id/doc_result_retake_button"/>
+
+    <Button
+        android:id="@+id/doc_result_retake_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/retake_photo"
+        android:background="@drawable/selector_button_bg"
+        android:gravity="center"
+        android:layout_marginBottom="14dp"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/doc_result_use_this_tv"/>
+
+    <TextView
+        android:id="@+id/doc_result_use_this_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/use_this_photo"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</android.support.constraint.ConstraintLayout>

@@ -249,6 +249,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enable IMEI hashing"/>
+            <CheckBox
+                android:id="@+id/cb_enableAccountEmailHashing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable Account Email hashing"/>
 
             <TextView
                 android:layout_width="wrap_content"

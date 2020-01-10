@@ -78,7 +78,33 @@
     <string name="recording_done">Recording done!</string>
     <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
     <string name="done">สำเร็จ</string>
+    <string name="processing">Processing</string>
     <string name="submit">่ง</string>
     <string name="retake">ทำอีกครั้ง</string>
     <string name="your_document_has_been_successfully_uploaded">Your %s has\nbeen successfully uploaded.</string>
+    <string name="downloading_instructions">Downloading instructions…</string>
+    <string name="selfie_done_label">Selfie done!</string>
+    <string name="selfie_done_sub_label">Your selfie has been\nsuccessfully processed.</string>
+    <string name="selfie_instruction_back_cam">Position the face within the outline</string>
+    <string name="selfie_press_icon">Press the icon to take a photo</string>
+    <string name="title_scan_qr_code">Scan QR Code</string>
+    <string name="qr_code_scanner_notes">Place the code in the center of the square to scan automatically</string>
+    <string name="is_the_image_clear">Is the image clear?</string>
+
+    <!--Document Capture -->
+    <string name="position_your_card_into_the_frame">Position your card into the frame</string>
+    <string name="document_capture_done_label">Voila!</string>
+    <string name="document_capture_done_sub_label">Your document has been successfully uploaded.</string>
+    <string name="sign_here">Sign here</string>
+    <string name="add_another_page">+ Add another page</string>
+    <string name="document_submitted">Document submitted!</string>
+    <string name="the_document_has_been_successfully_processed">Page %s of your %s has been successfully processed.</string>
+
+    <string name="global_position_document">Position page %s of your %s in the frame</string>
+    <string name="global_upload_on_error">Internet Error. Please check your connection.</string>
+    <string name="global_upload_on_failure">Internet Failure. Please check your connection.</string>
+    <string name="global_upload_failed">Upload failed. Please try again.</string>
+    <string name="qr_scanner">QR Scanner</string>
+    <string name="confirm">Confirm</string>
+    <string name="are_you_sure_you_want_to_cancel">Are you sure you want to cancel?</string>
 </resources>

@@ -84,102 +84,88 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_form);
 
-        button = (LenddoButton) findViewById(R.id.verifyButton);
+        button = findViewById(R.id.verifyButton);
 
-        lastName = (EditText) findViewById(R.id.editTextLastName);
-        middleName = (EditText) findViewById(R.id.editTextMiddleName);
-        firstName = (EditText) findViewById(R.id.editTextFirstName);
-        university = (OnlineAutoCompleteTextView) findViewById(R.id.editTextUniversity);
+        lastName = findViewById(R.id.editTextLastName);
+        middleName = findViewById(R.id.editTextMiddleName);
+        firstName = findViewById(R.id.editTextFirstName);
+        university = findViewById(R.id.editTextUniversity);
         setUniversityHints();
 
-        houseNumber = (EditText) findViewById(R.id.editTextHouseNumber);
-        street = (EditText) findViewById(R.id.editTextStreetName);
-        barangay = (EditText) findViewById(R.id.editTextBarangay);
-        city = (EditText) findViewById(R.id.editTextMunicipality);
-        province = (EditText) findViewById(R.id.editTextProvince);
-        postalCode = (EditText)findViewById(R.id.editTextPostalCode);
+        houseNumber = findViewById(R.id.editTextHouseNumber);
+        street = findViewById(R.id.editTextStreetName);
+        barangay = findViewById(R.id.editTextBarangay);
+        city = findViewById(R.id.editTextMunicipality);
+        province = findViewById(R.id.editTextProvince);
+        postalCode = findViewById(R.id.editTextPostalCode);
 
-        motherLastName = (EditText) findViewById(R.id.editTextMotherLastName);
-        motherFirstName = (EditText) findViewById(R.id.editTextMotherFirstName);
-        motherMiddleName = (EditText) findViewById(R.id.editTextMotherMiddleName);
+        motherLastName = findViewById(R.id.editTextMotherLastName);
+        motherFirstName = findViewById(R.id.editTextMotherFirstName);
+        motherMiddleName = findViewById(R.id.editTextMotherMiddleName);
 
-        email = (EditText) findViewById(R.id.editTextEmail);
-        work_email = (EditText) findViewById(R.id.editTextWorkEmail);
-        dateOfBirth = (TextView) findViewById(R.id.editTextDateOfBirth);
-        dobButton = (Button) findViewById(R.id.dobButton);
+        email = findViewById(R.id.editTextEmail);
+        work_email = findViewById(R.id.editTextWorkEmail);
+        dateOfBirth = findViewById(R.id.editTextDateOfBirth);
+        dobButton = findViewById(R.id.dobButton);
 
-        editTextEmploymentStart = (TextView)findViewById(R.id.editTextEmploymentStartDate);
-        editTextEmploymentEnd = (TextView)findViewById(R.id.editTextEmploymentEndDate);
-        employmentStartDateButton = (Button)findViewById(R.id.employmentStartButton);
-        employmentEndDateButton = (Button)findViewById(R.id.employmentEndButton);
+        editTextEmploymentStart = findViewById(R.id.editTextEmploymentStartDate);
+        editTextEmploymentEnd = findViewById(R.id.editTextEmploymentEndDate);
+        employmentStartDateButton = findViewById(R.id.employmentStartButton);
+        employmentEndDateButton = findViewById(R.id.employmentEndButton);
 
-        loanAmount = (EditText) findViewById(R.id.editTextLoanAmount);
-        gender = (Spinner) findViewById(R.id.spinnerGender);
-        sourceOfFunds = (Spinner) findViewById(R.id.spinnerSourceOfFunds);
-        nameOfEmployer = (OnlineAutoCompleteTextView) findViewById(R.id.editTextNameOfEmployer);
+        loanAmount = findViewById(R.id.editTextLoanAmount);
+        gender = findViewById(R.id.spinnerGender);
+        sourceOfFunds = findViewById(R.id.spinnerSourceOfFunds);
+        nameOfEmployer = findViewById(R.id.editTextNameOfEmployer);
         setEmployerHints();
-        homePhone = (TextView)findViewById(R.id.editTextPrimaryNumber);
-        mobilePhone = (TextView) findViewById(R.id.editTextMobileNumber);
-        customerId = (TextView) findViewById(R.id.editTextCustomerId);
-        customerId.setText(String.valueOf(LenddoCoreInfo.generateApplicationId("DEMO_", 5)));
+        homePhone = findViewById(R.id.editTextPrimaryNumber);
+        mobilePhone = findViewById(R.id.editTextMobileNumber);
+        customerId = findViewById(R.id.editTextCustomerId);
+        customerId.setText(LenddoCoreInfo.generateApplicationId("DEMO", 5));
 
-        dobButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                // Create a new instance of DatePickerDialog and return it
-                final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        c.set(year, monthOfYear, dayOfMonth);
-                        dateOfBirth.setText(c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.YEAR));
-                    }
-                }, year, month, day);
-                datePicker.show();
-            }
+        dobButton.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            // Create a new instance of DatePickerDialog and return it
+            final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this,
+                    (view, year13, monthOfYear, dayOfMonth) -> {
+                        c.set(year13, monthOfYear, dayOfMonth);
+                        String birthDateText = c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.YEAR);
+                        dateOfBirth.setText(birthDateText);
+                    }, year, month, day);
+            datePicker.show();
         });
 
-        employmentStartDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                // Create a new instance of DatePickerDialog and return it
-                final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        c.set(year, monthOfYear, dayOfMonth);
+        employmentStartDateButton.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            // Create a new instance of DatePickerDialog and return it
+            final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this,
+                    (view, year12, monthOfYear, dayOfMonth) -> {
+                        c.set(year12, monthOfYear, dayOfMonth);
                         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentStart.setText(dateFormat.format(c.getTime()));
-                    }
-                }, year, month, day);
-                datePicker.show();
-            }
+                    }, year, month, day);
+            datePicker.show();
         });
 
-        employmentEndDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                // Create a new instance of DatePickerDialog and return it
-                final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        c.set(year, monthOfYear, dayOfMonth);
+        employmentEndDateButton.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            // Create a new instance of DatePickerDialog and return it
+            final DatePickerDialog datePicker = new DatePickerDialog(SampleActivity.this,
+                    (view, year1, monthOfYear, dayOfMonth) -> {
+                        c.set(year1, monthOfYear, dayOfMonth);
                         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         editTextEmploymentEnd.setText(dateFormat.format(c.getTime()));
-                    }
-                }, year, month, day);
-                datePicker.show();
-            }
+                    }, year, month, day);
+            datePicker.show();
         });
 
         helper = new UIHelper(this, this);
@@ -188,16 +174,23 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
         helper.customizeBackPopup("Custom Back Title", "Custom Back Popup Message", "Custom YES", "Custom NO");
         helper.enableKioskMode();
 
-        String genderChoices[] = {"Male","Female"};
+        // Set you theme here
+        OnboardingConfiguration.OnboardingTheme theme = new OnboardingConfiguration.OnboardingTheme();
+        theme.setPrimary_color("#5285C1");
+        theme.setAccent_color("#37A4EF");
+        theme.setPrimary_dark_color("#4470A2");
+        helper.setOnboardingTheme(theme);
+
+        String[] genderChoices = {"Male", "Female"};
         gender.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, genderChoices));
 
-        String sourceOfFundsChoices[] = {"Please Select", "Salary", "Commission", "Business",
+        String[] sourceOfFundsChoices = {"Please Select", "Salary", "Commission", "Business",
                 "Pension", "Remittance", "Allowance", "Self-Employed"};
-        sourceOfFunds.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sourceOfFundsChoices));
+        sourceOfFunds.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, sourceOfFundsChoices));
         //setup the Lenddo Button
         button.setUiHelper(helper);
 
-        Spinner spn_hostname = (Spinner) findViewById(R.id.spn_hostname);
+        Spinner spn_hostname = findViewById(R.id.spn_hostname);
         spn_hostname.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -206,11 +199,12 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                     if (AuthV3ApiManager.getInstance(getApplicationContext()).getApiRegion().isEmpty()) {
                         selected = "https://authorize-api%s.partner-service.link";
                     } else {
-                        selected = AuthV3ApiManager.getInstance(getApplicationContext()).getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
+                        selected = AuthV3ApiManager.getInstance(getApplicationContext())
+                                .getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
                     }
                 }
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;
-                Log.i(TAG, "Changed hostname to: "+selected);
+                Log.i(TAG, "Changed hostname to: " + selected);
                 if (selected.contains("lendqa")) {
                     LenddoConstants.BINARY_BASEURL = BaseUrlConfig.BASEURL_QA_BINARY;
                 } else {
@@ -223,8 +217,8 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
             }
         });
 
-        apiRegion = (EditText) findViewById(R.id.editTextApiRegion);
-        ps_id = (EditText) findViewById(R.id.editTextPSID);
+        apiRegion = findViewById(R.id.editTextApiRegion);
+        ps_id = findViewById(R.id.editTextPSID);
     }
 
     private void setEmployerHints() {
@@ -302,23 +296,29 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public void onAuthorizeCanceled(FormDataCollector collector) {
-        button.setEnabled(true);
-        Toast.makeText(SampleActivity.this, "cancelled!", Toast.LENGTH_LONG).show();
-        Intent finishIntent = new Intent(SampleActivity.this, CanceledActivity.class);
-        startActivity(finishIntent);
-        finish();
+        if (collector.getAuthorizationStatus() != null
+                && collector.getAuthorizationStatus().getReason().equalsIgnoreCase("consent_declined")) {
+            Toast.makeText(SampleActivity.this, "Consent Denied. Closing app.", Toast.LENGTH_LONG).show();
+            finishAffinity();
+        } else {
+            button.setEnabled(true);
+            Toast.makeText(SampleActivity.this, "cancelled!", Toast.LENGTH_LONG).show();
+            Intent finishIntent = new Intent(SampleActivity.this, CanceledActivity.class);
+            startActivity(finishIntent);
+            finish();
+        }
     }
 
     @Override
     public void onAuthorizeError(int statusCode, String rawResponse) {
         button.setEnabled(true);
-        Toast.makeText(SampleActivity.this, "Error! code: "+statusCode+" response:"+rawResponse, Toast.LENGTH_LONG).show();
+        Toast.makeText(SampleActivity.this, "Error! code: " + statusCode + " response:" + rawResponse, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onAuthorizeFailure(Throwable throwable) {
         button.setEnabled(true);
-        Toast.makeText(SampleActivity.this, "Failure: "+throwable.getMessage(), Toast.LENGTH_LONG).show();
+        Toast.makeText(SampleActivity.this, "Failure: " + throwable.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     @Override

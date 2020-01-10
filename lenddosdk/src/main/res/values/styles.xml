@@ -74,9 +74,9 @@
     </style>
 
     <!--<style name="ToolTipOverlayCustomStyle">-->
-        <!--<item name="android:color">#ffff0000</item>-->
-        <!--<item name="ttlm_repeatCount">999</item>-->
-        <!--<item name="ttlm_duration">400</item>-->
+    <!--<item name="android:color">#ffff0000</item>-->
+    <!--<item name="ttlm_repeatCount">999</item>-->
+    <!--<item name="ttlm_duration">400</item>-->
     <!--</style>-->
 
 </resources>

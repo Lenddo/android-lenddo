@@ -12,6 +12,7 @@ public class SimpleLoan extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         LenddoCoreInfo.initCoreInfo(getApplicationContext());
+        LenddoCoreInfo.setOnboardingPartnerScriptId("");
         ClientOptions clientOptions = new ClientOptions();
         clientOptions.enableLogDisplay(BuildConfig.DEBUG);
         AndroidData.setup(getApplicationContext(), clientOptions);

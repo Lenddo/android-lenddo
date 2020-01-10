@@ -41,7 +41,7 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         if (actionbar!=null) actionbar.setTitle("DataSDK Demo v" + BuildConfig.VERSION_NAME);
@@ -53,10 +53,10 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), 2);
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         LenddoCoreUtils.checkGooglePlayServices(this);
     }
@@ -133,7 +133,7 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
 
         int mNumOfTabs;
 
-        public SectionsPagerAdapter(FragmentManager fm, int NumOfTabs) {
+        SectionsPagerAdapter(FragmentManager fm, int NumOfTabs) {
             super(fm);
             this.mNumOfTabs = NumOfTabs;
         }
@@ -142,11 +142,9 @@ public class DemoActivity extends AppCompatActivity implements OnFragmentInterac
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    ScoringFragment tab1 = new ScoringFragment();
-                    return tab1;
+                    return new ScoringFragment();
                 case 1:
-                    VerificationFragment tab2 = new VerificationFragment();
-                    return tab2;
+                    return new VerificationFragment();
                 default:
                     return null;
             }

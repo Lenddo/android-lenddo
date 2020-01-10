@@ -9,12 +9,17 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "lenddo.com.lenddoconnect"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 12
-        versionName "2.2.3"
+        versionCode 15
+        versionName "2.2.6"
         setProperty("archivesBaseName", "datasdk_demo_v${versionName}")
         multiDexEnabled true
     }
