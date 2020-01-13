@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 23
-        versionName "2.4.4b"
+        versionCode 28
+        versionName "2.5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -42,6 +42,14 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -88,6 +96,17 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
     kapt "android.arch.lifecycle:compiler:$archLifecycleVersion"
+
+    implementation 'com.tinder.scarlet:scarlet:0.1.9'
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation 'com.tinder.scarlet:message-adapter-moshi:0.1.9'
+    implementation 'com.tinder.scarlet:message-adapter-gson:0.1.9'
+    implementation 'com.tinder.scarlet:stream-adapter-rxjava2:0.1.9'
+    implementation 'com.tinder.scarlet:websocket-okhttp:0.1.9'
 }
 
 task deleteJar(type: Delete) {

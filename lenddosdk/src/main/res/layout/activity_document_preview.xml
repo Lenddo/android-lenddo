@@ -27,20 +27,34 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_docpreview_upload"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:background="#99000000"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:text="@string/processing"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:background="#99000000">
+            <ProgressBar
+                android:id="@+id/progress_docpreview_upload"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_docpreview_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="68dp"
+                android:gravity="center"
+                android:text="@string/processing"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/progressBar_container"
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_alignParentBottom="true"
@@ -94,7 +108,7 @@
             android:layout_marginRight="104dp"
             android:background="#99000000"
             android:gravity="center"
-            android:text="Is the image clear?"
+            android:text="@string/is_the_image_clear"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"

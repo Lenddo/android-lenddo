@@ -78,6 +78,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     private CheckBox cb_enableImeiHashing;
     private CheckBox cb_enableCustomMPermission;
     private CheckBox cb_startAndroidWithContext;
+    private CheckBox cb_enableAccountEmailHashing;
     private Button btn_start;
     private TextView tv_applicationId;
     private TextView tv_deviceId;
@@ -119,7 +120,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         if (AndroidData.statisticsEnabled(getContext())) {
             edt_applicationId.setText(AndroidDataUtils.getApplicationId(getContext()));
         } else {
-            edt_applicationId.setText(LenddoCoreInfo.generateApplicationId("DEMO_", 7));
+            edt_applicationId.setText(LenddoCoreInfo.generateApplicationId("DEMO", 7));
         }
         edt_applicationId.setSelection(edt_applicationId.length());
         isLoadOnboarding = false;
@@ -212,50 +213,52 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews(View fragmentView) {
-        edt_applicationId = (TextInputEditText) fragmentView.findViewById(R.id.edt_applicationId);
-        edt_partnerScriptId = (TextInputEditText) fragmentView.findViewById(R.id.edt_partnerScriptId);
-        spn_hostnames = (Spinner) fragmentView.findViewById(R.id.spn_hostnames);
-        spn_connections = (Spinner) fragmentView.findViewById(R.id.spn_connections);
-        spn_forcedLocales = (Spinner) fragmentView.findViewById(R.id.spn_forcedLocales);
-        cb_enableDebugLogs = (CheckBox) fragmentView.findViewById(R.id.cb_enableDebugLogs);
-        cb_enableSms = (CheckBox) fragmentView.findViewById(R.id.cb_enableSms);
-        cb_enableCallLog = (CheckBox) fragmentView.findViewById(R.id.cb_enableCallLog);
-        cb_enableContact = (CheckBox) fragmentView.findViewById(R.id.cb_enableContact);
-        cb_enableCalendarEvents = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarEvents);
-        cb_enableInstalledApps = (CheckBox) fragmentView.findViewById(R.id.cb_enableInstalledApps);
-        cb_enableBrowserHistory = (CheckBox) fragmentView.findViewById(R.id.cb_enableBrowserHistory);
-        cb_enableLocation = (CheckBox) fragmentView.findViewById(R.id.cb_enableLocation);
-        cb_enableBatteryCharge = (CheckBox) fragmentView.findViewById(R.id.cb_enableBatteryCharge);
-        cb_enableGalleryMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableGalleryMetaData);
-        cb_enableMediaMetaData = (CheckBox) fragmentView.findViewById(R.id.cb_enableMediaMetaData);
-        cb_enableTelephonyInfo = (CheckBox) fragmentView.findViewById(R.id.cb_enableTelephonyInfo);
-        cb_enableStoredFilesInfo = (CheckBox) fragmentView.findViewById(R.id.cb_enableStoredFilesInfo);
-        cb_enableSensors = (CheckBox) fragmentView.findViewById(R.id.cb_enableSensors);
-        cb_enableLaunchers = (CheckBox) fragmentView.findViewById(R.id.cb_enableLaunchers);
-        cb_enableWifi = (CheckBox) fragmentView.findViewById(R.id.cb_enableWifi);
-        cb_enableAccounts = (CheckBox) fragmentView.findViewById(R.id.cb_enableAccounts);
-        cb_enableGmailLabels = (CheckBox) fragmentView.findViewById(R.id.cb_enableGmailLabels);
-        cb_enableBluetooth = (CheckBox) fragmentView.findViewById(R.id.cb_enableBluetooth);
-        cb_enableImei = (CheckBox) fragmentView.findViewById(R.id.cb_enableImei);
-        cb_enableSmsBody = (CheckBox) fragmentView.findViewById(R.id.cb_enableSmsBody);
-        cb_enablePhoneNumberHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
-        cb_enableContactsNameHAshing = (CheckBox) fragmentView.findViewById(R.id.cb_enableContactsNameHashing);
-        cb_enableContactsEmailHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableContactsEmailHashing);
-        cb_enableCalendarOrganizerHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarOrganizerHashing);
-        cb_enableCalendarDisplayNameHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarDisplayNameHashing);
-        cb_enableCalendarEmailHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableCalendarEmailHashing);
-        cb_enableImeiHashing = (CheckBox) fragmentView.findViewById(R.id.cb_enableImeiHashing);
-        cb_enableCustomMPermission = (CheckBox) fragmentView.findViewById(R.id.cb_enableCustomMPermission);
-        cb_startAndroidWithContext = (CheckBox) fragmentView.findViewById(R.id.cb_startAndroidWithContext);
-        btn_start = (Button) fragmentView.findViewById(R.id.btn_start);
+        edt_applicationId = fragmentView.findViewById(R.id.edt_applicationId);
+        edt_partnerScriptId = fragmentView.findViewById(R.id.edt_partnerScriptId);
+        spn_hostnames = fragmentView.findViewById(R.id.spn_hostnames);
+        spn_connections = fragmentView.findViewById(R.id.spn_connections);
+        spn_forcedLocales = fragmentView.findViewById(R.id.spn_forcedLocales);
+        cb_enableDebugLogs = fragmentView.findViewById(R.id.cb_enableDebugLogs);
+        cb_enableSms = fragmentView.findViewById(R.id.cb_enableSms);
+        cb_enableCallLog = fragmentView.findViewById(R.id.cb_enableCallLog);
+        cb_enableContact = fragmentView.findViewById(R.id.cb_enableContact);
+        cb_enableCalendarEvents = fragmentView.findViewById(R.id.cb_enableCalendarEvents);
+        cb_enableInstalledApps = fragmentView.findViewById(R.id.cb_enableInstalledApps);
+        cb_enableBrowserHistory = fragmentView.findViewById(R.id.cb_enableBrowserHistory);
+        cb_enableLocation = fragmentView.findViewById(R.id.cb_enableLocation);
+        cb_enableBatteryCharge = fragmentView.findViewById(R.id.cb_enableBatteryCharge);
+        cb_enableGalleryMetaData = fragmentView.findViewById(R.id.cb_enableGalleryMetaData);
+        cb_enableMediaMetaData = fragmentView.findViewById(R.id.cb_enableMediaMetaData);
+        cb_enableTelephonyInfo = fragmentView.findViewById(R.id.cb_enableTelephonyInfo);
+        cb_enableStoredFilesInfo = fragmentView.findViewById(R.id.cb_enableStoredFilesInfo);
+        cb_enableSensors = fragmentView.findViewById(R.id.cb_enableSensors);
+        cb_enableLaunchers = fragmentView.findViewById(R.id.cb_enableLaunchers);
+        cb_enableWifi = fragmentView.findViewById(R.id.cb_enableWifi);
+        cb_enableAccounts = fragmentView.findViewById(R.id.cb_enableAccounts);
+        cb_enableGmailLabels = fragmentView.findViewById(R.id.cb_enableGmailLabels);
+        cb_enableBluetooth = fragmentView.findViewById(R.id.cb_enableBluetooth);
+        cb_enableImei = fragmentView.findViewById(R.id.cb_enableImei);
+        cb_enableSmsBody = fragmentView.findViewById(R.id.cb_enableSmsBody);
+        cb_enablePhoneNumberHashing = fragmentView.findViewById(R.id.cb_enablePhoneNumberHashing);
+        cb_enableContactsNameHAshing = fragmentView.findViewById(R.id.cb_enableContactsNameHashing);
+        cb_enableContactsEmailHashing = fragmentView.findViewById(R.id.cb_enableContactsEmailHashing);
+        cb_enableCalendarOrganizerHashing = fragmentView.findViewById(R.id.cb_enableCalendarOrganizerHashing);
+        cb_enableCalendarDisplayNameHashing = fragmentView.findViewById(R.id.cb_enableCalendarDisplayNameHashing);
+        cb_enableCalendarEmailHashing = fragmentView.findViewById(R.id.cb_enableCalendarEmailHashing);
+        cb_enableImeiHashing = fragmentView.findViewById(R.id.cb_enableImeiHashing);
+        cb_enableCustomMPermission = fragmentView.findViewById(R.id.cb_enableCustomMPermission);
+        cb_startAndroidWithContext = fragmentView.findViewById(R.id.cb_startAndroidWithContext);
+        cb_enableAccountEmailHashing = fragmentView.findViewById(R.id.cb_enableAccountEmailHashing);
+
+        btn_start = fragmentView.findViewById(R.id.btn_start);
         btn_start.setOnClickListener(this);
 
-        tv_applicationId = (TextView) fragmentView.findViewById(R.id.tv_applicationId);
-        tv_deviceId = (TextView) fragmentView.findViewById(R.id.tv_deviceId);
-        tv_serviceToken = (TextView) fragmentView.findViewById(R.id.tv_serviceToken);
-        tv_installationId = (TextView) fragmentView.findViewById(R.id.tv_installationId);
-        tv_uploadMode = (TextView) fragmentView.findViewById(R.id.tv_uploadMode);
-        tv_hasUploadedInitial = (TextView) fragmentView.findViewById(R.id.tv_hasUploadedInitial);
+        tv_applicationId = fragmentView.findViewById(R.id.tv_applicationId);
+        tv_deviceId = fragmentView.findViewById(R.id.tv_deviceId);
+        tv_serviceToken = fragmentView.findViewById(R.id.tv_serviceToken);
+        tv_installationId = fragmentView.findViewById(R.id.tv_installationId);
+        tv_uploadMode = fragmentView.findViewById(R.id.tv_uploadMode);
+        tv_hasUploadedInitial = fragmentView.findViewById(R.id.tv_hasUploadedInitial);
 
         PS_ID = getString(R.string.partner_script_id);
         edt_partnerScriptId.setText(PS_ID);
@@ -316,6 +319,8 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
             clientOptions.enableCalendarDisplayNameHashing();
         if (cb_enableCalendarEmailHashing.isChecked()) clientOptions.enableCalendarEmailHashing();
         if (cb_enableImeiHashing.isChecked()) clientOptions.enableImeiHashing();
+        if (cb_enableAccountEmailHashing.isChecked()) clientOptions.enableAccountEmailHashing();
+
         //Custom M Permisson
         if (cb_enableCustomMPermission.isChecked()) {
             clientOptions.setCustomMPermissionLayout(
@@ -436,6 +441,7 @@ public class ScoringFragment extends Fragment implements View.OnClickListener {
         cb_enableCalendarDisplayNameHashing.setEnabled(isEnable);
         cb_enableCalendarEmailHashing.setEnabled(isEnable);
         cb_enableImeiHashing.setEnabled(isEnable);
+        cb_enableAccountEmailHashing.setEnabled(isEnable);
         cb_enableCustomMPermission.setEnabled(isEnable);
         cb_startAndroidWithContext.setEnabled(isEnable);
     }

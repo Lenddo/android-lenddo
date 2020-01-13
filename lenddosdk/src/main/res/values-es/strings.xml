@@ -22,7 +22,7 @@
     <string name="retry_allcaps">REINTENTAR</string>
     <string name="send_feedback_allcaps">ENVIAR COMENTARIOS</string>
 
-    <string name="permission_rationale_partial">Vamos a desarrollar tu perfil crediticio a partir de los patrones de uso del teléfono. Para eso danos acceso a:</string>
+    <string name="permission_rationale_partial">Has negado el permiso para:</string>
     <string name="permission_rationale_complete">Vamos a desarrollar tu perfil crediticio a partir de los patrones de uso del teléfono. Para eso danos acceso a:</string>
 
     <string name="permission_title_sms">Mensajes de Texto</string>
@@ -72,13 +72,46 @@
     <string name="permission_dismiss_dialog_negative_key">NO</string>
 
     <!--Liveness Detection-->
-    <string name="liveness_initial_instruction">Position your face within the outline</string>
+    <string name="liveness_initial_instruction">Posiciona tu cara dentro del contorno</string>
     <string name="video_capture_tooltip">Press the button when you\'re ready</string>
     <string name="preview">Preview</string>
     <string name="recording_done">Recording done!</string>
     <string name="you_can_now_preview_your_selfie">You can now preview \n your selfie.</string>
-    <string name="done">Done!</string>
-    <string name="submit">Submit</string>
-    <string name="retake">Retake</string>
+    <string name="done">Esta completo</string>
+    <string name="processing">Procesando</string>
+    <string name="submit">Enviar</string>
+    <string name="retake">Vovler a tomar</string>
     <string name="your_document_has_been_successfully_uploaded">Your %s has\nbeen successfully uploaded.</string>
+    <string name="downloading_instructions">Downloading instructions…</string>
+    <string name="selfie_done_label">¡Selfie hecho!</string>
+    <string name="selfie_done_sub_label">Tu selfie ha sido\nprocesada con éxito.</string>
+    <string name="selfie_instruction_back_cam">Posiciona tu cara dentro del contorno</string>
+    <string name="selfie_press_icon">Presiona el botón cuando estés listo</string>
+
+    <!-- Strings related to barcode scanner -->
+    <string name="title_scan_qr_code">Escanea el código QR</string>
+    <string name="qr_code_scanner_notes">Coloca el código en el centro del cuadrado para escanear automáticamente</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="permission_camera_rationale" translatable="false">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission" translatable="false">Esta aplicación no se puede ejecutar porque no tienes activado el permiso de la cámara. La aplicación no puede continuar sin este permiso.</string>
+    <string name="low_storage_error" translatable="false">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="is_the_image_clear">¿Es esta imagen nítida?</string>
+
+    <!--Document Capture -->
+    <string name="position_your_card_into_the_frame">Position your card into the frame</string>
+    <string name="document_capture_done_label">Voila!</string>
+    <string name="document_capture_done_sub_label">Your document has been successfully uploaded.</string>
+    <string name="sign_here">Sign here</string>
+    <string name="add_another_page">+ Agregar otra página</string>
+    <string name="document_submitted">¡Documento enviado!</string>
+    <string name="the_document_has_been_successfully_processed">La página %s de su %s ha sido procesada con éxito.</string>
+
+    <string name="global_position_document">Coloca la página %s de tu %s en el marco.</string>
+    <string name="global_upload_on_error">Error de internet. Por favor comprueba tu conexión.</string>
+    <string name="global_upload_on_failure">Internet falló. Por favor comprueba tu conexión.</string>
+    <string name="global_upload_failed">Carga fallida. Por favor intenta nuevamente.</string>
+    <string name="qr_scanner">Escáner QR</string>
+    <string name="confirm">Confirmar</string>
+    <string name="are_you_sure_you_want_to_cancel">¿Estas seguro que quieres cancelar?</string>
 </resources>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

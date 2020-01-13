@@ -101,13 +101,15 @@
     <string name="save" translatable="false">Save</string>
 
     <!--Document Capture -->
-    <string name="position_your_card_into_the_frame" translatable="false">Position your card into the frame</string>
-    <string name="document_capture_done_label" translatable="false">Voila!</string>
-    <string name="document_capture_done_sub_label" translatable="false">Your document has been successfully uploaded.</string>
-    <string name="sign_here" translatable="false">Sign here</string>
-    <string name="add_another_page" translatable="false">+ Add another page</string>
-    <string name="document_submitted" translatable="false">Document submitted!</string>
-    <string name="the_document_has_been_successfully_processed" translatable="false">Page %s of your %s has been successfully processed.</string>
+    <string name="position_your_card_into_the_frame">Position your card into the frame</string>
+    <string name="document_capture_done_label">Voila!</string>
+    <string name="document_capture_done_sub_label">Your document has been successfully uploaded.</string>
+    <string name="sign_here">Sign here</string>
+    <string name="add_another_page">+ Add another page</string>
+    <string name="document_submitted">Document submitted!</string>
+    <string name="the_document_has_been_successfully_processed">Page %s of your %s has been successfully processed.</string>
+    <string name="upload_complete" translatable="false">Upload complete</string>
+    <string name="processing_image" translatable="false">Processing image, please wait&#8230;</string>
 
     <!-- Strings related to barcode scanner -->
     <string name="title_scan_qr_code">Scan QR Code</string>
@@ -130,6 +132,26 @@
     <string name="error_otp_im_sorry_you_have_to_be_connected" translatable="false">I\'m sorry, you have to be connected to request an OTP.</string>
     <string name="otp_verified" translatable="false">OTP Verified!</string>
     <string name="each_time_you_logout" translatable="false">Each time you log out of the app, you will need to log in by entering a One Time Password again.</string>
+    <string name="is_the_image_clear">Is the image clear?</string>
 
+    <string name="global_position_document">Position page %s of your %s in the frame</string>
+    <string name="global_upload_on_error">Internet Error. Please check your connection.</string>
+    <string name="global_upload_on_failure">Internet Failure. Please check your connection.</string>
+    <string name="global_upload_failed">Upload failed. Please try again.</string>
+    <string name="qr_scanner">QR Scanner</string>
+    <string name="confirm">Confirm</string>
+    <string name="are_you_sure_you_want_to_cancel">Are you sure you want to cancel?</string>
 
+    <string name="use_this_photo">Use this photo anyway</string>
+    <string name="retake_photo">Retake Photo</string>
+
+    <string name="error_blur">Your image may be blurry.</string>
+    <string name="error_bright">Your lighting might be too bright.</string>
+    <string name="error_color">There is a problem with your photo.</string>
+    <string name="error_cropped">You might not have captured the whole document.</string>
+    <string name="error_dark">Your lighting might be too dark.</string>
+    <string name="error_glare">Your photo might have some glare on it.</string>
+    <string name="something_is_wrong_with_your_photo">Sorry, Something is wrong with your photo! Please try again.</string>
+
+    <string name="wait" translatable="false">Please wait ...</string>
 </resources>
