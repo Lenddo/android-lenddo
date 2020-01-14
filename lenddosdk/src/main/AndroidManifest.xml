@@ -63,6 +63,11 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
+            android:name=".onboardingsdk.activities.DocumentResultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".onboardingsdk.activities.SignatureCaptureActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="landscape"

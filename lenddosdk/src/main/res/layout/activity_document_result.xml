@@ -45,17 +45,19 @@
         android:text="@string/retake_photo"
         android:background="@drawable/selector_button_bg"
         android:gravity="center"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="4dp"
         android:textSize="16sp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@id/doc_result_use_this_tv"/>
 
-    <TextView
+    <Button
         android:id="@+id/doc_result_use_this_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:text="@string/use_this_photo"
+        android:textAllCaps="false"
         android:gravity="center"
         android:textSize="14sp"
         android:textColor="@android:color/black"
