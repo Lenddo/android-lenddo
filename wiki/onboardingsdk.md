@@ -12,18 +12,14 @@ Lenddo Social Network Onboarding
     - [4.2. Installation update with screenshot](#42-installation-update-with-screenshot)
 - [5. Setting up the Sample Loan App](#5-setting-up-the-sample-loan-app)
 - [6. Adding the Lenddo library to your existing project](#6-adding-the-lenddo-library-to-your-existing-project)
-    - [6.1. Edit your **settings.gradle** file and add the following:](#61-edit-your-settingsgradle-file-and-add-the-following)
-    - [6.2. Edit the App build.gradle](#62-edit-the-app-buildgradle)
-        - [6.2.1. Edit build.gradle](#621-edit-buildgradle)
-            - [6.2.1.1. Example Gradle Dependencies _after modification_](#6211-example-gradle-dependencies-_after-modification_)
-    - [6.3. Additional Steps Required if You Have E-mail Onboarding](#63-additional-steps-required-if-you-have-e-mail-onboarding)
-        - [6.3.1. Update the build.gradle files](#631-update-the-buildgradle-files)
-        - [6.3.2. Configuring a Google API console project](#632-configuring-a-google-api-console-project)
-        - [6.3.3. Native Google Email Sign In Helper Class](#633-native-google-email-sign-in-helper-class)
-        - [6.3.4. Enabling Gmail API and Contacts API](#634-enabling-gmail-api-and-contacts-api)
-    - [6.4. Permissions](#64-permissions)
-    - [6.5. Embed GoogleSignInHelper into Onboarding process](#65-embed-googlesigninhelper-into-onboarding-process)
-    - [6.6. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)](#66-migrating-google-signin-v1-lenddo-sdk-v13-to-v2-lenddo-sdk-v14)
+    - [6.1. Additional Steps Required if You Have E-mail Onboarding](#61-additional-steps-required-if-you-have-e-mail-onboarding)
+        - [6.1.1. Update the build.gradle files](#611-update-the-buildgradle-files)
+        - [6.1.2. Configuring a Google API console project](#612-configuring-a-google-api-console-project)
+        - [6.1.3. Native Google Email Sign In Helper Class](#613-native-google-email-sign-in-helper-class)
+        - [6.1.4. Enabling Gmail API and Contacts API](#614-enabling-gmail-api-and-contacts-api)
+    - [6.2. Permissions](#62-permissions)
+    - [6.3. Embed GoogleSignInHelper into Onboarding process](#63-embed-googlesigninhelper-into-onboarding-process)
+    - [6.4. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)](#64-migrating-google-signin-v1-lenddo-sdk-v13-to-v2-lenddo-sdk-v14)
 - [7. Integration](#7-integration)
     - [7.1. Configuring the Partner Script Id dynamically](#71-configuring-the-partner-script-id-dynamically)
     - [7.2. Adding Probe data for Verification](#72-adding-probe-data-for-verification)
@@ -61,8 +57,8 @@ The Lenddo SDK for Android allows you to integrate the Lenddo Verification and/o
 
 # 4. Getting Started
 
-1.  First make sure you have all the requirements. See the [Requirements](#user-content-requirements) section below.
-2.  Successfully run the SDK in a simple loan app. See the [Installation update with screenshot](#user-content-installation-update-with-screenshot) section below.
+1.  Make sure that you have all the requirements. See the [Requirements](#user-content-requirements) section below.
+2.  Successfully run the SDK in the onboarding_demo app. See the [Installation update with screenshot](#user-content-installation-update-with-screenshot) section below.
 3.  Add the Lenddo SDK libraries to your own application.
 4.  Test and deploy
 
@@ -73,23 +69,25 @@ Before you start on integrating the Lenddo SDK, please make sure you have the fo
 1.  Properly installed latest version of **Android Studio**. You may refer to the Google Developer Docs on how to set this up [https://developer.android.com/sdk/index.html](https://developer.android.com/sdk/index.html)
 2.  A valid Lenddo **Partner Script Id**
 3.  Basic knowledge on setting up Android Libraries. (This document will explain the specific steps for the Lenddo SDK only).
-4.  Download the LenddoSDK onto your hard drive
-5.  For email onboarding, a **credentials.json** file is required in the app src's assets directory and Google **Web** OAuth2.0 Client Id (this is for native google signin).
+4.  For email onboarding, a **credentials.json** file is required in the app src's assets directory and Google **Web** OAuth2.0 Client Id (this is for native google signin).
 
 ## 4.2. Installation update with screenshot
 
-Download the Lenddo SDK and extract the archive into your local drive. After extracting the archive, the Lenddo SDK folder structure should look like this:
+Download or clone the Lenddo SDK to your computer. After extracting the archive (if downloaded) or after cloning the repo, the Lenddo SDK folder structure should look like this:
 
-![](https://cloud.githubusercontent.com/assets/481942/13133878/ec7f8ae8-d63a-11e5-9ede-ae5140099fc5.png)
+![github_scr](https://user-images.githubusercontent.com/57437607/73053705-6870f700-3ec3-11ea-8ef2-0c2350c42b4b.PNG)
 
-The **LenddoSDK** folder contains the actual Lenddo SDK library project that you can include in your app. The **simple_loan** folder contains the sample app called **Simple Loan** which illustrates how to integrate the **Lenddo Button** into your existing app.
+The **LenddoSDK** folder contains the actual Lenddo SDK library project that you can include in your app. The **onboarding_demo** folder contains the sample app called **Simple Loan** which illustrates how to integrate the **Lenddo Button** into your existing app.
 
-# 5. Setting up the Sample Loan App
+# 5. Setting up the Demo App
 
-1.  Using Android Studio, click on **Select File -> Open** and **choose** the folder LenddoSDK-android which was created when you extracted the Lenddo SDK.zip. Android Studio will automatically set up the project for you.
-2.  _(If you have an e-mail onboarding step)_ You need to configure a google api console project by clicking the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). And provided that the package name should be: **lenddo.com.lenddoconnect** and you will also need to provide the SHA-1 hash of your signing certificate (**debug.keystore** is enough for this demo). After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last dialog window of configure a project wizard. Overwrite the **credentials.json** file on the Simple Loan demo src asset's directory (as shown in the picture below). ![src asset's directory](credentials_json_file_location_in_your_project_folder.png)
-3.  The sample app is already configured to use the LenddoSDK, all you need to do is to fill in your **partner-script-id**. Edit the **simple_loan/src/main/res/values/config.xml** and replace the words "PLACE YOUR PARTNER SCRIPT ID HERE" with the **partner_script_id** key provided to you. (See below).
-    * _(Ff you have an e-mail onboarding step)_ Fill in the Google Web Client Id in the String as shown below. Get it from the [Google API Manager](https://console.developers.google.com/apis/credentials) site under the Credentials link.
+1.  Using Android Studio, click on **File -> Open** and **choose** the folder android-lenddo which was created when you extracted the Lenddo SDK.zip. Android Studio will automatically set up the project for you.
+2.  _(If you have an e-mail onboarding step)_ You need to configure a google api console project by clicking the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). And provided that the package name should be: **lenddo.com.lenddoonboarding** and you will also need to provide the SHA-1 hash of your signing certificate (**debug.keystore** is enough for this demo). After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last dialog window of configure a project wizard. Overwrite the **credentials.json** file on the Simple Loan demo src asset's directory (as shown in the picture below). 
+
+![src asset's directory](credentials_json_file_location_in_your_project_folder.png)
+
+3.  The sample app is already configured to use the LenddoSDK, all you need to do is to fill in your **partner-script-id**. Edit the **mobiledata_demo/src/main/res/values/config.xml** and replace the words "PLACE YOUR PARTNER SCRIPT ID HERE" with the **partner_script_id** key provided to you. (See below).
+    * _(If you have an e-mail onboarding step)_ Fill in the Google Web Client Id in the String as shown below. Get it from the [Google API Manager](https://console.developers.google.com/apis/credentials) site under the Credentials link.
 
 ```xml
         <?xml version="1.0" encoding="utf-8"?>
@@ -105,36 +103,45 @@ The **LenddoSDK** folder contains the actual Lenddo SDK library project that you
 6.  When the sample app successfully launches, you will see a sample form with a Lenddo Button at the bottom and an application ID field above it. This application ID field corresponds to an id that is created by your app (for testing purposes you can enter a sample ID).
 7.  Click on the **Submit and Get Verified** button to complete the authorize process.
 
-If you would like more information on how this works you can view The file **SampleActivity.java** in the simple_loan/src/main/java/lenddo.com.lenddoconnect folder
+If you would like more information on how this works you can view The file **SampleActivity.java** in the mobiledata_demo/src/main/java/lenddo.com.lenddoonboarding folder
 
-# 6. Adding the Lenddo library to your existing project
+# 6. Adding the LenddoSDK to your existing project
 
-Inside the extracted directory, import **lenddosdk** as module into your android project.
+There are **two ways** to use the LenddoSDK. First is by implementing the released version from Github and second is importing the LenddoSDK module to your project.
 
-## 6.1. Edit your **settings.gradle** file and add the following:
-```java
-include ':lenddosdk'
-```
-
-## 6.2. Edit the App build.gradle
-### 6.2.1. Edit build.gradle
-Open and edit the app-level **build.gradle** file (not the project's top-level). You should see a section for dependencies and add `implementation project(':lenddosdk')`
-
-#### 6.2.1.1. Example Gradle Dependencies _after modification_
-```java
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(':lenddosdk')
-}
-```
+> ## 1. Implement Github Released Version
+>
+>```java
+>implementation 'com.github.Lenddo:android-lenddo:v2.5.1'
+>```
+>
+>## 2. Import the LenddoSDK Module to your Application
+>
+>### Upon import, make sure that the **settings.gradle** file will have this line:
+>
+>```java
+>include ':lenddosdk'
+>```
+>
+>### Edit your app's build.gradle (not the project's top-level). You should see a section for dependencies and add `implementation project(':lenddosdk')`
+>
+>Example:
+>
+>```java
+>dependencies {
+>    implementation fileTree(dir: 'libs', include: ['*.jar'])
+>    implementation project(':lenddosdk')
+>}
+>```
+>
+>
 
 ---
 
-## 6.3. Additional Steps Required if You Have E-mail Onboarding
-If you have the e-mail onboarding step included with your Authorize onboarding experience, you need add some resources required for native google signin. Follow the steps below. _This part is only for applications that have an Email Onboarding process. Ignore these otherwise._
+## 6.1. Additional Steps Required if You Have E-mail Onboarding
+If you have the e-mail onboarding step included with your Authorize onboarding experience, you need add to some resources required for native google signin. Follow the steps below. _This part is only for applications that have an Email Onboarding process. Ignore these otherwise._
 
-### 6.3.1. Update the build.gradle files
+### 6.1.1. Update the build.gradle files
 > 
 > #### 1. In your app-level **build.gradle** file, declare Google Play services with Google REST API as dependencies, in your application module **build.gradle** file:
 >```java
@@ -176,7 +183,7 @@ If you have the e-mail onboarding step included with your Authorize onboarding e
 
 Android Studio should tell you to resync, the SDK classes should now be available after that.
 
-### 6.3.2. Configuring a Google API console project
+### 6.1.2. Configuring a Google API console project
 
 You need to configure a google api console project by click the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). You need to provide the package name of your android application, you can check your **AndroidManifest.xml** file to verify the package name and you also need to provide the SHA-1 hash of your signing certificate. After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last configure a project dialog window. Put the **credentials.json** file onto your src **assets** directory and place your client id into your **AndroidManifest.xml** as meta data inside the application key, as shown below.
 
@@ -201,17 +208,17 @@ strings.xml
 </resources>
 ```
 
-### 6.3.3. Native Google Email Sign In Helper Class
+### 6.1.3. Native Google Email Sign In Helper Class
 A native Google Email signin helper class is provided. Simply create a new package in your application: **com.lenddo.nativeonboarding** and copy the signin helper class. [GoogleSignInHelper](https://github.com/Lenddo/android-lenddo/blob/master/onboarding_demo/src/main/java/com/lenddo/nativeonboarding/GoogleSignInHelper.java)
 
-### 6.3.4. Enabling Gmail API and Contacts API
+### 6.1.4. Enabling Gmail API and Contacts API
 In order for the application to have login access and use Gmail onboarding for scoring, the Gmail API must be enabled in the [Google API Console](https://console.developers.google.com/apis/library). 
 
  - Choose your correct project
  - Under Library, search for Gmail and click Enable
  - Enabling Contacts API will also help improve score generation so enable that as well.
 
-## 6.4. Permissions
+## 6.2. Permissions
 In addition to the required permissions defined from within the SDK, _which are automatically incorporated into your app_, you must ensure the following permissions are also required:
 
 ```xml
@@ -222,7 +229,7 @@ In addition to the required permissions defined from within the SDK, _which are 
 
 Camera permission is required for eKYC feature.
 
-## 6.5. Embed GoogleSignInHelper into Onboarding process
+## 6.3. Embed GoogleSignInHelper into Onboarding process
 To use GoogleSignInHelper, we will use UIHelper addGoogleSignIn method
 *addGoogleSignIn(new GoogleSignInHelper())* method after UIHelper object instantiation as shown below.
 
@@ -236,7 +243,7 @@ helper = new UIHelper(this, this);
 helper.addGoogleSignIn(new GoogleSignInHelper());
 ```
 
-## 6.6. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)
+## 6.4. Migrating Google SignIn v1 (Lenddo SDK v1.3.*) to v2 (Lenddo SDK v1.4.*)
 Please refer to this [link](migrating-google-sign-in-v1-to-v2.md).
 
 # 7. Integration
