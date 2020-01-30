@@ -139,7 +139,7 @@ There are **two ways** to use the LenddoSDK. First is by implementing the releas
 ---
 
 ## 6.1. Additional Steps Required if You Have E-mail Onboarding
-If you have the e-mail onboarding step included with your Authorize onboarding experience, you need add to some resources required for native google signin. Follow the steps below. _This part is only for applications that have an Email Onboarding process. Ignore these otherwise._
+If you have the e-mail onboarding step included with your Authorize onboarding experience, you need to add some resources required for native google signin. Follow the steps below. _This part is only for applications that have an Email Onboarding process. Ignore these otherwise._
 
 ### 6.1.1. Update the build.gradle files
 > 
@@ -185,7 +185,7 @@ Android Studio should tell you to resync, the SDK classes should now be availabl
 
 ### 6.1.2. Configuring a Google API console project
 
-You need to configure a google api console project by click the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). You need to provide the package name of your android application, you can check your **AndroidManifest.xml** file to verify the package name and you also need to provide the SHA-1 hash of your signing certificate. After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last configure a project dialog window. Put the **credentials.json** file onto your src **assets** directory and place your client id into your **AndroidManifest.xml** as meta data inside the application key, as shown below.
+You need to configure a google api console project by clicking the button  "Configure a Project" [from this link](https://developers.google.com/identity/sign-in/android/start-integrating#configure_a_console_name_project). You need to provide the package name of your android application, you can check your **AndroidManifest.xml** file to verify the package name and you also need to provide the SHA-1 hash of your signing certificate. After successfully creating a google api console project, you must download client configuration and it will be download as **credentials.json** and copy the **Client ID** from the last configure a project dialog window. Put the **credentials.json** file onto your src **assets** directory and place your client id into your **AndroidManifest.xml** as meta data inside the application key, as shown below.
 
 AndroidManifest.xml
 
@@ -248,9 +248,19 @@ Please refer to this [link](migrating-google-sign-in-v1-to-v2.md).
 
 # 7. Integration
 
-## 7.1. Configuring the Partner Script Id dynamically
+## 7.1. Configuring the Partner Script Id Dynamically
 
-Normally, an application will only need a partner script id. The Onboarding SDK allows changing of partner script id dynamically by setting it using the FormDataCollector object. Simply call the setPartnerScriptId() method before calling the UIHelper.showAuthorize() method or before clicking the Lenddo button or use LenddoCoreInfo setOnboardingPartnerScriptId() method on Application class.
+Normally, an application will only need a partner script id. The Onboarding SDK allows changing of partner script id dynamically by setting it using the FormDataCollector object. Simply call the setPartnerScriptId() method before calling the UIHelper.showAuthorize() method or before clicking the Lenddo button.
+
+```java
+    String onboardingPartnerScriptId = "YOUR NEW PARTNER SCRIPT ID";
+    
+    // Configure the partner script dynamically if needed
+    FormDataCollector formData = new FormDataCollector()
+    formData.setPartnerScriptId(onboardingPartnerScriptId);
+```
+
+You can also set the partner script id on the Application class by using LenddoCoreInfo setOnboardingPartnerScriptId() method.
 
 ```java
 package com.sample.app;
@@ -273,14 +283,6 @@ public class  SampleApp extends MultiDexApplication {
 }
 ```
 
-```java
-    String onboardingPartnerScriptId = "YOUR NEW PARTNER SCRIPT ID";
-    
-    // Configure the partner script dynamically if needed
-    FormDataCollector formData = new FormDataCollector()
-    formData.setPartnerScriptId(onboardingPartnerScriptId);
-```
-
 ## 7.2. Adding Probe data for Verification
     
 Probe data or user information are gathered from the application to be used for verification purposes. Probe may come from an application form that the user will need to fill up. Once the user fill's up the application form fields, the data is then passed to the Onboarding SDK as probe data. See code below on how to pass the probe data.
@@ -297,10 +299,12 @@ private FormDataCollector getProbeData(FormDataCollector formData) {
     // Add additional fields such as EmployerName, MobilePhone, University, Address, etc
     
     // Configure the partner script dynamically if needed
+    // Must be 24 alphanumeric characters
     String partnerscript_id = "YOUR NEW PARTNER SCRIPT ID";
     formData.setPartnerScriptId(partnerscript_id);
     
     // Adding Government IDs
+    List<GovernmentId> governmentIds = new ArrayList<>();
     governmentIds.add(new GovernmentId("DEMO-TYPE", "DEMO-VALUE"));
     governmentIds.add(new GovernmentId("passport", "PAS_018218ASVR"));
     governmentIds.add(new GovernmentId("sss", "SSS_0-390128411-1274"));
@@ -339,7 +343,7 @@ The Lenddo button greatly simplifies integrating the Lenddo workflow to your app
 2.  Open up your Forms' layout xml and add the following to include the Lenddo Button onto your Layout:
 
     ```java
-    <com.lenddo.sdk.widget.LenddoButton
+    <com.lenddo.mobile.onboardingsdk.widget.LenddoButton
        android:id="@+id/verifyButton"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -384,12 +388,19 @@ The Lenddo button greatly simplifies integrating the Lenddo workflow to your app
         }
 
         @Override
-        public void onAuthorizeComplete(FormDataCollector collector) {
-        }
+        public void onAuthorizeStarted(FormDataCollector collector) {}
 
         @Override
-        public void onAuthorizeCanceled(FormDataCollector collector) {
-        }
+        public void onAuthorizeComplete(FormDataCollector collector) {}
+
+        @Override
+        public void onAuthorizeCanceled(FormDataCollector collector) {}
+
+        @Override
+        public void onAuthorizeError(int statusCode, String rawResponse) {}
+
+        @Override
+        public void onAuthorizeFailure(Throwable throwable) {}
 
         @Override
         public void onBackPressed() {
@@ -403,6 +414,19 @@ The Lenddo button greatly simplifies integrating the Lenddo workflow to your app
     ```
 
     Note: These methods allow you to hook into the Lenddo Authorize process.
+
+    onButtonClicked -> called when Lenddo Button is selected, passing the probe data (FormDataCollector)
+
+    onAuthorizeStarted -> called when Authorize started
+
+    onAuthorizeComplete -> called when Authorize completed and data sent to the server
+
+    onAuthorizeCanceled -> called when Authorize canceled. Current screen url is returned in FormDataCollector using collector.getField("url").toString().
+
+    onAuthorizeError -> called when specific error occurred from Authorize API (eg. "Unauthorized access")
+
+    onAuthorizeFailure -> called during server errors
+
 
 5.  Still on the onCreate method, Link the button to the UIHelper:
 
@@ -499,7 +523,7 @@ The SDK will use the device camera to record a selfie snapshot and a video recor
 
 ## 8.2. Document Capture
 
-Based on the configuration, a set of required documents will be presented to the user and must be captured via the camera. Ensure that the image is clear and readable before submission.
+Based on the configuration, a set of required documents will be presented to the user and must be captured via the camera. Ensure that the image is clear and readable before submission. There is a bluriness detection option configurable to your partner_script_id.
 
 ## 8.3. Signature Capture
 
