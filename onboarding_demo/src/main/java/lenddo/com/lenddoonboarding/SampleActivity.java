@@ -200,7 +200,7 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
                         selected = "https://authorize-api%s.partner-service.link";
                     } else {
                         selected = AuthV3ApiManager.getInstance(getApplicationContext())
-                                .getAuthorizeUrlWithRegion("https://authorize-api%s.partner-service.link");
+                                .getUrlWithRegion("https://authorize-api%s.partner-service.link");
                     }
                 }
                 LenddoConstants.AUTHORIZE_DATA_ENDPOINT = selected;
