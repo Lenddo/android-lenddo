@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 29
-        versionName "2.5.1"
+        versionCode 30
+        versionName "2.5.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -107,6 +107,13 @@ dependencies {
     implementation 'com.tinder.scarlet:message-adapter-gson:0.1.9'
     implementation 'com.tinder.scarlet:stream-adapter-rxjava2:0.1.9'
     implementation 'com.tinder.scarlet:websocket-okhttp:0.1.9'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.6.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
 }
 
 task deleteJar(type: Delete) {
