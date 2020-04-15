@@ -54,6 +54,7 @@
     <string name="set_primary_address">Set Primary Address</string>
     <string name="click_here_to_set_your_address">Click here to confirm your address</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="invalid_partner_script_msg">Partnerscript ID must be 24 alphanumeric characters.</string>
 
     <string-array name="array_hostname">
         <item>https://authorize-api.lendqa.com</item>

@@ -98,9 +98,11 @@
     <string name="sign_here">Sign here</string>
     <string name="add_another_page">+ Add another page</string>
     <string name="document_submitted">Document submitted!</string>
-    <string name="the_document_has_been_successfully_processed">Page %s of your %s has been successfully processed.</string>
+    <string name="the_document_has_been_successfully_processed">%s page of your %s has been successfully processed.</string>
+    <string name="the_document_has_been_successfully_processed_proof">Page %s of your %s has been successfully processed.</string>
 
-    <string name="global_position_document">Position page %s of your %s in the frame</string>
+    <string name="global_position_document">Position the %s page of your %s in the frame</string>
+    <string name="global_position_document_proof">Position page %s of your %s in the frame</string>
     <string name="global_upload_on_error">Internet Error. Please check your connection.</string>
     <string name="global_upload_on_failure">Internet Failure. Please check your connection.</string>
     <string name="global_upload_failed">Upload failed. Please try again.</string>
