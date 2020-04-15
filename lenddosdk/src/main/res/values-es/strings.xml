@@ -104,9 +104,11 @@
     <string name="sign_here">Sign here</string>
     <string name="add_another_page">+ Agregar otra página</string>
     <string name="document_submitted">¡Documento enviado!</string>
-    <string name="the_document_has_been_successfully_processed">La página %s de su %s ha sido procesada con éxito.</string>
+    <string name="the_document_has_been_successfully_processed">La %s página de su %s ha sido procesada con éxito.</string>
+    <string name="the_document_has_been_successfully_processed_proof">La página %s de su %s ha sido procesada con éxito.</string>
 
-    <string name="global_position_document">Coloca la página %s de tu %s en el marco.</string>
+    <string name="global_position_document">Coloca la %s página de tu %s en el marco.</string>
+    <string name="global_position_document_proof">Coloca la página %s de tu %s en el marco.</string>
     <string name="global_upload_on_error">Error de internet. Por favor comprueba tu conexión.</string>
     <string name="global_upload_on_failure">Internet falló. Por favor comprueba tu conexión.</string>
     <string name="global_upload_failed">Carga fallida. Por favor intenta nuevamente.</string>

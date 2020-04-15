@@ -107,17 +107,18 @@
     <string name="sign_here">Sign here</string>
     <string name="add_another_page">+ Add another page</string>
     <string name="document_submitted">Document submitted!</string>
-    <string name="the_document_has_been_successfully_processed">Page %s of your %s has been successfully processed.</string>
+    <string name="the_document_has_been_successfully_processed">%s page of your %s has been successfully processed.</string>
+    <string name="the_document_has_been_successfully_processed_proof">Page %s of your %s has been successfully processed.</string>
     <string name="upload_complete" translatable="false">Upload complete</string>
     <string name="processing_image" translatable="false">Processing image, please wait&#8230;</string>
 
     <!-- Strings related to barcode scanner -->
     <string name="title_scan_qr_code">Scan QR Code</string>
     <string name="qr_code_scanner_notes">Place the code in the center of the\nsquare to scan automatically</string>
-    <string name="ok">OK</string>
-    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
-    <string name="no_camera_permission">This application cannot run because it does not have the camera permission. The application can not proceed without this permission.</string>
-    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="permission_camera_rationale" translatable="false">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission" translatable="false">This application cannot run because it does not have the camera permission. The application can not proceed without this permission.</string>
+    <string name="low_storage_error" translatable="false">Face detector dependencies cannot be downloaded due to low device storage</string>
 
     <!-- Supervised Journey -->
     <string name="title_staff_login" translatable="false">Staff Login</string>
@@ -134,7 +135,8 @@
     <string name="each_time_you_logout" translatable="false">Each time you log out of the app, you will need to log in by entering a One Time Password again.</string>
     <string name="is_the_image_clear">Is the image clear?</string>
 
-    <string name="global_position_document">Position page %s of your %s in the frame</string>
+    <string name="global_position_document">Position the %s page of your %s in the frame</string>
+    <string name="global_position_document_proof">Position page %s of your %s in the frame</string>
     <string name="global_upload_on_error">Internet Error. Please check your connection.</string>
     <string name="global_upload_on_failure">Internet Failure. Please check your connection.</string>
     <string name="global_upload_failed">Upload failed. Please try again.</string>
@@ -142,16 +144,19 @@
     <string name="confirm">Confirm</string>
     <string name="are_you_sure_you_want_to_cancel">Are you sure you want to cancel?</string>
 
-    <string name="use_this_photo">Use this photo anyway</string>
-    <string name="retake_photo">Retake Photo</string>
+    <string name="use_this_photo" translatable="false">Use this photo anyway</string>
+    <string name="retake_photo" translatable="false">Retake Photo</string>
 
-    <string name="error_blur">Your image may be blurry.</string>
-    <string name="error_bright">Your lighting might be too bright.</string>
-    <string name="error_color">There is a problem with your photo.</string>
-    <string name="error_cropped">You might not have captured the whole document.</string>
-    <string name="error_dark">Your lighting might be too dark.</string>
-    <string name="error_glare">Your photo might have some glare on it.</string>
-    <string name="something_is_wrong_with_your_photo">Sorry, Something is wrong with your photo! Please try again.</string>
+    <string name="error_blur" translatable="false">Your image may be blurry.</string>
+    <string name="error_bright" translatable="false">Your lighting might be too bright.</string>
+    <string name="error_color" translatable="false">There is a problem with your photo.</string>
+    <string name="error_cropped" translatable="false">You might not have captured the whole document.</string>
+    <string name="error_dark" translatable="false">Your lighting might be too dark.</string>
+    <string name="error_glare" translatable="false">Your photo might have some glare on it.</string>
+    <string name="something_is_wrong_with_your_photo" translatable="false">Sorry, Something is wrong with your photo! Please try again.</string>
 
     <string name="wait" translatable="false">Please wait ...</string>
+
+    <string name="front" translatable="false">Front</string>
+    <string name="back" translatable="false">Back</string>
 </resources>

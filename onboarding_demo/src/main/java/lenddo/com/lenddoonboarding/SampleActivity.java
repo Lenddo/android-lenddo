@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,7 +30,6 @@ import com.lenddo.mobile.onboardingsdk.utils.OnboardingConfiguration;
 import com.lenddo.mobile.onboardingsdk.utils.UIHelper;
 import com.lenddo.mobile.onboardingsdk.widget.LenddoButton;
 import com.lenddo.mobile.onboardingsdk.widget.OnlineAutoCompleteTextView;
-import com.lenddo.nativeonboarding.FacebookSignInHelper;
 import com.lenddo.nativeonboarding.GoogleSignInHelper;
 
 import java.text.DateFormat;
@@ -235,11 +233,15 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public boolean onButtonClicked(FormDataCollector formData) {
-        button.setEnabled(false);
-        //auto-collect (optional)
         if (ps_id.getText().length() == 24) {
             formData.setPartnerScriptId(ps_id.getText().toString());
+        } else {
+            Toast.makeText(this, getString(R.string.invalid_partner_script_msg), Toast.LENGTH_LONG).show();
+            return false;
         }
+
+        button.setEnabled(false);
+        //auto-collect (optional)
         formData.collect(SampleActivity.this, R.id.formContainer);
 
         VerificationData.Address primaryAddress = new VerificationData.Address();
@@ -296,13 +298,13 @@ public class SampleActivity extends AppCompatActivity implements LenddoEventList
 
     @Override
     public void onAuthorizeCanceled(FormDataCollector collector) {
-        if (collector.getAuthorizationStatus() != null
+        if (collector.getAuthorizationStatus() != null && collector.getAuthorizationStatus().getReason() != null
                 && collector.getAuthorizationStatus().getReason().equalsIgnoreCase("consent_declined")) {
             Toast.makeText(SampleActivity.this, "Consent Denied. Closing app.", Toast.LENGTH_LONG).show();
             finishAffinity();
         } else {
             button.setEnabled(true);
-            Toast.makeText(SampleActivity.this, "cancelled!", Toast.LENGTH_LONG).show();
+            Toast.makeText(SampleActivity.this, "Cancelled!", Toast.LENGTH_LONG).show();
             Intent finishIntent = new Intent(SampleActivity.this, CanceledActivity.class);
             startActivity(finishIntent);
             finish();
