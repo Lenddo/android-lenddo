@@ -1,6 +1,6 @@
 package com.lenddo.mobile.mobiledatacollectiondemo;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.BuildConfig;
 import com.lenddo.mobile.core.LenddoCoreInfo;

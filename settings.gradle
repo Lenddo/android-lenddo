@@ -1,1 +1,1 @@
-include ':lenddosdk', ':mobiledata_demo', ':onboarding_demo', ':mobiledatacollectiondemo'
+include ':lenddosdk', ':onboarding_demo'
