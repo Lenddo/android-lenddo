@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
@@ -16,10 +16,10 @@ android {
 
     defaultConfig {
         applicationId "lenddo.com.lenddoonboarding"
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 9
-        versionName "1.2.6"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 10
+        versionName "1.3.0"
         setProperty("archivesBaseName", "onboarding_demo_v${versionName}")
         multiDexEnabled true
     }
@@ -40,10 +40,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':lenddosdk')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.google.code.gson:gson:2.8.5'
 

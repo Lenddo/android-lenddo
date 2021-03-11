@@ -1,6 +1,6 @@
 package lenddo.com.lenddoconnect;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import com.lenddo.mobile.core.LenddoCoreInfo;
 
