@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="lenddo.com.lenddoconnect.VerificationFragment">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
@@ -24,7 +24,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Application Id:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -36,8 +36,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="reference_number"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -47,7 +47,7 @@
                     android:hint="@string/application_payload"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="application_payload"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Personal Info:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -67,8 +67,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="firstname"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -80,8 +80,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="middlename"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -93,8 +93,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="lastname"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -106,7 +106,7 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="date_of_birth"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Contact Info:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -126,8 +126,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="mobile_phone"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -139,8 +139,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="home_phone"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -152,8 +152,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="email"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -165,8 +165,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="employer"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -178,7 +178,7 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="university"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Mother's Maiden Name:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -198,8 +198,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="mothers_firstname"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -211,8 +211,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="mothers_middlename"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -224,7 +224,7 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="mothers_lastname"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,7 +232,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Address:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -244,8 +244,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="address_line1"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -257,8 +257,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="address_line2"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -270,8 +270,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="city"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -283,8 +283,8 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="address_administrative_division"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedAutoCompleteTextView
@@ -297,8 +297,8 @@
                     android:completionThreshold="2"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="country"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.lenddo.mobile.core.uiwidgets.TimedEditText
@@ -310,7 +310,7 @@
                     android:singleLine="true"
                     lenddo:enableFormFillingAnalytics="true"
                     lenddo:analyticsKeyTitle="postal_code"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -318,10 +318,10 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Geo-Location:"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -329,11 +329,11 @@
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -341,7 +341,7 @@
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/btn_sendpartnerdata"
                 android:layout_width="match_parent"
@@ -370,43 +370,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/providers"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_provider_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prov_id"
                     android:maxLines="1"
                     android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_provider_accesstoken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prov_accesstoken"
                     android:maxLines="1"
                     android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_provider_extradata"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prov_extradata"
                     android:maxLines="1"
                     android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tedt_provider_expiration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -416,7 +416,7 @@
                     android:singleLine="true"
                     android:maxLength="10"
                     android:hint="@string/prov_expiration"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/btn_sendprovideraccesstoken"
                 android:layout_width="match_parent"
@@ -431,6 +431,6 @@
                 android:text="Send Provider Access Token Callback:"/>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
